@@ -182,52 +182,45 @@
         --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
       }
+      
+    {% endstyle %}
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: inherit;
-      }
-
-      html {
-        box-sizing: border-box;
-        font-size: calc(var(--font-body-scale) * 62.5%);
-        height: 100%;
-      }
-
-      body {
-        display: grid;
-        grid-template-rows: auto auto 1fr auto;
-        grid-template-columns: 100%;
-        min-height: 100%;
-        margin: 0;
-        font-size: 1.5rem;
-        letter-spacing: 0.06rem;
-        line-height: calc(1 + 0.8 / var(--font-body-scale));
-        font-family: var(--font-body-family);
-        font-style: var(--font-body-style);
-        font-weight: var(--font-body-weight);
-      }
-
-      @media screen and (min-width: 750px) {
-        body {
-          font-size: 1.6rem;
-        }
+    {% comment %} add custom font {% endcomment %}
+    {% style %}
+      @font-face {
+        font-family: 'Unica 77 LL';
+        src: url('{{ "Unica_77LL-Regular.eot" | asset_url }}');
+        src: url('{{ "Unica_77LL-Regular.eot" | asset_url }}?#iefix') format('embedded-opentype'),
+            url('{{ "Unica_77LL-Regular.woff2" | asset_url }}') format('woff2'),
+            url('{{ "Unica_77LL-Regular.woff" | asset_url }}') format('woff'),
+            url('{{ "Unica_77LL-Regular.ttf" | asset_url }}') format('truetype'),
+            url('{{ "Unica_77LL-Regular.svg" | asset_url }}#Unica_77LL-Regular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
       }
     {% endstyle %}
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% comment %} preload custom-font  {% endcomment %}
+    <link rel="preload" as="font" href="{{ 'Unica_77LL-Regular.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ 'Unica_77LL-Regular.eot' | asset_url }}" type="font/eot" crossorigin>
 
-    {%- unless settings.type_body_font.system? -%}
+    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {{ 'css-variables.css' | asset_url | stylesheet_tag }}
+    {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+
+
+    {% comment %} {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
+    {%- endunless -%} {% endcomment %}
+    {% comment %} {%- unless settings.type_header_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
+    {%- endunless -%} {% endcomment %}
 
-    {%- if settings.predictive_search_enabled -%}
+    {% comment %} {%- if settings.predictive_search_enabled -%}
       <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
@@ -247,6 +240,7 @@
 
     {% section 'announcement-bar' %}
     {% section 'header' %}
+
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

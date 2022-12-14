@@ -1,0 +1,1 @@
+*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}*,*:not(.custom-box-sizing),*:before,*:after{margin:0;padding:0;box-sizing:inherit}::-webkit-scrollbar{display:none}html{height:100%;box-sizing:border-box;scroll-behavior:smooth;text-underline-offset:2px}.sticky{position:sticky;top:0}html,body{font-family:var(--font-family);font-size:var(--base-font-size)}

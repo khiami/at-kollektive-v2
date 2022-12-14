@@ -1,1 +1,130 @@
+@use "sass:map";
+@use "sass:list";
+@use 'sass:math';
+
 @import "./vars";
+
+
+
+@mixin size($int: 16) {
+  
+  $height: $int + 2;
+  
+  line-height: #{math.div($height, 16)}rem;
+  font-size: #{math.div($int, 16)}rem;
+}
+
+
+@mixin visuallyHidden() {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin underlineOnHover() {
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin scrollable() {
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin landscape() {
+  @media (orientation: landscape) {
+    @content();
+  }
+}
+
+@mixin portrait() {
+  @media (orientation: portrait) {
+    @content();
+  }
+}
+
+@mixin pageUnscrollable() {
+  height: 100vh;
+  overflow: hidden;
+}
+
+@function breakpoint($breakpoint) {
+  $list: ("sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200,
+      "xx": 1400);
+
+  @return map.get($list, $breakpoint);
+}
+
+
+@mixin sm($modifier) {
+  // @param
+  // $modifier: max/min
+
+  $breakpoint: breakpoint('sm');
+
+  @if $modifier=='max' {
+    $breakpoint: $breakpoint - 1;
+  }
+
+  @media (#{$modifier}-width: #{$breakpoint}px) {
+    @content();
+  }
+}
+
+@mixin md($modifier) {
+
+  $breakpoint: breakpoint('md');
+
+  @if $modifier=='max' {
+    $breakpoint: $breakpoint - 1;
+  }
+
+  @media (#{$modifier}-width: #{$breakpoint}px) {
+    @content();
+  }
+}
+
+@mixin lg($modifier) {
+  $breakpoint: breakpoint('lg');
+
+  @if $modifier=='max' {
+    $breakpoint: $breakpoint - 1;
+  }
+
+  @media (#{$modifier}-width: #{$breakpoint}px) {
+    @content();
+  }
+}
+
+@mixin xl($modifier) {
+
+  $breakpoint: breakpoint('xl');
+
+  @if $modifier=='max' {
+    $breakpoint: $breakpoint - 1;
+  }
+
+  @media (#{$modifier}-width: #{$breakpoint}px) {
+    @content();
+  }
+}
+
+@mixin query($most, $least) {
+  @media (max-width: #{breakpoint($most)}px) and (min-width: #{breakpoint($least)-1}px) {
+    @content();
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "kollketive-revised",
+  "version": "1.0.0",
+  "description": "[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "sass": "gulp sass",
+    "sass:watch": "gulp watch-sass",
+    "vendor": "gulp vendor",
+    "start:local": "cross-env SHOPIFY_CLI_STACKTRACE=1 shopify theme serve",
+    "login": "shopify login --store kollektive-dev.myshopify.com"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-purge-sourcemaps": "^1.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.56.2"
+  }
+}

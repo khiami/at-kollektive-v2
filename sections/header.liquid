@@ -1,4 +1,9 @@
 <header>
+  <nav class="menu-drawer__navigation root_navigation">
+    <ul>
+      <li><a href="/" class="root-link atk-home">At.Kollektive</a></li>
+    </ul>
+  </nav>
   <nav class="menu-drawer__navigation">
     <ul class="menu-drawer__menu has-submenu list-menu" role="list">
       {%- for link in section.settings.menu.links -%}
@@ -7,13 +12,10 @@
             <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
               <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                 {{ link.title | escape }}
-                {% render 'icon-arrow' %}
-                {% render 'icon-caret' %}
               </summary>
               <div id="link-{{ link.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
                 <div class="menu-drawer__inner-submenu">
                   <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                    {% render 'icon-arrow' %}
                     {{ link.title | escape }}
                   </button>
                   <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
@@ -27,12 +29,9 @@
                           <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
                             <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
                               {{ childlink.title | escape }}
-                              {% render 'icon-arrow' %}
-                              {% render 'icon-caret' %}
                             </summary>
                             <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
                               <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                {% render 'icon-arrow' %}
                                 {{ childlink.title | escape }}
                               </button>
                               <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
@@ -62,6 +61,9 @@
       {%- endfor -%}
     </ul>
   </nav>
+  <nav class="menu-drawer__navigation n-level">
+    
+  <nav>
 </header>
 
 

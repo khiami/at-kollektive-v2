@@ -1,0 +1,40 @@
+@import "./mixin";
+
+
+nav {
+  display: flex;
+  padding: 1.25rem;
+
+  ul {
+    display: flex;
+    gap: 1.0625rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+summary {
+  &::marker {
+    content: '';
+  }
+
+  &[aria-expanded="true"] {
+    // padding-bottom: 1.0625rem;
+    text-decoration: underline;
+  }
+}
+
+
+button {
+  &.focus-inset {
+    @include visuallyHidden();
+  }
+}
+
+
+.has-submenu {
+  > div {
+    position: absolute;
+    display: flex;
+  }
+}

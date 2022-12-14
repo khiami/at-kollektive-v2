@@ -1,17 +1,28 @@
 @use "sass:math";
 @import "./mixin.scss";
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
+* {
+  
   &,
-  &:not(.custom-box-sizing),
   &:before,
   &:after {
-    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: box-sizing;
+
     padding: 0;
-    box-sizing: inherit;
+    margin: 0;
+    box-sizing: border-box;
+    word-break: break-word;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    touch-callout: none;
+    user-drag: none;
+    user-select: text;
   }
 }
 
@@ -24,7 +35,21 @@ html {
   // font-size: 1rem;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  text-underline-offset: 2px;
+  text-underline-offset: 4px;
+  
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: none;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+
+
 }
 
 .sticky {
@@ -35,7 +60,43 @@ html {
 html,
 body {
   font-family: var(--font-family);
-  font-size: 
+}
+
+body {
+  font-size: var(--body-font-size);
+  font-weight: bold;
+}
+
+::marker {
+  content: '';
+}
+
+a {
+
+  &:not(.hover-underline) {
+    text-decoration: none
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+a {
+
+  &,
+  &:hover,
+  &:focus {
+
+    &,
+    span,
+    i,
+    div,
+    p {
+      color: inherit;
+    }
+  }
 }
 
 
@@ -45,3 +106,4 @@ body {
 
 
 @import "./header.scss";
+@import "./footer.scss";

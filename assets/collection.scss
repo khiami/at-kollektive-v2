@@ -1,0 +1,45 @@
+@import "./mixin";
+
+.grid-set {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  row-gap: 3.75rem;
+
+  .grid-product-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .title-wrapper {
+    a {
+      @include size(32);
+    }
+  }
+}
+
+.data-list {
+  position: relative;
+  margin: 0;
+  z-index: 1;
+}
+
+.three-cols {
+
+  @media screen and (min-width: 1801px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media screen and (max-width: 1800px) and (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include md(max) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

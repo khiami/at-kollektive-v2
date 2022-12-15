@@ -13,9 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^5.2.2"
-  },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "gulp": "^4.0.2",
@@ -23,5 +20,8 @@
     "gulp-purge-sourcemaps": "^1.0.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.56.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
   }
 }

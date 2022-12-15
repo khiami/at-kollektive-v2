@@ -1,0 +1,40 @@
+@import "./mixin";
+
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .grid {
+    display: flex;
+    flex: 1 0 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    width: 100%;
+    height: 90vh;
+
+    >div {
+      &:nth-child(even) {
+        text-align: right;
+
+        ul {
+          display: flex;
+          justify-content: flex-end;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .footer-block--newsletter {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+}

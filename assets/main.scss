@@ -3,7 +3,7 @@
 
 
 * {
-  
+
   &,
   &:before,
   &:after {
@@ -32,11 +32,9 @@
 
 html {
   height: 100%;
-  // font-size: 1rem;
   box-sizing: border-box;
-  scroll-behavior: smooth;
   text-underline-offset: 4px;
-  
+
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -100,7 +98,81 @@ a {
 }
 
 
+.row {
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
 
+  >* {
+    --bs-gutter-x: 0px;
+    --bs-gutter-y: 0px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+button,
+input,
+label,
+main,
+aside,
+footer,
+header,
+blockquote,
+section,
+address,
+dl,
+dd,
+ul,
+li,
+ol,
+abbr,
+code,
+data,
+small,
+span,
+textarea,
+select,
+figure,
+figcaption,
+strong,
+i,
+p,
+div,
+article,
+table,
+tr,
+td,
+thead,
+tbody,
+tfoot {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+button {
+  &:not(.custom-border) {
+    border: none;
+    background-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
 
 // imports 
 

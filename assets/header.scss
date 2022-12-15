@@ -1,15 +1,46 @@
 @import "./mixin";
 
+.section-header {
+  position: sticky;
+  top: -71px;
+  background-color: white;
+  z-index: 12;
+}
 
-nav {
+nav,
+.nav {
   display: flex;
-  padding: 1.25rem;
+  background: #fff;
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  &:not(:empty):not(.custom-padding) {
+    padding: 1.25rem;
+  }
 
   ul {
     display: flex;
     gap: 1.0625rem;
     margin: 0;
     padding: 0;
+  }
+
+  &.n-level:not(:empty) {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  a {
+    display: flex;
+    flex: 1;
+  }
+
+  summary,
+  a,
+  button {
+    user-select: none;
   }
 }
 
@@ -19,7 +50,6 @@ summary {
   }
 
   &[aria-expanded="true"] {
-    // padding-bottom: 1.0625rem;
     text-decoration: underline;
   }
 }
@@ -33,7 +63,7 @@ button {
 
 
 .has-submenu {
-  > div {
+  >div {
     position: absolute;
     display: flex;
   }

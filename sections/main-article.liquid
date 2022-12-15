@@ -7,7 +7,11 @@
 
         {%- when 'content'-%}
           <div class="article-content" itemprop="articleBody" {{ block.shopify_attributes }}>
-            {{ article.content }}
+            <div class="container-fluid p-0">
+              <div class="row">
+                {{ article.content }}
+              </div>
+            </div>
           </div>
 
     {%- endcase -%}

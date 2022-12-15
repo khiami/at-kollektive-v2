@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+<html class="no-js t-{{ template.name }}" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,7 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fast.wistia.com" crossorigin>
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -230,6 +231,28 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
+    <script>
+      try {
+        let collectionUrls = '{%- for collection in collections -%}{{ collection.url }},{%- endfor -%}';
+        collectionUrls = collectionUrls
+          .split(',')
+          .filter(a=> !!a.trim().length)
+          .map(a=> a.trim());
+  
+        window.collectionUrl = collectionUrls[0];
+      } catch(e) {};
+    </script>
+    <script src="{{ 'cart-items-counter.js' | asset_url }}" defer></script>
+    <script>
+      ;(()=> {
+        if (window.mobile = mobileCheck()) {
+          document.documentElement.classList.add('mobile');
+        }
+        if (window.debug = (location.search.toLowerCase().indexOf('debug')>-1 || debugging)) {
+          document.documentElement.classList.add('debug');
+        }
+      })();
+    </script>
   </head>
 
   <body>
@@ -284,9 +307,28 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       }
     </script>
-
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    
+    <script>
+      (function updateWistiaEmbedHashedId() {
+        // replace wistia_async_xx with the wistia hashedId from the dataset?.videoUrl
+        let hashedIdRegex = /iframe\/(\S+)\?\S+/i;
+        let videoElements = listify('[data-video-url]');
+    
+        if (videoElements?.length) {
+          videoElements.forEach(element=> {
+            
+            let { videoUrl } = element.dataset||{};
+            let [ _, hashedId ] = videoUrl.match(hashedIdRegex)||[];
+            
+            // logg('hashedId', hashedId);
+    
+            if (hashedId?.length) {
+              element.className = element.className.replace('xx', hashedId);
+            }
+          });
+        }
+      })();
+    </script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
   </body>
 </html>

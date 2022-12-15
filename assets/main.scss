@@ -121,6 +121,7 @@ h6,
 .h4,
 .h5,
 .h6,
+a,
 button,
 input,
 label,
@@ -156,8 +157,14 @@ td,
 thead,
 tbody,
 tfoot {
+  // margin: 0;
   font-size: inherit;
   font-weight: inherit;
+}
+
+::placeholder {
+  font-weight: bold;
+  color: var(--base-color);
 }
 
 button {
@@ -174,8 +181,38 @@ button {
   }
 }
 
+[class*="16x9"] {
+  aspect-ratio: 16/9;
+}
+
+[class*="9x16"] {
+  aspect-ratio: 9/16;
+}
+
+[class*="1x1"] {
+  aspect-ratio: 1;
+}
+
+[class*="21x9"] {
+  aspect-ratio: 21/9;
+}
+
+[class*="9x21"] {
+  aspect-ratio: 9/21;
+}
+
+[class*="4x3"] {
+  aspect-ratio: 4/3;
+}
+
+[class*="3x4"] {
+  aspect-ratio: 3/4;
+}
+
 // imports 
 
 
 @import "./header.scss";
 @import "./footer.scss";
+@import "./page.scss";
+@import "./embed.scss";

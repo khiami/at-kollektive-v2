@@ -32,11 +32,18 @@
               {% endfor %}
               <p class="grid-element-title with-color-effect">
                 <a href="/products/{{ product.handle }}" class="product-anchor">
+                  <span class="title-element info-product-title">{{ product.title | capitalize }}</span><br>
                   <span class="title-element info-designer-name">{{ product.metafields.custom.ak__designerName }}</span><br>
-                  <span class="title-element info-product-title">{{ product.title }}</span><br>
-                  <span class="title-element info-product-price">{{ product.price | money }}</span>
                 </a>
               </p>
+              <div class="reflect-oh-hover">
+                <div class="product-price normal-state">{{ product.price | money }}</div>
+                <div class="product-variants hover-state">
+                  {% for variant in product.variants %}
+                    <button class="product-variant" {% unless variant.available %}disabled{% endunless %} id="{{ variant.id }}">{{ variant.title | capitalize }}</button>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
           </div>
         {% endfor %}

@@ -9,19 +9,21 @@
   gap: 1.25rem;
   row-gap: 3.75rem;
 
-  .grid-product-image {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-  }
-
   .title-wrapper {
     a {
       @include size(32);
     }
   }
 }
+
+.grid-product-image {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 
 .data-list {
   position: relative;
@@ -41,5 +43,27 @@
 
   @include md(max) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reflect-oh-hover {
+  >div {
+    position: absolute;
+  }
+
+  &:hover {
+    >.normal-state {
+      visibility: hidden;
+    }
+
+    >.hover-state {
+      visibility: visible;
+    }
+  }
+
+  &:not(:hover) {
+    >.hover-state {
+      visibility: hidden;
+    }
   }
 }

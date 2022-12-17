@@ -240,7 +240,71 @@
 
     if (open) open.addEventListener('click', ()=> tools.classList.add('open'));
     if (close) close.addEventListener('click', ()=> tools.classList.remove('open'));
+  }
 
+  function processFilterTitleCase() {
+
+    let codes = listify('[data-filter-code]');
+    if (codes?.length) codes.forEach(code=> {
+      const btn = query('button', code);
+      btn.innerHTML = titleCase(btn.innerHTML);
+      code.classList.add('loaded');
+    });
+  }
+
+
+  function setCurrentFilters() {
+  
+    const filterOpen = query('.filter-open');
+    const filters = urlFilters();
+
+    if (filters?.length) filters.forEach(code=> {
+        try {
+          query(`[data-filter-code=${code}]`)?.classList.add('active');
+        } catch(e) { logg('setCurrentFilters caught ', e) }
+      });
+
+    if (!filterOpen) return;
+
+    if (filters?.length) {
+      filterOpen.dataset.count = filters.length
+    } else {
+      filterOpen.removeAttribute('data-count'); 
+    }
+  }
+  
+  function filterOnClick() {
+  
+    let generateUrlWithTags = tags=> currentCollection.url + '/' + tags.join('+');
+    let codes = listify('[data-filter-code]');
+
+    if (codes?.length) codes.forEach(code=> {
+
+      const { filterCode } = code.dataset;
+      const btn = query('button', code);
+  
+      if (btn) btn.addEventListener('click', e=> {
+
+        e.preventDefault();
+
+        let tags = urlFilters().slice();
+        let codeIndex = tags.findIndex(a=> a === filterCode);
+        
+        if (codeIndex > -1) {
+          tags.splice(codeIndex, 1);
+
+        } else {
+          tags.push(filterCode);
+        }
+        
+        tags = tags.filter(a=> {
+          a = a?.toLowerCase();
+          return !a.match(/\bsearch\b/);
+        });
+
+        return location.href = generateUrlWithTags(tags);
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', ()=> {
@@ -256,6 +320,14 @@
       wistiaShowThumbnail();
 
       toggleCollectionTools();
+
+      processFilterTitleCase();
+
+      setCurrentFilters();
+
+      filterOnClick();
+
+
 
       document.addEventListener('keyup', e=> {
         if (e.key === 'Escape') onEscape();

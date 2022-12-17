@@ -53,14 +53,32 @@
     margin-bottom: 1.25rem;
   }
 
-  .filter-selector {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 9rem;
+  button {
+    @include underlineOnHover();
   }
+}
 
-  @include underlineOnHover();
+.filter-selector {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 9rem;
 
-  
+  >li {
+    &.active {
+      button {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.filter-open {
+  &[data-count] {
+    &:after {
+      content: '('attr(data-count)')';
+      display: inline-block;
+      margin-left: .2rem;
+    }
+  }
 }

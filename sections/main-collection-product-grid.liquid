@@ -45,7 +45,6 @@
           </div>
         {% endfor %}
       {%- endif -%}
-      
     {%- endpaginate -%}
   </div>
 
@@ -56,11 +55,10 @@
   {%- endpaginate -%}
 
 </div>
-{% comment %} <script src="{{ 'custom-grid.bundle.js' | asset_url }}" defer></script> {% endcomment %}
 
 {% schema %}
 {
-  "name": "(ATK) Custom Collection",
+  "name": "(ATK) Main Collection",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -81,7 +79,7 @@
   ],
   "presets": [
     {
-      "name": "(ATK) Custom Collection"
+      "name": "(ATK) Main Collection"
     }
   ]
 }

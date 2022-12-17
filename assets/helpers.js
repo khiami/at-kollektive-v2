@@ -299,14 +299,14 @@ function whenDomLoaded() {
 
 }
 
-function titleCase(str) {
-
-    return str.toLowerCase().replace(/(?:^|[\s-/])\w/g, function (match) {
-        return match.toUpperCase();
-    }).replace(/\-/g, ' ');
+function titleCase(txt) {
+  return txt
+    .toLowerCase()
+    .replace(/(?:^|[\s-/])\w/g, m=> m.toUpperCase())
+    .replace(/\-/g, ' ');
 }
 
-function addressFilters() {
+function addressFiltersV1() {
 
   // set active filter codes
   const [ _, pathFilters ] = location.pathname.match(/.+\/(.+)/i) || [];
@@ -323,8 +323,20 @@ function addressFilters() {
   const processedFilters = filtersIsString ? [filters]:filters;
 
   return processedFilters;
+}
 
+function urlFilters() {
 
+  let filters = location.pathname.replace(currentCollection.url, '');
+
+  // remove starting '/'
+  filters = (filters.startsWith('/') ? filters.slice(1):filters)??[];
+
+  // split '+', lowercase, trim  
+  return filters
+    .split('+')
+    .map(a=> a.trim().toLowerCase())
+    .filter(a=> a?.length);
 }
 
 function isNil(value) {

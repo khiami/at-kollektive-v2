@@ -1,7 +1,6 @@
 @use "sass:math";
 @import "./mixin.scss";
 
-
 * {
 
   &,
@@ -94,6 +93,13 @@ a {
     p {
       color: inherit;
     }
+  }
+}
+
+ul {
+  &:not(.custom-padding) {
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -209,6 +215,10 @@ button {
   aspect-ratio: 3/4;
 }
 
+.underline-on-hover {
+  @include underlineOnHover();
+}
+
 // imports 
 
 
@@ -217,3 +227,4 @@ button {
 @import "./page.scss";
 @import "./embed.scss";
 @import "./collection.scss";
+@import "./collection-tools.scss";

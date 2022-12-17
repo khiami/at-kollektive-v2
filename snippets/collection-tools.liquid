@@ -1,0 +1,52 @@
+{%- assign designers = 'bianca-saunders, isaac-reina, eresearch-joke, kostas-murkudis, natacha-ramsay' | split: ', ' -%}
+{%- assign colors = 'blue, black, beige, green, red, white, grey' | split: ', ' -%}
+
+<div class="collection-tools grid-set">
+
+  <div class="tools-header">
+    <div class="page-breadcrumb">
+      <ul class="breadcrumb">
+        <li><a href="/">All</a></li>
+        <li><a href="/shoes">Shoes</a></li>
+      </ul>
+    </div>
+  
+    <div class="page-filter">
+      <button class="filter-open underline-on-hover">Filter</button>
+      <button class="filter-close underline-on-hover">Close</button>
+    </div>
+  </div>
+  
+  <div class="collection-filter grid three-cols data-list">
+    <div class="filter-group">
+      <div class="title">Season</div>
+      <ul class="collection-selector">
+        {% for item in collections %}
+          <li><a href="{{ collection.url }}" id="{{ collection.id }}">{{ collection.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="filter-group">
+      <div class="title">Designer</div>
+      <ul class="filter-selector designer">
+        {% for item in designers %}
+          <li data-filter-code="{{ item }}" data-filter-group="designer">
+            <button>{{ item | capitalize }}</button>
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+
+    <div class="filter-group">
+      <div class="title">Color</div>
+      <ul class="filter-selector color">
+        {% for item in colors %}
+          <li data-filter-code="{{ item }}" data-filter-group="color">
+            <button>{{ item | capitalize }}</button>
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

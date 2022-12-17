@@ -71,11 +71,12 @@
 
     let elements = [
       'footer',
+      '.collection-tools',
     ];
 
     elements = elements.map(a=> query(a)).filter(a=> !!a);
     if (elements?.length) elements.forEach(a=> {
-      a.classList?.remove('open');e
+      a.classList?.remove('open');
     });
   }
 
@@ -231,6 +232,17 @@
     }
   }
 
+  function toggleCollectionTools() {
+
+    let tools = query('.collection-tools');
+    let open = query('.filter-open');
+    let close = query('.filter-close');
+
+    if (open) open.addEventListener('click', ()=> tools.classList.add('open'));
+    if (close) close.addEventListener('click', ()=> tools.classList.remove('open'));
+
+  }
+
   document.addEventListener('DOMContentLoaded', ()=> {
 
       mainnav();
@@ -242,6 +254,8 @@
       bootstrapWistiaEmbedAPI();
 
       wistiaShowThumbnail();
+
+      toggleCollectionTools();
 
       document.addEventListener('keyup', e=> {
         if (e.key === 'Escape') onEscape();

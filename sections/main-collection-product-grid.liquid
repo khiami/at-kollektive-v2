@@ -1,7 +1,7 @@
 
 {{ 'custom-grid.css' | asset_url | stylesheet_tag }}
 
-{% render 'custom-grid-tools' %}
+{% render 'collection-tools' %}
 
 <div class="grid-set">
   <div class="grid three-cols data-list">
@@ -23,12 +23,9 @@
             <div class="grid-element-inner">
               <div class="grid-overlay-color"></div>
               {% for image in product.images limit: 1 %}
-                <img loading="lazy" 
-                      src="{{ image | image_url }}" 
-                      alt="{{ image.alt }}" 
-                      width="{{ image.width }}" 
-                      height="{{ image.height }}" 
-                      class="grid-image grid-product-image">
+                <a href="/products/{{ product.handle }}" class="grid-element-anchor" title="{{ product.title | capitalize }}">
+                  <img class="grid-image grid-product-image" loading="lazy" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                </a>
               {% endfor %}
               <p class="grid-element-title with-color-effect">
                 <a href="/products/{{ product.handle }}" class="product-anchor">

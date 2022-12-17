@@ -43,7 +43,11 @@
   z-index: 1;
 }
 
-.three-cols {
+.four-cols-always {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.four-cols {
 
   @include xl(min) {
     grid-template-columns: repeat(4, minmax(0, 1fr));

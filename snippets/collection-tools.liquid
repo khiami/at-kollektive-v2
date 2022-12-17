@@ -6,8 +6,8 @@
   <div class="tools-header">
     <div class="page-breadcrumb">
       <ul class="breadcrumb">
-        <li><a href="/">All</a></li>
-        <li><a href="/shoes">Shoes</a></li>
+        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+        {% comment %} <li><a href="/shoes">Shoes</a></li> {% endcomment %}
       </ul>
     </div>
   
@@ -17,12 +17,14 @@
     </div>
   </div>
   
-  <div class="collection-filter grid three-cols data-list">
+  <div class="collection-filter grid four-cols-always data-list">
     <div class="filter-group">
       <div class="title">Season</div>
       <ul class="collection-selector">
         {% for item in collections %}
-          <li><a href="{{ collection.url }}" id="{{ collection.id }}">{{ collection.title }}</a></li>
+          {% if item.title != 'All' %}
+            <li><a href="{{ item.url }}" id="{{ item.id }}">{{ item.title }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>

@@ -307,6 +307,7 @@
     });
   }
 
+
   document.addEventListener('DOMContentLoaded', ()=> {
 
       mainnav();
@@ -326,7 +327,6 @@
       setCurrentFilters();
 
       filterOnClick();
-
 
 
       document.addEventListener('keyup', e=> {

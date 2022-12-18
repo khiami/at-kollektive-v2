@@ -46,13 +46,19 @@
 }
 
 .product-metadata {
-  margin-top: 15.5rem;
+  margin-top: 10rem;
 }
 
 .tabs {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+
+  > button {
+    &.active {
+      text-decoration: underline;
+    }
+  }
 }
 
 .shopify-product {
@@ -104,4 +110,16 @@
   text-align: right;
   background-color: white;
   z-index: 10;
+}
+
+.product-add-to-cart {
+  position: relative;
+
+  svg.spinner {
+    position: absolute;
+    width: 6.5rem;
+    aspect-ratio: 1;
+    top: 2rem;
+    left: 0;
+  }
 }

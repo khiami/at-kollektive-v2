@@ -123,3 +123,9 @@
     left: 0;
   }
 }
+
+.tab-content {
+  &:not(.open) {
+    display: none;
+  }
+}

@@ -107,19 +107,19 @@
 
         <li class="product-metadata">
           <div class="tabs">
-            <button class="underline-on-hover" data-rel="description">Description</button>
+            <button class="underline-on-hover active" data-rel="description">Description</button>
             <button class="underline-on-hover" data-rel="size">Size</button>
             <button class="underline-on-hover" data-rel="details">Details</button>
             <button class="underline-on-hover" data-rel="sustainability">Sustainability</button>
           </div>
-          <div class="tab-content" data-content-rel="description">
+          <div class="tab-content open" data-content-rel="description">
             {{ product.description }}
           </div>
           <div class="tab-content" data-content-rel="size">
             {{ product.metafields.custom.ak__size }}
           </div>
           <div class="tab-content" data-content-rel="details">
-            {{ product.metafields.custom.ak__details }}
+            {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% else %}{{ '-' }}{% endif %}
           </div>
           <div class="tab-content" data-content-rel="sustainability">
             {{ product.metafields.custom.ak__sustainability }}

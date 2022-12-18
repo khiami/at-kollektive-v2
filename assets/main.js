@@ -352,8 +352,27 @@
 
     if (open) open.addEventListener('click', ()=> container.classList.add('open'));
     if (close) close.addEventListener('click', ()=> container.classList.remove('open'));
+  }
 
+  function productMetadataTabs() {
 
+    let tabs = listify('.product-metadata .tabs [data-rel]');
+    let tabContents = listify('[data-content-rel]');
+
+    if (tabs?.length) tabs.forEach(tab=> {
+      tab.addEventListener('click', ()=> {
+
+        let {rel} = tab.dataset;
+        tabs.forEach(t=> t.classList.remove('active'));
+        tabContents.forEach(c=> c.classList.remove('open'));
+
+        tab.classList.add('active');
+        let content = query(`[data-content-rel="${rel}"]`);
+
+        if (content) content.classList.add('open');
+
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', ()=> {
@@ -379,6 +398,8 @@
       sizeGuideToggle();
 
       stickyHeader();
+
+      productMetadataTabs();
 
       scrollTo = document.documentElement.scrollTop;
 

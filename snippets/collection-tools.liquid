@@ -6,6 +6,13 @@
   <div class="tools-header">
     <div class="page-breadcrumb">
       <ul class="breadcrumb">
+        {% if collection.handle != 'all' %}
+          {% for collection in collections %}
+            {% if collection.handle == 'all' %}
+              <li><a href="{{ collection.url }}" data-collection-id="collection-{{ collection.id }}">{{ collection.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
         <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
         {% comment %} <li><a href="/shoes">Shoes</a></li> {% endcomment %}
       </ul>

@@ -1,0 +1,21 @@
+<div class="product-care">
+  {% for article in blogs['main'].articles %}
+    {% if article.title == "Care" %}
+      <div class="article" data-title="{{ article.title }}" data-id="article-{{ article.id }}">
+        {{ article.content }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+  
+  
+{% schema %}
+{
+  "name": "(ATK) Product Care",
+  "tag": "section",
+  "class": "section section-product-care",
+  "settings": [
+
+  ]
+}
+{% endschema %}

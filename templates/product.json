@@ -21,10 +21,14 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "product-care": {
+      "type": "product-care"
     }
   },
   "order": [
     "main",
-    "product-recommendations"
+    "product-recommendations",
+    "product-care"
   ]
 }

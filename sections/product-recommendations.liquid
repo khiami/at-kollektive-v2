@@ -2,9 +2,15 @@
   {% if recommendations.performed and recommendations.products_count > 0 %}
     <div class="recommendations-header">
       <h2>More of the same</h2>
-      <h2><a href="/">See all products</a></h2>
+      <h2>
+        {% for collection in collections %}
+          {% if collection.handle == 'all' %}
+            <a href="{{ collection.url }}" data-collection-id="collection-{{ collection.id }}">See all products</a>
+          {% endif %}
+        {% endfor %}
+      </h2>
     </div>
-    <ul class="grid custom-list product-grid css-grid four-cols-always" role="list">
+    <ul class="grid custom-list product-grid css-grid four-cols" role="list">
       {% for recommendation in recommendations.products %}
         <li class="grid__item grid-element">
           {% render 'card-product',

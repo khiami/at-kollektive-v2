@@ -266,7 +266,7 @@
     {% section 'announcement-bar' %}
     {% section 'header' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main id="MainContent" class="content-for-layout focus-none" role="main">
       {{ content_for_layout }}
     </main>
 
@@ -307,6 +307,8 @@
       }
     </script>
     
+
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
     <script>
       (function updateWistiaEmbedHashedId() {
         // replace wistia_async_xx with the wistia hashedId from the dataset?.videoUrl

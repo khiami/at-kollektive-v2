@@ -7,16 +7,15 @@
   z-index: 12;
 }
 
-nav,
-.nav {
+nav {
   display: flex;
   justify-content: space-between;
   background: #fff;
 
-  &.sticky {
-    position: sticky;
-    top: 0;
-  }
+  // &.sticky {
+  //   position: sticky;
+  //   top: 0;
+  // }
 
   &:not(:empty):not(.custom-padding) {
     padding: 1.25rem;
@@ -68,4 +67,8 @@ button {
     position: absolute;
     display: flex;
   }
+}
+
+cart-items-counter {
+  display: flex;
 }

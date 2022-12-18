@@ -3,7 +3,7 @@
   function mainnav() {
 
     const header = query('header');
-    const injectableNav = query('.nav.n-level');
+    const injectableNav = query('nav.n-level');
     const itemsWithSubmenu = listify('header .list-menu__item');
 
     function closeNavigation() {
@@ -77,6 +77,7 @@
     let elements = [
       'footer',
       '.collection-tools',
+      '.product-size-variants',
     ];
 
     elements = elements.map(a=> query(a)).filter(a=> !!a);
@@ -341,6 +342,16 @@
       scrollTop = window.pageYOffset??document.documentElement.scrollTop;
 
     }, false);
+  }
+
+  function sizeGuideToggle() {
+
+    let container = query('.product-size-variants');
+    let open = query('.size-guide-open');
+    let close = query('.size-guide-close')
+
+    if (open) open.addEventListener('click', ()=> container.classList.add('open'));
+    if (close) close.addEventListener('click', ()=> container.classList.remove('open'));
 
 
   }
@@ -364,6 +375,8 @@
       setCurrentFilters();
 
       filterOnClick();
+
+      sizeGuideToggle();
 
       stickyHeader();
 

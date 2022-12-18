@@ -20,7 +20,59 @@
               {% endfor %}
             {% endif %}
           {% endfor %}
-          <button class="size-guide underline-on-hover">Size guide</button>
+          <button class="size-guide-open underline-on-hover">Size guide</button>
+          <button class="size-guide-close underline-on-hover">Close</button>
+        </li>
+
+        <li class="product-size-guide">
+          <div>
+            <button>EU</button>
+            <button>35</button>
+            <button>36</button>
+            <button>37</button>
+            <button>38</button>
+            <button>39</button>
+            <button>40</button>
+            <button>41</button>
+            <button>42</button>
+            <button>43</button>
+          </div>
+          <div>
+            <button>US</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+            <button>11</button>
+            <button>12</button>
+            <button>13</button>
+          </div>
+          <div>
+            <button>UK</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+          </div>
+          <div>
+            <button>EU</button>
+            <button>35</button>
+            <button>36</button>
+            <button>37</button>
+            <button>38</button>
+            <button>39</button>
+            <button>40</button>
+            <button>41</button>
+            <button>42</button>
+            <button>43</button>
+          </div>
         </li>
 
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -86,18 +138,6 @@
     {% endfor %}
   </div>
 </div>
-
-{% for page in pages %}
-{% if page.handle == 'size-guide' %}
-  <div class="size-guide-page">
-    <div>
-      <h2>{{ page.title }}</h2>
-      {{ page.content }}
-    </div>
-    <button class="close-panel">Close</button>
-  </div>
-{% endif %}
-{% endfor %}
 
 
 {% schema %}

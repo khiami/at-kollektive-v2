@@ -9,16 +9,14 @@
   gap: 1.25rem;
   row-gap: 3.75rem;
 
-  .title-wrapper {
-    a {
-      @include size(32);
-    }
-  }
-
   >div {
     position: relative;
     padding-bottom: 2rem;
   }
+}
+
+.collection--empty {
+  height: 70vh;
 }
 
 .grid-element-anchor {

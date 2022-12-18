@@ -2,7 +2,7 @@
 
 .section-header {
   position: sticky;
-  top: -71px;
+  top: -$block-size;
   background-color: white;
   z-index: 12;
 }

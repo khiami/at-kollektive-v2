@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 
-.grid {
+.css-grid {
   display: grid;
   gap: 1.25rem;
   row-gap: 3.75rem;
@@ -48,7 +48,6 @@
 }
 
 .four-cols {
-
   @include xl(min) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -112,4 +111,11 @@
   .page {
     display: none;
   }
+}
+
+.product-variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5625rem;
+  row-gap: 0;
 }

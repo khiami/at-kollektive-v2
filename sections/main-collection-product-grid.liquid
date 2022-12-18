@@ -4,7 +4,7 @@
 {% render 'collection-tools' %}
 
 <div class="grid-set">
-  <div class="grid four-cols data-list">
+  <div class="css-grid four-cols data-list">
   
     {%- paginate collection.products by section.settings.products_per_page -%}
       {%- if collection.products.size == 0 -%}

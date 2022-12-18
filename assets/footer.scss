@@ -99,3 +99,9 @@ footer {
     z-index: 2;
   }
 }
+
+.footer-block--menu {
+  position: sticky;
+  top: $block-size;
+  z-index: 10;
+}

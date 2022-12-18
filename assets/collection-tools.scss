@@ -1,6 +1,10 @@
 @import "./mixin";
 
 .collection-tools {
+  position: sticky;
+  top: 3.625rem;
+  background-color: white;
+  z-index: 10;
 
   &:not(.open) {
     .filter-open {
@@ -29,8 +33,6 @@
       display: grid;
     }
   }
-
-
 }
 
 .breadcrumb {
@@ -45,7 +47,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3.125rem;
+
+  .open & {
+    margin-bottom: 3.125rem;
+  }
 }
 
 .filter-group {
@@ -75,10 +80,10 @@
 
 .filter-open {
   &[data-count] {
-    &:after {
+    &:before {
       content: '('attr(data-count)')';
       display: inline-block;
-      margin-left: .2rem;
+      margin-right: .2rem;
     }
   }
 }

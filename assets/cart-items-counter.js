@@ -51,7 +51,7 @@
       }
 
       if (res.detail > 0) {
-        this.innerHTML = `${btnText} (${res.detail})`; 
+        this.innerHTML = `(${res.detail}) ${btnText}`; 
 
       } else {
         this.innerHTML = btnText;

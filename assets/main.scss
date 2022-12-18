@@ -60,6 +60,7 @@ body {
 }
 
 body {
+  line-height: 1.75rem;
   font-size: var(--body-font-size);
   font-weight: bold;
 }
@@ -228,3 +229,4 @@ button {
 @import "./embed.scss";
 @import "./collection.scss";
 @import "./collection-tools.scss";
+@import "./product.scss";

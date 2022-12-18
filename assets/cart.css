@@ -1,0 +1,1 @@
+cart-items.is-empty{display:flex;flex-direction:column;padding:1.25rem;height:60vh}cart-items.is-empty .title{display:none}cart-items.is-empty .title~a{display:none}#main-cart-footer.is-empty{display:none}

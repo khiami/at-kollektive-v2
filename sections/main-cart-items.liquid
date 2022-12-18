@@ -1,24 +1,3 @@
-{{ 'component-cart.css' | asset_url | stylesheet_tag }}
-{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
-{{ 'component-totals.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
@@ -32,7 +11,7 @@
   <div class="cart__warnings">
     <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
     <a href="{{ routes.all_products_collection_url }}" class="button">
-      {{ 'general.continue_shopping' | t }}
+      {{ 'general.continue_shopping' | t: class: 'text-decoration-underline' }}
     </a>
 
     {%- if shop.customer_accounts_enabled and customer == null -%}

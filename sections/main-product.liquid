@@ -113,16 +113,16 @@
             <button class="underline-on-hover" data-rel="sustainability">Sustainability</button>
           </div>
           <div class="tab-content open" data-content-rel="description">
-            {{ product.description }}
+            {% if product.description != blank %}{{ product.description }}{% else %}{{ '-' }}{% endif %}
           </div>
           <div class="tab-content" data-content-rel="size">
-            {{ product.metafields.custom.ak__size }}
+            {% if product.metafields.custom.ak__size != blank %}{{ product.metafields.custom.ak__size }}{% else %}{{ '-' }}{% endif %}
           </div>
           <div class="tab-content" data-content-rel="details">
             {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% else %}{{ '-' }}{% endif %}
           </div>
           <div class="tab-content" data-content-rel="sustainability">
-            {{ product.metafields.custom.ak__sustainability }}
+            {% if product.metafields.custom.ak__sustainability != blank %}{{ product.metafields.custom.ak__sustainability }}{% else %}{{ '-' }}{% endif %}
           </div>
         </li>
         

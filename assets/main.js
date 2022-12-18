@@ -265,7 +265,7 @@
 
     if (filters?.length) filters.forEach(code=> {
         try {
-          query(`[data-filter-code=${code}]`)?.classList.add('active');
+          query(`[data-filter-code="${code}"]`)?.classList.add('active');
         } catch(e) { logg('setCurrentFilters caught ', e) }
       });
 

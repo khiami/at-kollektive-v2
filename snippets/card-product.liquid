@@ -83,8 +83,8 @@
           <div class="card__information">
             <h3 class="card__heading"{% if card_product.featured_media == nil and settings.card_style == 'standard' %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
               <a href="{{ card_product.url }}">
-                <div class="title-element info-designer-name">{{ card_product.metafields.custom.ak__designerName }}</div>
                 <div class="title-element info-product-title">{{ card_product.title | capitalize }}</div>
+                <div class="title-element info-designer-name">{{ card_product.metafields.custom.ak__designerName }}</div>
               </a>
             </h3>
           </div>
@@ -129,7 +129,19 @@
               </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '' %}
+            
+              <div class="reflect-oh-hover">
+                <div class="product-price normal-state">
+                  {% render 'price', product: card_product, price_class: '' %}
+                </div>
+                <div class="product-variants hover-state">
+                  {% for variant in card_product.variants %}
+                    <button class="product-variant underline-on-hover" {% unless variant.available %}disabled{% endunless %} id="variant-{{ variant.id }}">{{ variant.title | capitalize }}</button>
+                  {% endfor %}
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
         {%- if show_quick_add -%}

@@ -6,7 +6,7 @@
     </div>
     <ul class="grid custom-list product-grid css-grid four-cols-always" role="list">
       {% for recommendation in recommendations.products %}
-        <li class="grid__item">
+        <li class="grid__item grid-element">
           {% render 'card-product',
             card_product: recommendation,
             media_aspect_ratio: section.settings.image_ratio,

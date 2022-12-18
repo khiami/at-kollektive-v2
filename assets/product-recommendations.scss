@@ -10,6 +10,19 @@ product-recommendations {
   .media {
     margin-bottom: 1.25rem;
   }
+
+  .price__sale {
+    display: none;
+  }
+
+  .grid__item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+
+  .card__heading {
+    margin-bottom: 1.25rem;
+  }
 }
 
 .recommendations-header {

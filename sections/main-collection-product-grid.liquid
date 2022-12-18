@@ -37,7 +37,7 @@
                 <div class="product-price normal-state">{{ product.price | money }}</div>
                 <div class="product-variants hover-state">
                   {% for variant in product.variants %}
-                    <button class="product-variant" {% unless variant.available %}disabled{% endunless %} id="{{ variant.id }}">{{ variant.title | capitalize }}</button>
+                    <button class="product-variant underline-on-hover" {% unless variant.available %}disabled{% endunless %} id="variant-{{ variant.id }}">{{ variant.title | capitalize }}</button>
                   {% endfor %}
                 </div>
               </div>

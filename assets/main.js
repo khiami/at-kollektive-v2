@@ -261,8 +261,11 @@
 
   function setCurrentFilters() {
   
+    const excludedFilters = listify('nav a[href]').map(a=> a.innerHTML.replace(/\s+|\r+|\n+|\t+/g, '').trim().toLowerCase());
     const filterOpen = query('.filter-open');
-    const filters = urlFilters();
+    const filters = urlFilters().filter(a=> excludedFilters.indexOf(a) === -1);
+
+    logg('excludedFilters ', excludedFilters);
 
     if (filters?.length) filters.forEach(code=> {
         try {
@@ -403,7 +406,7 @@
       toggleCollectionTools();
 
       processFilterTitleCase();
-
+      
       setCurrentFilters();
 
       filterOnClick();

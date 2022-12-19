@@ -10,26 +10,27 @@
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: #fff;
 
-  // &.sticky {
-  //   position: sticky;
-  //   top: 0;
-  // }
+  top: -10rem;
 
-  &:not(:empty):not(.custom-padding) {
+  &:not(:empty) {
     padding: 1.25rem;
   }
 
   ul {
     display: flex;
-    gap: 1.0625rem;
+    gap: 1rem;
     margin: 0;
     padding: 0;
   }
 
-  &.n-level:not(:empty) {
-    padding: 0 1.25rem 1.25rem;
+  &.n-level {
+    padding-top: 0;
+    &:not(:empty) {
+      padding-bottom: 1rem;
+    }
   }
 
   a {

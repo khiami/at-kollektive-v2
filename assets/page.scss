@@ -16,7 +16,7 @@
       margin-bottom: 0.625rem;
     }
 
-    >div {
+    >div:not(.custom-padding) {
       display: flex;
       flex-direction: column;
       padding: 1.25rem;

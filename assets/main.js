@@ -265,8 +265,6 @@
     const filterOpen = query('.filter-open');
     const filters = urlFilters().filter(a=> excludedFilters.indexOf(a) === -1);
 
-    logg('excludedFilters ', excludedFilters);
-
     if (filters?.length) filters.forEach(code=> {
         try {
           query(`[data-filter-code="${code}"]`)?.classList.add('active');
@@ -322,7 +320,7 @@
 
     let header = query('header');
     let rootNavigation = query('.root_navigation');
-    let rootNavHeight = rootNavigation.clientHeight;
+    let collectionTools = query('.collection-tools');
     let paddingTop = 0;
 
     window.addEventListener('scroll', ()=> {
@@ -331,15 +329,19 @@
       
       if (!down) {
         
+        paddingTop = cap(paddingTop++, 0, 71.5);
         // up
-        // logg('scrolling up');
-        // header.style.paddingTop = `${cap(0, paddingTop++, rootNavHeight)}px`;
-        // header.style.marginTop = `-${cap(0, paddingTop++, rootNavHeight)}px`;
+        header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        
       } else {
         
-        // down        
-        // logg('scrolling down');
-        // header.style.paddingTop = '0px'; //`${cap(0, paddingTop--)}px`;
+        paddingTop = cap(paddingTop--, 0);
+
+        // down
+        header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        
       }
 
       scrollTop = window.pageYOffset??document.documentElement.scrollTop;

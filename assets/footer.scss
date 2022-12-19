@@ -34,8 +34,22 @@ footer {
 
     .newsletter-form__input,
     .newsletter-form__button {
-      display: none;
+      // display: none;
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
     }
+  }
+
+  .grid {
+    > div {
+      transition: margin .4s;
+    }
+  }
+
+  label {
+    transition: margin .4s;
   }
 
   &.open {
@@ -105,4 +119,8 @@ footer {
   position: sticky;
   top: $block-size;
   z-index: 10;
+}
+
+.newsletter-form__input {
+  transition: all .4s;
 }

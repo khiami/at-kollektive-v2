@@ -63,10 +63,17 @@
     gap: 26rem;
 
     >div {
-      flex: 1 0 50%;
       justify-content: flex-start;
       align-items: flex-start;
+    }
+    
+    > .main-cart-items {
+      flex: 1 0 50%;
       max-width: 50%;
+    }
+
+    > .cart__footer-wrapper {
+      flex: 1;
     }
   }
 }

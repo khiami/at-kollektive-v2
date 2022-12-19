@@ -230,6 +230,11 @@ button {
 }
 // imports 
 
+dd,
+dt {
+  margin: 0;
+}
+
 
 @import "./header.scss";
 @import "./footer.scss";

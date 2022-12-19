@@ -1,7 +1,7 @@
 <div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
   <div>
     <div class="cart__footer">
-      {%- if settings.show_cart_note -%}
+      {% comment %} {%- if settings.show_cart_note -%}
         <cart-note class="cart__note field">
           <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
           <textarea
@@ -12,7 +12,7 @@
             placeholder="{{ 'sections.cart.note' | t }}"
           >{{ cart.note }}</textarea>
         </cart-note>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
       <div class="cart__blocks">
         {% for block in section.blocks %}
@@ -21,9 +21,9 @@
               {% render block %}
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
-                <div class="totals">
-                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
-                  <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+                <div class="totals cart-totals">
+                  <div class="totals__subtotal">Total</div>
+                  <div class="totals__subtotal-value">{{ cart.total_price | money }}</div>
                 </div>
 
                 <div>
@@ -40,7 +40,9 @@
                   {%- endif -%}
                 </div>
 
-                <small class="tax-note caption-large rte">
+
+
+                {% comment %} <small class="tax-note caption-large rte">
                   {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
                     {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
                   {%- elsif cart.taxes_included -%}
@@ -50,7 +52,11 @@
                   {%- else -%}
                     {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
                   {%- endif -%}
-                </small>
+                </small> {% endcomment %}
+
+
+
+
               </div>
             {%- else -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
@@ -63,7 +69,7 @@
                 <button
                   type="submit"
                   id="checkout"
-                  class="cart__checkout-button button"
+                  class="cart__checkout-button button text-decoration-underline"
                   name="checkout"
                   {% if cart == empty %}
                     disabled
@@ -83,6 +89,24 @@
         {% endfor %}
 
         <div id="cart-errors"></div>
+
+        <div class="cart-tab">
+          <div class="tabs content-tabs">
+            <button class="underline-on-hover active" data-rel="payment">Payment</button>
+            <button class="underline-on-hover" data-rel="returns">Returns</button>
+            <button class="underline-on-hover" data-rel="shipping">Shipping</button>
+          </div>
+          
+          <div class="tab-content open" data-content-rel="payment">
+            {% for page in pages %}{% if page.handle == 'payment' and page.content != blank %}{{ page.content }}{% endif %}{% endfor %}
+          </div>
+          <div class="tab-content" data-content-rel="returns">
+            {% for page in pages %}{% if page.handle == 'returns' and page.content != blank %}{{ page.content }}{% endif %}{% endfor %}
+          </div>
+          <div class="tab-content" data-content-rel="shipping">
+            {% for page in pages %}{% if page.handle == 'shipping' and page.content != blank %}{{ page.content }}{% endif %}{% endfor %}
+          </div>
+        </div>
       </div>
     </div>
   </div>

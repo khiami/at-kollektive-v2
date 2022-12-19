@@ -356,7 +356,7 @@
 
   function productMetadataTabs() {
 
-    let tabs = listify('.product-metadata .tabs [data-rel]');
+    let tabs = listify('.content-tabs [data-rel]');
     let tabContents = listify('[data-content-rel]');
 
     if (tabs?.length) tabs.forEach(tab=> {

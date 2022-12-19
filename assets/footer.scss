@@ -40,31 +40,39 @@ footer {
       opacity: 0;
       pointer-events: none;
     }
+
+    input {
+      transform: translate3d(0, 100%, 0);
+    }
   }
 
   .grid {
-    > div {
-      transition: margin .4s;
+    >div {
+      transition: transform .4s;
     }
   }
 
   label {
-    transition: margin .4s;
+    transition: transform .4s;
   }
 
   &.open {
     .grid {
       >div {
         &:nth-child(even) {
-          margin-bottom: 3.21875rem;
+          transform: translate3d(0, -3.21875rem, 0);
         }
       }
     }
 
     .field-inner {
       label {
-        margin-bottom: 1.25rem;
+        transform: translate3d(0, -1.25rem, 0);
       }
+    }
+
+    input {
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -112,6 +120,7 @@ footer {
     bottom: 1.25rem;
     right: 1.25rem;
     z-index: 15;
+    transition: opacity .4s;
   }
 }
 

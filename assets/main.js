@@ -375,6 +375,19 @@
     });
   }
 
+  function productSizeToggle() {
+
+    let sizes = listify('.product-size');
+
+    if (sizes?.length) sizes.forEach(size=> {
+      size.addEventListener('click', ()=> {
+        
+        size.classList.toggle('active');
+        sizes.forEach(a=> (a !== size) && a.classList.remove('active'));
+      })
+    })
+  }
+
   document.addEventListener('DOMContentLoaded', ()=> {
 
       mainnav();
@@ -400,6 +413,8 @@
       stickyHeader();
 
       productMetadataTabs();
+
+      productSizeToggle();
 
       scrollTo = document.documentElement.scrollTop;
 

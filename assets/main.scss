@@ -221,6 +221,13 @@ button {
   @include underlineOnHover();
 }
 
+button {
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
 // imports 
 
 
@@ -231,6 +238,7 @@ button {
 @import "./collection.scss";
 @import "./collection-tools.scss";
 @import "./product.scss";
+@import "./product-spinner.scss";
 @import "./product-recommendations.scss";
 @import "./product-care.scss";
 @import "./article.scss";

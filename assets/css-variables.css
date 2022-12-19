@@ -1,10 +1,11 @@
 :root {
-    --font-family: 'Unica 77 LL', sans-serif;
-    --base-font-size: 1rem;
-    --body-font-size: 1.3125rem; /* 21px; */
+  --font-family: 'Unica 77 LL', sans-serif;
+  --base-font-size: 1rem;
+  --body-font-size: 1.3125rem;
+  /* 21px; */
 
-    --base-color: #000;
+  --base-color: #000;
+  --color-foreground: #000;
+  --color-button-text: #000;
 
 }
-
-

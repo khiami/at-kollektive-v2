@@ -98,3 +98,13 @@ cart-remove-button {
   display: flex;
   margin-top: 3.125rem;
 }
+
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -74,6 +74,10 @@ class CartItems extends HTMLElement {
         const parsedState = JSON.parse(state);
         this.classList.toggle('is-empty', parsedState.item_count === 0);
 
+        let emptyCart = query('.cart__warnings.empty-cart');
+
+        if (emptyCart && !parsedState.item_count) emptyCart.classList.remove('hidden');
+
         try {
           listify('cart-items-counter').forEach(counter=> {
             dispatchCustomEvent('cart-updated-with-count', parsedState.items?.length, counter);

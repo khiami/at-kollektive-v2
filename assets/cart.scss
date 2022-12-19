@@ -1,7 +1,10 @@
 @import "./mixin";
 
-
 cart-items {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+
   &.is-empty {
     display: flex;
     flex-direction: column;
@@ -16,10 +19,82 @@ cart-items {
       }
     }
   }
+
+  .product-image {
+    img {
+      width: 25rem;
+      height: auto;
+      object-fit: contain;
+      max-width: 100%;
+    }
+  }
 }
 
 #main-cart-footer {
   &.is-empty {
     display: none;
   }
+}
+
+.cart__footer-wrapper {
+  padding: 1.25rem;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.cart-product-size {
+  margin-top: 3.125rem;
+}
+
+.cart-product-variant {
+  display: flex;
+
+  dt {
+    display: flex;
+    width: 8rem;
+  }
+}
+
+
+quantity-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  input {
+    width: 2rem;
+    text-align: center;
+    border: none;
+  }
+}
+
+.quantity__button {
+  width: 2rem;
+
+  svg {
+    max-width: 1rem;
+  }
+}
+
+.product-quantity {
+  display: flex;
+
+  label {
+    width: 8rem;
+  }
+}
+
+cart-remove-button {
+  display: flex;
+  margin-top: 3.125rem;
 }

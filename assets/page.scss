@@ -55,3 +55,18 @@
     margin-bottom: 10rem;
   }
 }
+
+.t-cart {
+  main {
+    display: flex;
+    justify-content: flex-start;
+    gap: 26rem;
+
+    >div {
+      flex: 1 0 50%;
+      justify-content: flex-start;
+      align-items: flex-start;
+      max-width: 50%;
+    }
+  }
+}

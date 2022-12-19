@@ -72,3 +72,9 @@ button {
 cart-items-counter {
   display: flex;
 }
+
+a {
+  &.menu-drawer__menu-item--active {
+    text-decoration: underline;
+  }
+}

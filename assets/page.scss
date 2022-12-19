@@ -50,10 +50,16 @@
 
 .t-article {
   section {
+    padding: 1.25rem;
+
     @include lg(min) {
       p {
         max-width: 50%;
       }
+    }
+
+    .sticky {
+      top: $block-size;
     }
   }
 

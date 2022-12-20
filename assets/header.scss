@@ -19,9 +19,11 @@ body {
     overflow: hidden;
   }
 
-  &:not(.header-open) {
-    .mobile-navs {
-      display: none;
+  @include sm(max) {
+    &:not(.header-open) {
+      .mobile-navs {
+        display: none;
+      }
     }
   }
 }

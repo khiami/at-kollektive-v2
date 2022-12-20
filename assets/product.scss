@@ -1,8 +1,13 @@
 @import "./mixin";
 
 .shopify-product {
+  display: flex;
 
   @include sm(min) {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 1rem;
     padding: 1.25rem;
   }
 
@@ -13,6 +18,20 @@
     >div {
       flex: 1;
       max-width: none;
+    }
+  }
+
+
+  >div {
+    width: 100%;
+
+    @include sm(min) {
+      flex: 1 0 50%;
+      max-width: calc(50% - 1.25rem);
+    }
+
+    @include sm(max) {
+      flex: 1;
     }
   }
 }
@@ -168,34 +187,12 @@
   }
 }
 
-.shopify-product {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-
-  >div {
-    width: 100%;
-
-    @include sm(min) {
-      flex: 1 0 50%;
-      max-width: calc(50% - 1.25rem);
-    }
-
-    @include sm(max) {
-      flex: 1;
-    }
-  }
-
-}
-
 .product-info {
   position: sticky;
   top: $block-size;
 
   @include sm(max) {
-    padding: var(--spacing);
+    padding: 0 var(--spacing) var(--spacing);
   }
 }
 

@@ -27,10 +27,4 @@
       max-width: 50%;
     }
   }
-
-  @include sm(max) {
-    div {
-      line-height: 1.1875rem;
-    }
-  }
 }

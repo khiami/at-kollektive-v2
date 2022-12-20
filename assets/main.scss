@@ -61,15 +61,8 @@ body {
 
 body {
   font-weight: bold;
-  @include sm(min) {
-    line-height: 1.75rem;
-    font-size: var(--body-font-size);
-  }
-
-  @include sm(max) {
-    line-height: 1rem;
-    font-size: 1rem;
-  }
+  line-height: var(--line-height);
+  font-size: var(--body-font-size);
 }
 
 ::marker {

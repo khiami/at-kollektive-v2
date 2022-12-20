@@ -1,7 +1,6 @@
 :root {
   --font-family: 'Unica 77 LL', sans-serif;
   --base-font-size: 1rem;
-  --body-font-size: 1.3125rem;
   /* 21px; */
 
   --base-color: #000;
@@ -15,6 +14,8 @@
   :root {
     --spacing: 0.625rem;
     --row-gap: 2.5rem;
+    --line-height: 1.1875rem;
+    --body-font-size: 1rem;
   }
 }
 
@@ -22,5 +23,7 @@
   :root {
     --spacing: 1.25rem;
     --row-gap: 3.75rem;
+    --line-height: 1.75rem;
+    --body-font-size: 1.3125rem;
   }
 }

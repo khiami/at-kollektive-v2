@@ -32,6 +32,12 @@ product-recommendations {
 
   .card__heading {
     margin-bottom: 1.25rem;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+    }
   }
 }
 
@@ -49,13 +55,5 @@ product-recommendations {
     height: auto;
     max-width: 100%;
     object-fit: contain;
-  }
-}
-
-.card__heading {
-  a {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing);
   }
 }

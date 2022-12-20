@@ -27,6 +27,12 @@
     &.root_navigation {
       order: 1;
     }
+
+    &.n-level {
+      &:empty {
+        display: none;
+      }
+    }
   }
 
   header,
@@ -38,5 +44,12 @@
       align-items: flex-start;
       gap: var(--spacing);
     }
+  }
+
+  .mobile-navs {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

@@ -18,10 +18,31 @@ body {
   &.header-open {
     overflow: hidden;
   }
+
+  &:not(.header-open) {
+    .mobile-navs {
+      display: none;
+    }
+  }
 }
 
 header {
   background: #fff;
+
+  // objective: keep 40px gap between footer menu and newsletter-signup section
+  // that's when the newsletter-signup is expanded
+  .footer {
+    ul {
+      transition: transform .4s;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.open {
+      ul {
+        transform: translate3d(0, -2.5rem, 0);
+      }
+    }
+  }
 }
 
 nav {
@@ -48,7 +69,8 @@ nav {
       position: sticky;
     }
 
-    &.mobile {
+    &.mobile,
+    &.footer {
       display: none;
     }
   }
@@ -73,6 +95,13 @@ nav {
     &:not(:empty) {
       padding-bottom: 1rem;
     }
+  }
+
+  &.footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2.5rem;
   }
 
   a {

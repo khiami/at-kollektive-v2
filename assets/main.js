@@ -61,19 +61,28 @@
 
   }
 
-  function newsletterState() {
+  function newsletterToggle() {
 
-    let footer = query('footer');
-    let label = query('.footer-block--newsletter label');
-    let newsletterWrap = query('.footer-block--newsletter');
+    // class '.footer' exist in +1 places
+    let footers = listify('.footer');
 
-    if (label) label.addEventListener('click', ()=> {
-      footer.classList.toggle('open');
+    if (!footers?.length) return; 
+    footers.forEach(footer=> {
+
+      let label = query('.footer-block__newsletter label', footer);
+      let newsletterWrap = query('.footer-block__newsletter', footer);
+
+      // toggle if [label] is clicked
+      if (label) label.addEventListener('click', ()=> {
+        footer.classList.toggle('open');
+      });
+
+      // auto-close if clicked [elsewhere]
+      document.addEventListener('click', e=> {
+        if (!elementBelongsTo(newsletterWrap, e.target)) footer.classList.remove('open');
+      });
     });
 
-    document.addEventListener('click', e=> {
-      if (!elementBelongsTo(newsletterWrap, e.target)) footer.classList.remove('open');
-    });
 
   }
 
@@ -413,7 +422,7 @@
 
       mainnav();
 
-      newsletterState();
+      newsletterToggle();
     
       switchIframeToWistiaEmbed();
     

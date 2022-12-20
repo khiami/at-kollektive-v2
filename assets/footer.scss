@@ -1,19 +1,8 @@
 @import "./mixin";
 
 footer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: transparent no-repeat center center/calc(100% - calc(var(--spacing) * 2));
-
   .grid {
-    display: flex;
-    flex: 1 0 100%;
-    flex-direction: column;
-    justify-content: space-between;
     padding: var(--spacing);
-    width: 100%;
     
     @include sm(min) {
       height: 95vh;
@@ -23,6 +12,23 @@ footer {
     @include sm(max) {
       height: 25rem;
     }
+  }
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: transparent no-repeat center center/calc(100% - calc(var(--spacing) * 2));
+
+  .grid {
+    display: flex;
+    // flex: 1 0 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 
     >div {
       &:nth-child(even) {
@@ -48,10 +54,8 @@ footer {
   }
 
   &:not(.open) {
-
     .newsletter-form__input,
     .newsletter-form__button {
-      // display: none;
       height: 0;
       visibility: hidden;
       opacity: 0;
@@ -123,10 +127,9 @@ footer {
   }
 }
 
-.footer-block--newsletter {
+.footer-block__newsletter {
 
   .field-inner {
-
     @include sm(min) {
       position: absolute;
       bottom: 1.25rem;
@@ -136,8 +139,10 @@ footer {
 
     @include sm(max) {
       position: static;
-      margin-top: 2rem;
-      padding: 0 var(--spacing) var(--spacing);
+      footer & {
+        margin-top: 2rem;
+        padding: 0 var(--spacing) var(--spacing);
+      }
     }
   }
 

@@ -60,9 +60,16 @@ body {
 }
 
 body {
-  line-height: 1.75rem;
-  font-size: var(--body-font-size);
   font-weight: bold;
+  @include sm(min) {
+    line-height: 1.75rem;
+    font-size: var(--body-font-size);
+  }
+
+  @include sm(max) {
+    line-height: 1rem;
+    font-size: 1rem;
+  }
 }
 
 ::marker {
@@ -241,6 +248,7 @@ dt {
 
 
 @import "./header.scss";
+@import "./header-responsive.scss";
 @import "./footer.scss";
 @import "./page.scss";
 @import "./embed.scss";

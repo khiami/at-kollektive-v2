@@ -1,10 +1,10 @@
 <header>
   <nav class="menu-drawer__navigation root_navigation">
     <ul>
-      <li><a href="/" class="root-link atk-home">At.Kollektive</a></li>
+      <li><a href="/" class="root-link home-anchor">At.Kollektive</a></li>
     </ul>
   </nav>
-  <nav class="menu-drawer__navigation sticky">
+  <nav class="menu-drawer__navigation desktop">
     <ul class="menu-drawer__menu has-submenu list-menu" role="list">
       {%- for link in section.settings.menu.links -%}
         <li>
@@ -65,6 +65,14 @@
     </ul>
   </nav>
   <nav class="menu-drawer__navigation n-level"></nav>
+  <nav class="menu-drawer__navigation mobile">
+    <ul class="mobile-nav">
+      <li><button class="nav-toggle text-decoration-underline">Menu</button></li>
+    </ul>
+    <ul class="cart-nav">
+      <li><cart-items-counter role="button"></cart-items-counter></li>
+    </ul>
+  </nav>
 </header>
 
 

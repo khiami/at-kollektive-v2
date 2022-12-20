@@ -2,6 +2,7 @@
 
   function mainnav() {
 
+    const navToggle = query('.nav-toggle');
     const header = query('header');
     const injectableNav = query('nav.n-level');
     const itemsWithSubmenu = listify('header .list-menu__item');
@@ -54,6 +55,10 @@
     document.addEventListener('keyup', e=> {
       if (e.key === 'Escape') closeNavigation();
     });
+
+    // mobile nav
+    if (navToggle) navToggle.addEventListener('click', ()=> document.body?.classList.toggle('header-open'));
+
   }
 
   function newsletterState() {
@@ -75,14 +80,16 @@
   function onEscape() {
 
     let elements = [
-      'footer',
-      '.collection-tools',
-      '.product-size-variants',
+      { item: 'body', htmlClass: 'header-open' },
+      { item: 'header', htmlClass: 'open' },
+      { item: 'footer', htmlClass: 'open' },
+      { item: '.collection-tools', htmlClass: 'open' },
+      { item: '.product-size-variants', htmlClass: 'open' },
     ];
 
-    elements = elements.map(a=> query(a)).filter(a=> !!a);
+    elements = elements.map(a=> ({ ...a, dom: query(a.item) })).filter(a=> a.dom);
     if (elements?.length) elements.forEach(a=> {
-      a.classList?.remove('open');
+      if (a?.dom) a.dom.classList?.remove(a.htmlClass);
     });
   }
 
@@ -319,24 +326,33 @@
   function stickyHeader() {
 
     let header = query('header');
-    let rootNavigation = query('.root_navigation');
     let collectionTools = query('.collection-tools');
     let paddingTop = 0;
+    let limit = 71.5;
 
     window.addEventListener('scroll', ()=> {
 
-      let down = (window.pageYOffset??document.documentElement.scrollTop) > scrollTop;
+      let top = window.pageYOffset??document.documentElement.scrollTop;
+      let down = (top) > scrollTop;
       
+      // logg('top', top);
+
       if (!down) {
         
-        paddingTop = cap(paddingTop++, 0, 71.5);
+        paddingTop = cap(paddingTop+1, 0, limit);
+
         // up
-        header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
-        collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        if (top >= limit) {
+          header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+          collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        } else {
+          header.style.transform = `translate3d(0, ${top}px, 0)`;
+          collectionTools.style.transform = `translate3d(0, ${top}px, 0)`;
+        }
         
       } else {
         
-        paddingTop = cap(paddingTop--, 0);
+        paddingTop = cap(paddingTop-1, 0);
 
         // down
         header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
@@ -415,7 +431,7 @@
 
       sizeGuideToggle();
 
-      stickyHeader();
+      //stickyHeader();
 
       productMetadataTabs();
 

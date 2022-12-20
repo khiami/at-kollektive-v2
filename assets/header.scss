@@ -2,9 +2,26 @@
 
 .section-header {
   position: sticky;
-  top: -$block-size;
   background-color: white;
   z-index: 12;
+
+  @include sm(min) {
+    top: -$block-size;
+  }
+
+  @include sm(max) {
+    top: -2.25rem;
+  }
+}
+
+body {
+  &.header-open {
+    overflow: hidden;
+  }
+}
+
+header {
+  background: #fff;
 }
 
 nav {
@@ -13,10 +30,31 @@ nav {
   align-items: center;
   background: #fff;
 
-  // top: -10rem;
+  @include sm(max) {
+    body:not(.header-open) &.desktop {
+      display: none;
+    }
+
+    &:not(:empty) {
+      &.mobile {
+        padding-bottom: 2rem;
+      }
+    }
+
+  }
+
+  @include sm(min) {
+    &.desktop {
+      position: sticky;
+    }
+
+    &.mobile {
+      display: none;
+    }
+  }
 
   &:not(:empty) {
-    padding: 1.25rem;
+    padding: var(--spacing);
   }
 
   ul {
@@ -28,6 +66,7 @@ nav {
 
   &.n-level {
     padding-top: 0;
+
     &:not(:empty) {
       padding-bottom: 1rem;
     }

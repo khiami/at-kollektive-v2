@@ -19,12 +19,12 @@
     >div:not(.custom-padding) {
       display: flex;
       flex-direction: column;
-      padding: 1.25rem;
+      padding: var(--spacing);
     }
 
     p {
       &:not(:last-child) {
-        margin-bottom: 1.25rem;
+        margin-bottom: var(--spacing);
       }
     }
   }
@@ -50,7 +50,7 @@
 
 .t-article {
   section {
-    padding: 1.25rem;
+    padding: var(--spacing);
 
     @include lg(min) {
       p {

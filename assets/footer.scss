@@ -12,19 +12,36 @@ footer {
     flex: 1 0 100%;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.25rem;
+    padding: var(--spacing);
     width: 100%;
-    height: 95vh;
     min-height: 35rem;
+
+    @include sm(min) {
+      height: 95vh;
+    }
+
+    @include sm(max) {
+      height: 80vh;
+    }
 
     >div {
       &:nth-child(even) {
-        text-align: right;
+
+        @include sm(min) {
+          text-align: right;
+        }
 
         ul {
           display: flex;
-          justify-content: flex-end;
-          gap: 1rem;
+          @include sm(min) {
+            justify-content: flex-end;
+            gap: 1rem;
+          }
+
+          @include sm(max) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
       }
     }
@@ -109,10 +126,19 @@ footer {
 .footer-block--newsletter {
 
   .field-inner {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    z-index: 15;
+
+    @include sm(min) {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      z-index: 15;
+    }
+
+    @include sm(max) {
+      position: static;
+      margin-top: 2rem;
+      padding: var(--spacing);
+    }
   }
 
   .newsletter-form__button {

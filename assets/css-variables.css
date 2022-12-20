@@ -9,3 +9,18 @@
   --color-button-text: #000;
 
 }
+
+
+@media (max-width: 575px) {
+  :root {
+    --spacing: 0.625rem;
+    --row-gap: 2.5rem;
+  }
+}
+
+@media (min-width: 576px) {
+  :root {
+    --spacing: 1.25rem;
+    --row-gap: 3.75rem;
+  }
+}

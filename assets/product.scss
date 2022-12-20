@@ -182,6 +182,8 @@
 }
 
 .content-tab-btn {
+  white-space: nowrap;
+  
   &.active {
     text-decoration: underline;
   }

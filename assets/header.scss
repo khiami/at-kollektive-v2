@@ -88,8 +88,10 @@ nav {
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    row-gap: .5rem;
 
     @include sm(min) {
       gap: 1rem;

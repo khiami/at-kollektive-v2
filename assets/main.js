@@ -70,11 +70,15 @@
     footers.forEach(footer=> {
 
       let label = query('.footer-block__newsletter label', footer);
+      let input = query('input[type=email]', footer);
       let newsletterWrap = query('.footer-block__newsletter', footer);
 
       // toggle if [label] is clicked
       if (label) label.addEventListener('click', ()=> {
         footer.classList.toggle('open');
+
+        // make input autofocus
+        if (footer.classList.contains('open')) setTimeout(()=> input?.focus(), 200);
       });
 
       // auto-close if clicked [elsewhere]

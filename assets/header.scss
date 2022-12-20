@@ -150,3 +150,14 @@ a {
     text-decoration: underline;
   }
 }
+
+.newsletter-form__message--success {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0 var(--spacing);
+
+  svg {
+    max-width: 1.5rem;
+  }
+}

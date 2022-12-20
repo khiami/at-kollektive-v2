@@ -177,6 +177,15 @@ tfoot {
   font-weight: inherit;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 ::placeholder {
   font-weight: bold;
   color: var(--base-color);
@@ -244,6 +253,13 @@ dt {
 
 .img-fluid {
   width: 100%;
+}
+
+@include sm(max) {
+  .el-block-reverse {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 }
 
 

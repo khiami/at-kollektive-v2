@@ -26,8 +26,8 @@
               {% endfor %}
               <p class="grid-element-title with-color-effect">
                 <a href="/products/{{ product.handle }}" class="product-anchor">
-                  {% if product.title != blank %}<span class="title-element info-product-title">{{ product.title }}</span><br>{% endif %}
-                  {% if product.metafields.custom.ak__designerName != blank %}<span class="title-element info-designer-name">{{ product.metafields.custom.ak__designerName }}</span><br>{% endif %}
+                  {% if product.title != blank %}<span class="title-element info-product-title">{{ product.title }}</span>{% endif %}
+                  {% if product.metafields.custom.ak__designerName != blank %}<span class="title-element info-designer-name">{{ product.metafields.custom.ak__designerName }}</span>{% endif %}
                 </a>
               </p>
               <div class="reflect-oh-hover">

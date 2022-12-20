@@ -4,7 +4,7 @@
 
       <ul class="product-info-list">
         <li class="product-title">{{ product.title }}</li>
-        <li class="product-designer">{{ product.metafields.custom.ak__designerName }}</li>
+        {% if product.metafields.custom.ak__designerName != blank %}<li class="product-designer">{{ product.metafields.custom.ak__designerName }}</li>{% endif %}
         <li class="product-price">
           <span>{{ product.price | money }}</span>
           {% if product.compare_at_price != blank and product.compare_at_price != product.price %}
@@ -124,17 +124,25 @@
             <button class="underline-on-hover" data-rel="details">Details</button>
             <button class="underline-on-hover" data-rel="sustainability">Sustainability</button>
           </div>
+          
+          <button class="tab-mobile-btn underline-on-hover active" data-rel="description">Description</button>
           <div class="tab-content open" data-content-rel="description">
-            {% if product.description != blank %}{{ product.description }}{% else %}{{ '-' }}{% endif %}
+            {% if product.description != blank %}{{ product.description }}{% endif %}
           </div>
+          
+          <button class="tab-mobile-btn underline-on-hover" data-rel="size">Size</button>
           <div class="tab-content" data-content-rel="size">
-            {% if product.metafields.custom.ak__size != blank %}{{ product.metafields.custom.ak__size }}{% else %}{{ '-' }}{% endif %}
+            {% if product.metafields.custom.ak__size != blank %}{{ product.metafields.custom.ak__size }}{% endif %}
           </div>
+          
+          <button class="tab-mobile-btn underline-on-hover" data-rel="details">Details</button>
           <div class="tab-content" data-content-rel="details">
-            {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% else %}{{ '-' }}{% endif %}
+            {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% endif %}
           </div>
+
+          <button class="tab-mobile-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
           <div class="tab-content" data-content-rel="sustainability">
-            {% if product.metafields.custom.ak__sustainability != blank %}{{ product.metafields.custom.ak__sustainability }}{% else %}{{ '-' }}{% endif %}
+            {% if product.metafields.custom.ak__sustainability != blank %}{{ product.metafields.custom.ak__sustainability }}{% endif %}
           </div>
         </li>
         

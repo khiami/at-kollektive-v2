@@ -19,13 +19,14 @@
 
 .product-size-variants {
   display: flex;
-  gap: 1rem;
 
   @include sm(min) {
+    gap: 1rem;
     margin: 3.125rem 0;
   }
 
   @include sm(max) {
+    gap: 0.875rem;
     margin-top: 2.5rem;
 
     &:not(.open) {
@@ -51,6 +52,8 @@
 }
 
 .product-size {
+  white-space: nowrap;
+
   &.active {
     text-decoration: underline;
   }
@@ -65,7 +68,12 @@
   }
 
   @include sm(max) {
+    flex: 1;
     margin: 1.875rem auto 3.125rem;
+    width: calc(100vw - calc(var(--spacing) * 2));
+    max-width: calc(100vw - calc(var(--spacing) * 2));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   >div {
@@ -77,6 +85,16 @@
     row-gap: 0.5625rem;
     width: 100%;
     text-align: right;
+
+    @include sm(max) {
+      &:first-child {
+        position: sticky;
+        top: 0;
+        left: 0;
+        background: white;
+        z-index: 1;
+      }
+    }
   }
 
   button {
@@ -142,11 +160,11 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+}
 
-  >button {
-    &.active {
-      text-decoration: underline;
-    }
+.content-tab-btn {
+  &.active {
+    text-decoration: underline;
   }
 }
 

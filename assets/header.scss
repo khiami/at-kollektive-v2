@@ -58,7 +58,12 @@ nav {
 
     &:not(:empty) {
       &.mobile {
-        padding-bottom: 2rem;
+
+        // smaller menu height for (n) of templates
+        // product, page, article, cart, etc..
+        html:not(.t-product):not(.t-page):not(.t-article):not(.t-cart) & {
+          padding-bottom: 2rem;
+        }
       }
     }
 

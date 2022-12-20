@@ -29,7 +29,7 @@
             <button class="size-group">EU</button>
             <button class="size-group">US</button>
             <button class="size-group">UK</button>
-            <button class="size-group">EU</button>
+            <button class="size-group">FR</button>
           </div>
           <div>
             <button>35</button>
@@ -119,28 +119,28 @@
 
         <li class="product-metadata">
           <div class="tabs content-tabs">
-            <button class="underline-on-hover active" data-rel="description">Description</button>
-            <button class="underline-on-hover" data-rel="size">Size</button>
-            <button class="underline-on-hover" data-rel="details">Details</button>
-            <button class="underline-on-hover" data-rel="sustainability">Sustainability</button>
+            <button class="content-tab-btn underline-on-hover active" data-rel="description">Description</button>
+            <button class="content-tab-btn underline-on-hover" data-rel="size">Size</button>
+            <button class="content-tab-btn underline-on-hover" data-rel="details">Details</button>
+            <button class="content-tab-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
           </div>
           
-          <button class="tab-mobile-btn underline-on-hover active" data-rel="description">Description</button>
+          <button class="content-tab-btn tab-mobile-btn underline-on-hover active" data-rel="description">Description</button>
           <div class="tab-content open" data-content-rel="description">
             {% if product.description != blank %}{{ product.description }}{% endif %}
           </div>
           
-          <button class="tab-mobile-btn underline-on-hover" data-rel="size">Size</button>
+          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="size">Size</button>
           <div class="tab-content" data-content-rel="size">
             {% if product.metafields.custom.ak__size != blank %}{{ product.metafields.custom.ak__size }}{% endif %}
           </div>
           
-          <button class="tab-mobile-btn underline-on-hover" data-rel="details">Details</button>
+          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="details">Details</button>
           <div class="tab-content" data-content-rel="details">
             {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% endif %}
           </div>
 
-          <button class="tab-mobile-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
+          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
           <div class="tab-content" data-content-rel="sustainability">
             {% if product.metafields.custom.ak__sustainability != blank %}{{ product.metafields.custom.ak__sustainability }}{% endif %}
           </div>

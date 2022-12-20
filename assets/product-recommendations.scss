@@ -3,10 +3,17 @@
 product-recommendations {
   display: flex;
   flex-direction: column;
-  margin: 10rem auto 10.625rem;
-  padding: 1.25rem;
+  padding: var(--spacing);
   width: 100%;
 
+  @include sm(min) {
+    margin: 10rem auto 10.625rem;
+  }
+
+  @include sm(max) {
+    margin: 3.125rem auto 4.625rem;
+  }
+  
   .media {
     margin-bottom: 1.25rem;
   }
@@ -17,7 +24,10 @@ product-recommendations {
 
   .grid__item {
     position: relative;
-    padding-bottom: 3rem;
+
+    @include sm(min) {
+      padding-bottom: 3rem;
+    }
   }
 
   .card__heading {
@@ -39,5 +49,13 @@ product-recommendations {
     height: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+}
+
+.card__heading {
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
   }
 }

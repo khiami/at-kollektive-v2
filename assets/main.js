@@ -388,9 +388,9 @@
     if (close) close.addEventListener('click', ()=> container.classList.remove('open'));
   }
 
-  function productMetadataTabs() {
+  function tabContentToggle() {
 
-    let tabs = listify('.content-tabs [data-rel]');
+    let tabs = listify('.content-tab-btn[data-rel]');
     let tabContents = listify('[data-content-rel]');
 
     if (tabs?.length) tabs.forEach(tab=> {
@@ -446,7 +446,7 @@
 
       //stickyHeader();
 
-      productMetadataTabs();
+      tabContentToggle();
 
       productSizeToggle();
 

@@ -5,7 +5,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: transparent no-repeat center center/calc(100% - 2.5rem);
+  background: transparent no-repeat center center/calc(100% - calc(var(--spacing) * 2));
 
   .grid {
     display: flex;
@@ -14,14 +14,14 @@ footer {
     justify-content: space-between;
     padding: var(--spacing);
     width: 100%;
-    min-height: 35rem;
-
+    
     @include sm(min) {
       height: 95vh;
+      min-height: 35rem;
     }
 
     @include sm(max) {
-      height: 80vh;
+      height: 25rem;
     }
 
     >div {
@@ -137,14 +137,14 @@ footer {
     @include sm(max) {
       position: static;
       margin-top: 2rem;
-      padding: var(--spacing);
+      padding: 0 var(--spacing) var(--spacing);
     }
   }
 
   .newsletter-form__button {
     position: absolute;
-    bottom: 1.25rem;
-    right: 1.25rem;
+    bottom: var(--spacing);
+    right: var(--spacing);
     z-index: 15;
     transition: opacity .4s;
   }

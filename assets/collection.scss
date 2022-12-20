@@ -18,7 +18,13 @@
 }
 
 .collection--empty {
-  height: 70vh;
+  @include sm(min) {
+    height: 70vh;
+  }
+
+  @include sm(max) {
+    height: 85vh;
+  }
 }
 
 .grid-element-anchor {

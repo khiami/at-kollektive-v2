@@ -59,9 +59,12 @@ nav {
 
   ul {
     display: flex;
-    gap: 1rem;
     margin: 0;
     padding: 0;
+
+    @include sm(min) {
+      gap: 1rem;
+    }
   }
 
   &.n-level {

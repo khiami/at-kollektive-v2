@@ -126,6 +126,18 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "bf7b9303-04ac-4970-9949-a488c723c3d5": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "bf7b9303-04ac-4970-9949-a488c723c3d5"
+        ],
         "settings": {
           "color_scheme": "background-1",
           "logo_position": "middle-left",

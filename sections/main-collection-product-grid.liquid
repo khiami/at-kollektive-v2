@@ -23,9 +23,9 @@
               {% for image in product.images limit: 1 %}
                 <a href="/products/{{ product.handle }}" class="grid-element-anchor" title="{{ product.title }}" data-index="{{ productIndex }}">
                   {% if productIndex > 6 %}
-                    <img class="grid-image grid-product-image" loading="eager" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                    <img class="grid-image grid-product-image" data-index="{{ productIndex }}" loading="eager" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
                     {% else %}
-                    <img class="grid-image grid-product-image" loading="lazy" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                    <img class="grid-image grid-product-image" data-index="{{ productIndex }}" loading="lazy" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
                   {% endif %}
                 </a>
               {% endfor %}

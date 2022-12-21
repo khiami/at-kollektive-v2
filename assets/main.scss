@@ -104,6 +104,19 @@ ul {
   }
 }
 
+.skip-to-content-link {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  padding: var(--spacing);
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+  z-index: 100;
+
+  &:focus {
+    transform: translateY(0%);
+  }
+}
 
 .row {
   margin-top: 0;

@@ -13,11 +13,12 @@ gulp
   .task('watch-sass', ()=> 
     gulp.watch('assets/*.scss', gulp.series('sass')))
 
-gulp
-  .task('vendor', ()=> 
-    gulp.src([ 
-      './node_modules/keen-slider/keen-slider.js',
-      ])
-    .pipe(concat('vendor.js'))
-    .pipe(purgeSourcemaps())
-    .pipe(gulp.dest('./assets/')))
+// gulp
+//   .task('gsap', ()=> 
+//     gulp.src([ 
+//       './node_modules/gsap/dist/gsap.min.js',
+//       './node_modules/gsap/dist/ScrollToPlugin.min.js',
+//       ])
+//     .pipe(concat('gsap-build.js'))
+//     .pipe(purgeSourcemaps())
+//     .pipe(gulp.dest('./assets/')))

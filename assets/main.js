@@ -122,6 +122,7 @@
 
     let elements = [
       { item: 'body', htmlClass: 'header-open' },
+      { item: 'body', htmlClass: 'collection-tools-open' },
       { item: 'header', htmlClass: 'open' },
       { item: 'header', htmlClass: 'submenu-open' },
       { item: 'footer', htmlClass: 'open' },
@@ -293,8 +294,14 @@
     let open = query('.filter-open');
     let close = query('.filter-close');
 
-    if (open) open.addEventListener('click', ()=> tools.classList.add('open'));
-    if (close) close.addEventListener('click', ()=> tools.classList.remove('open'));
+    if (open) open.addEventListener('click', ()=> {
+      tools.classList.add('open');
+      document.body?.classList.add('collection-tools-open');
+    });
+    if (close) close.addEventListener('click', ()=> {
+      tools.classList.remove('open');
+      document.body.classList.remove('collection-tools-open');
+    });
   }
 
   function processFilterTitleCase() {
@@ -363,7 +370,7 @@
     });
   }
 
-  scrollTop = window.pageYOffset??document.documentElement.scrollTop;
+  let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
 
   function stickyHeader() {
 

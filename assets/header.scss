@@ -10,16 +10,30 @@
   }
 
   @include sm(max) {
-    top: -2.45rem;
+    body:not(.collection-tools-open) & {
+      top: -2.45rem;
+    }
+
+    body.collection-tools-open & {
+      top: 0;
+    }
   }
 }
 
 body {
+
+  // &.collection-tools-open,
   &.header-open {
     overflow: hidden;
   }
 
   @include sm(max) {
+    &.collection-tools-open {
+      .section-header {
+        z-index: 13;
+      }
+    }
+
     &:not(.header-open) {
       .mobile-navs {
         display: none;

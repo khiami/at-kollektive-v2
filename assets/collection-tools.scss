@@ -38,6 +38,15 @@
   }
 
   &.open {
+
+    @include sm(max) {
+      position: fixed;
+      inset: 0;
+      padding: 7rem var(--spacing) 0;
+      width: 100%;
+      height: 100%;
+    }
+
     .filter-close {
       display: flex;
     }
@@ -47,7 +56,18 @@
     }
 
     .collection-filter {
-      display: grid;
+      @include sm(min) {
+        display: grid;
+      }
+
+      @include sm(max) {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing) 0 10rem;
+        height: calc(100vh - 9.5rem);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     }
   }
 }
@@ -57,7 +77,6 @@
     content: "/\00a0";
     margin: 0 0.5rem;
   }
-
 }
 
 .tools-header {
@@ -65,14 +84,29 @@
   justify-content: space-between;
   align-items: center;
 
-  .open & {
-    margin-bottom: 3.125rem;
+  @include sm(min) {
+    .open & {
+      margin-bottom: 3.125rem;
+    }
+  }
+
+  @include sm(max) {
+    .open & {
+      margin-bottom: var(--spacing);
+    }
   }
 }
 
 .filter-group {
   .title {
-    margin-bottom: 1.25rem;
+
+    @include sm(min) {
+      margin-bottom: 1.25rem;
+    }
+
+    @include sm(max) {
+      margin-bottom: 1.5625rem;
+    }
   }
 
   button {
@@ -85,6 +119,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   max-height: 9rem;
+
+  @include sm(max) {
+    gap: 0.5rem;
+  }
 
   >li {
     &.active {
@@ -102,5 +140,13 @@
       display: inline-block;
       margin-right: .2rem;
     }
+  }
+}
+
+@include sm(max) {
+  .collection-selector {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
   }
 }

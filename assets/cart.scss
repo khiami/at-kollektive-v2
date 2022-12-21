@@ -3,12 +3,16 @@
 cart-items {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: var(--spacing);
+
+  @include sm(max) {
+    margin-bottom: 5rem;
+  }
 
   &.is-empty {
     display: flex;
     flex-direction: column;
-    padding: 1.25rem;
+    padding: var(--spacing);
     height: 60vh;
 
     .title {
@@ -21,6 +25,12 @@ cart-items {
   }
 
   .product-image {
+
+    @include sm(max) {
+      display: flex;
+      flex: 1 0 50%;
+    }
+
     img {
       width: max(30vw, 25rem);
       height: auto;
@@ -37,7 +47,11 @@ cart-items {
 }
 
 .cart__footer-wrapper {
-  padding: 1.25rem;
+  padding: var(--spacing);
+
+  @include sm(max) {
+    margin-top: 1.875rem;
+  }
 
   >div {
     position: sticky;
@@ -48,16 +62,22 @@ cart-items {
 .cart-items {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--spacing);
 }
 
 .cart-item {
   display: flex;
-  gap: 1.25rem;
+  gap: var(--spacing);
 }
 
 .cart-product-size {
-  margin-top: 3.125rem;
+  @include sm(min) {
+    margin-top: 3.125rem;
+  }
+
+  @include sm(max) {
+    margin-top: 1.875rem;
+  }
 }
 
 .cart-product-variant {
@@ -65,13 +85,24 @@ cart-items {
 
   dt {
     display: flex;
-    width: 8rem;
+
+    @include sm(min) {
+      width: 8rem;
+    }
+
+    @include sm(max) {
+      width: 5rem;
+    }
   }
 }
 
 .product-details {
   display: flex;
   flex-direction: column;
+
+  @include sm(max) {
+    flex: 1 0 50%;
+  }
 }
 
 quantity-input {
@@ -88,7 +119,13 @@ quantity-input {
 }
 
 .quantity__button {
-  width: 2rem;
+  @include sm(min) {
+    width: 2rem;
+  }
+
+  @include sm(max) {
+    width: .5rem;
+  }
 
   svg {
     max-width: 1rem;
@@ -98,14 +135,32 @@ quantity-input {
 .product-quantity {
   display: flex;
 
+  @include sm(max) {
+    margin-top: 0.5rem;
+  }
+
   label {
-    width: 8rem;
+
+    @include sm(min) {
+      width: 8rem;
+    }
+
+    @include sm(max) {
+      width: 5rem;
+    }
   }
 }
 
 cart-remove-button {
   display: flex;
-  margin-top: 3.125rem;
+
+  @include sm(min) {
+    margin-top: 3.125rem;
+  }
+
+  @include sm(max) {
+    margin-top: 1.875rem
+  }
 }
 
 input::-webkit-outer-spin-button,
@@ -124,8 +179,15 @@ input[type=number] {
 }
 
 .cart__ctas {
-  margin-top: 5.625rem;
   margin-bottom: 1.25rem;
+
+  @include sm(min) {
+    margin-top: 5.625rem;
+  }
+
+  @include sm(max) {
+    margin-top: 2.5rem;
+  }
 }
 
 .cart__dynamic-checkout-buttons {
@@ -134,4 +196,9 @@ input[type=number] {
 
 #cart-errors {
   margin-bottom: 1.25rem;
+}
+
+.cart__footer_wrapper {
+  isolation: isolate;
+  z-index: 0;
 }

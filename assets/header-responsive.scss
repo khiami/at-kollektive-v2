@@ -63,9 +63,9 @@
 }
 
 .close-submenu {
+  margin: 2.5rem 0;
+
   @include sm(min) {
     display: none;
   }
-
-  margin-bottom: 2.5rem;
 }

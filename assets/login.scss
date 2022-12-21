@@ -1,0 +1,68 @@
+@import "./mixin";
+
+
+.account-related {
+  margin-top: 0.625rem;
+  padding: var(--spacing);
+  min-height: 80vh;
+
+  h1 {
+    margin-bottom: 3.125rem;
+  }
+}
+
+#recover {
+
+  &,
+  &+div {
+    display: none;
+  }
+
+  &:target {
+    display: block;
+
+    &+div {
+      display: block;
+    }
+
+    &~#login {
+
+      &,
+      &+div {
+        display: none;
+      }
+    }
+  }
+}
+
+.field {
+  &+.field {
+    margin-top: 0.5625rem;
+  }
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  input {
+    border: none;
+
+    &::placeholder {
+      color: rgb(0 0 0 / 30%);
+    }
+  
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5625rem;
+  margin-top: 3.125rem;
+}

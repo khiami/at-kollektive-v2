@@ -39,6 +39,10 @@ product-recommendations {
       gap: var(--spacing);
     }
   }
+
+  ul {
+    list-style: none;
+  }
 }
 
 .recommendations-header {

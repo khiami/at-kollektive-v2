@@ -4,6 +4,10 @@
   position: sticky;
   background-color: white;
 
+  ul {
+    list-style: none;
+  }
+
   body.header-open & {
     z-index: 10;
   }

@@ -402,7 +402,7 @@
         topUp = limit + topUp;
         
         header.style.top = `${-topUp}px`;
-        // topDown = 0;
+        topDown = -limit;
         
       } else {
         

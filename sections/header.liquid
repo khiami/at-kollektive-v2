@@ -20,6 +20,9 @@
                       {{ link.title | escape }}
                     </button>
                     <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                      {% if link.links.size > 0 %}
+                        <li class="close-submenu"><button class="close-submenu-btn">Back to overview</button></li>
+                      {% endif %}
                       {%- for childlink in link.links -%}
                         <li>
                           {%- if childlink.links == blank -%}

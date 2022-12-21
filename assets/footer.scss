@@ -3,6 +3,7 @@
 footer {
   .grid {
     padding: var(--spacing);
+    transition: height .4s;
     
     @include sm(min) {
       height: 95vh;
@@ -11,6 +12,14 @@ footer {
 
     @include sm(max) {
       height: 25rem;
+    }
+  }
+
+  @include sm(max) {
+    &.open {
+      .grid {
+        height: 30rem;
+      }
     }
   }
 }

@@ -7,12 +7,19 @@
     const injectableNav = query('nav.n-level');
     const itemsWithSubmenu = listify('header .list-menu__item');
 
-    function closeNavigation() {
+    function closeNavigation(opts) {
+
+      let { removeBodyHtmlClass } = opts||{};
 
       itemsWithSubmenu.forEach(a=> {
         a.parentElement?.classList.remove('open');
         a.setAttribute('aria-expanded', false);
       });
+
+      header.classList.remove('submenu-open');
+      if (removeBodyHtmlClass !== false) {
+        document.body?.classList.remove('header-open');
+      }
       injectableNav.innerHTML = '';
 
     }
@@ -43,12 +50,17 @@
 
         // set aria-expanded
         item.setAttribute('aria-expanded', parent.classList.contains('open'));
+        header.classList[
+          parent.classList.contains('open') ? 'add':'remove'
+        ]('submenu-open');
       });
     });
 
     // auto-collapse header if clicked outside
     document.addEventListener('click', e=> {
-      if (!elementBelongsTo(header, e.target)) closeNavigation();
+      if (!elementBelongsTo(header, e.target)) {
+        closeNavigation();
+      }
     });
 
     // auto-collapse on [escape] clicked
@@ -56,8 +68,24 @@
       if (e.key === 'Escape') closeNavigation();
     });
 
+    // close submenu
+    header.addEventListener('click', e=> {
+      if (e.target?.classList.contains('close-submenu-btn')) {
+        e.stopPropagation();
+        closeNavigation({ removeBodyHtmlClass: false });
+      }
+    })
+    
+
     // mobile nav
-    if (navToggle) navToggle.addEventListener('click', ()=> document.body?.classList.toggle('header-open'));
+    if (navToggle) navToggle.addEventListener('click', ()=> {
+      document.body?.classList.toggle('header-open');
+
+      // close submenu if closed
+      if (!document.body?.classList.contains('header-open')) {
+        closeNavigation();
+      }
+    });
 
   }
 
@@ -95,6 +123,7 @@
     let elements = [
       { item: 'body', htmlClass: 'header-open' },
       { item: 'header', htmlClass: 'open' },
+      { item: 'header', htmlClass: 'submenu-open' },
       { item: 'footer', htmlClass: 'open' },
       { item: '.collection-tools', htmlClass: 'open' },
       { item: '.product-size-variants', htmlClass: 'open' },

@@ -1,9 +1,11 @@
 @import "./mixin";
 
 .block-editorial {
-  padding: 1.25rem 0 7.5rem;
+  padding: var(--spacing) 0 7.5rem;
 
-  p {
-    max-width: 50%;
+  @include sm(min) {
+    p {
+      max-width: 50%;
+    }
   }
 }

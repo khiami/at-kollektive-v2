@@ -1,1 +1,1 @@
-.block-editorial{padding:1.25rem 0 7.5rem}.block-editorial p{max-width:50%}
+.block-editorial{padding:var(--spacing) 0 7.5rem}@media(min-width: 576px){.block-editorial p{max-width:50%}}

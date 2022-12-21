@@ -73,7 +73,7 @@
     justify-content: flex-start;
 
     @include sm(min) {
-      gap: 20vmax;
+      gap: 15vmax;
 
       >.main-cart-items {
         flex: 1 0 50%;

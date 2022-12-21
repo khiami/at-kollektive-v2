@@ -103,6 +103,7 @@
     --product-quantity-label-width: 5rem;
     --cart-remove-button-margin-top: 1.875rem;
     --cart-ctas-margin-top: 2.5rem;
+    --cart-remove-button-opacity: .3;
     
   }
 }

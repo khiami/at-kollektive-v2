@@ -118,6 +118,7 @@ quantity-input {
 cart-remove-button {
   display: flex;
   margin-top: var(--cart-remove-button-margin-top);
+  opacity: var(--cart-remove-button-opacity);
 }
 
 input::-webkit-outer-spin-button,

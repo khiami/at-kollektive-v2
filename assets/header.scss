@@ -189,6 +189,9 @@ a {
   padding: 0 var(--spacing);
 
   svg {
+    display: flex;
+    flex: 1;
     max-width: 1.5rem;
+    aspect-ratio: 1;
   }
 }

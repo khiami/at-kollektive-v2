@@ -1,3 +1,5 @@
+{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
 <article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting">
   {%- for block in section.blocks -%}
     {%- case block.type -%}

@@ -129,3 +129,14 @@
     @content();
   }
 }
+
+
+@mixin bodyScrolling($direction) {
+  body[data-scroll-direction="#{$direction}"] & {
+    @content;
+  }
+}
+
+@function remToPixels($rem) {
+  @return $rem * 16;
+}

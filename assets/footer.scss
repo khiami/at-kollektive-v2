@@ -89,7 +89,7 @@ footer {
 
   .grid {
     >div {
-      transition: transform .4s;
+      transition: transform .4s, top .4s;
     }
   }
 
@@ -179,6 +179,10 @@ footer {
   position: sticky;
   top: $block-size;
   z-index: 10;
+
+  @include bodyScrolling(up) {
+    top: $block-size * 2;
+  }
 }
 
 .newsletter-form__input {

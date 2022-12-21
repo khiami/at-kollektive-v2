@@ -3,6 +3,11 @@
 .collection-tools {
   position: sticky;
   background-color: white;
+  transition: top .4s;
+
+  @include bodyScrolling(up) {
+    top: 8.4375rem; //135px; //$block-size * 2;
+  }
 
   ul {
     list-style: none;

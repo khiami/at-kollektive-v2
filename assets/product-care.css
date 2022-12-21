@@ -1,1 +1,1 @@
-.product-care{padding:var(--spacing);margin-bottom:var(--product-care-margin-bottom)}.product-care .row>div>div{position:sticky;top:71.5px;z-index:10}.product-care p{max-width:var(--product-care-p-max-width)}
+.product-care{padding:var(--spacing);margin-bottom:var(--product-care-margin-bottom)}.product-care .row>div>div{position:sticky;top:71.5px;z-index:10;transition:top .4s}body[data-scroll-direction=up] .product-care .row>div>div{top:143px}.product-care p{max-width:var(--product-care-p-max-width)}

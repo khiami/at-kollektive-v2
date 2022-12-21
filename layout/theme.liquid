@@ -189,6 +189,10 @@
       
     {% endstyle %}
 
+    {% comment %} preload custom-font  {% endcomment %}
+    <link rel="preload" as="font" href="{{ 'NeueHaasUnicaW1G-Bold.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ 'NeueHaasUnicaW1G-Bold.eot' | asset_url }}" type="font/eot" crossorigin>
+
     {% style %}
       @font-face {
         font-family: 'Neue Haas Unica W1G';
@@ -203,10 +207,6 @@
         font-display: swap;
       }
     {% endstyle %}
-
-    {% comment %} preload custom-font  {% endcomment %}
-    <link rel="preload" as="font" href="{{ 'Unica_77LL-Regular.woff2' | asset_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ 'Unica_77LL-Regular.eot' | asset_url }}" type="font/eot" crossorigin>
 
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'css-variables.css' | asset_url | stylesheet_tag }}

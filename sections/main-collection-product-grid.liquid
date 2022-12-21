@@ -22,7 +22,11 @@
               <div class="grid-overlay-color"></div>
               {% for image in product.images limit: 1 %}
                 <a href="/products/{{ product.handle }}" class="grid-element-anchor" title="{{ product.title }}" data-index="{{ productIndex }}">
-                  <img class="grid-image grid-product-image" loading="{% if productIndex > 6 %}eager{% else %}lazy{% endif %}" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                  {% if productIndex > 6 %}
+                    <img class="grid-image grid-product-image" loading="eager" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                    {% else %}
+                    <img class="grid-image grid-product-image" loading="lazy" src="{{ image | image_url }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                  {% endif %}
                 </a>
               {% endfor %}
               <p class="grid-element-title with-color-effect">

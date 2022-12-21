@@ -209,7 +209,7 @@
     {% endstyle %}
 
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {% comment %} {{ 'css-variables.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {{ 'css-variables.css' | asset_url | stylesheet_tag }}
     {% if template.name == 'article' %}{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}{% endif %}
     {{ 'main.css' | asset_url | stylesheet_tag }}
 
@@ -329,6 +329,6 @@
         }
       })();
     </script>
-    {% if template.name == 'article' %}<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>{% endif %}
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
   </body>
 </html>

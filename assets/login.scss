@@ -74,7 +74,7 @@
   margin-bottom: .5rem;
 
   svg {
-    max-width: 1.5rem;
+    width: 1.5rem;
   }
 }
 
@@ -84,4 +84,12 @@
 
 [autofocus] {
   outline: none;
+}
+
+@include sm(min) {
+  .newsletter-form__message--success {
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+  }
 }

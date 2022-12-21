@@ -376,7 +376,7 @@
     let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
     let limit = 71.5;
     let topUp = -limit;
-    let topDown = 0;
+    let topDown = -limit;
     let header = query('.section-header');
 
     // deactivate for mobile
@@ -402,7 +402,7 @@
         topUp = limit + topUp;
         
         header.style.top = `${-topUp}px`;
-        topDown = 0;
+        // topDown = 0;
         
       } else {
         

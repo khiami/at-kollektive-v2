@@ -256,6 +256,10 @@ dt {
   }
 }
 
+details summary::-webkit-details-marker {
+  display:none;
+}
+
 
 @import "./header.scss";
 @import "./header-responsive.scss";

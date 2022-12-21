@@ -45,6 +45,10 @@ body {
 header {
   background: #fff;
 
+  ul {
+    list-style: none;
+  }
+
   // objective: keep 40px gap between footer menu and newsletter-signup section
   // that's when the newsletter-signup is expanded
   .footer {

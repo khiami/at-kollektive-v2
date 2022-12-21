@@ -189,17 +189,16 @@
       
     {% endstyle %}
 
-    {% comment %} add custom font {% endcomment %}
     {% style %}
       @font-face {
-        font-family: 'Unica 77 LL';
-        src: url('{{ "Unica_77LL-Regular.eot" | asset_url }}');
-        src: url('{{ "Unica_77LL-Regular.eot" | asset_url }}?#iefix') format('embedded-opentype'),
-            url('{{ "Unica_77LL-Regular.woff2" | asset_url }}') format('woff2'),
-            url('{{ "Unica_77LL-Regular.woff" | asset_url }}') format('woff'),
-            url('{{ "Unica_77LL-Regular.ttf" | asset_url }}') format('truetype'),
-            url('{{ "Unica_77LL-Regular.svg" | asset_url }}#Unica_77LL-Regular') format('svg');
-        font-weight: normal;
+        font-family: 'Neue Haas Unica W1G';
+        src: url('{{ "NeueHaasUnicaW1G-Bold.eot" | asset_url }}');
+        src: url('{{ "NeueHaasUnicaW1G-Bold.eot" | asset_url }}?#iefix') format('embedded-opentype'),
+            url('{{ "NeueHaasUnicaW1G-Bold.woff2" | asset_url }}') format('woff2'),
+            url('{{ "NeueHaasUnicaW1G-Bold.woff" | asset_url }}') format('woff'),
+            url('{{ "NeueHaasUnicaW1G-Bold.ttf" | translate }}') format('truetype'),
+            url('{{ "NeueHaasUnicaW1G-Bold.svg" | asset_url }}#NeueHaasUnicaW1G-Bold') format('svg');
+        font-weight: bold;
         font-style: normal;
         font-display: swap;
       }

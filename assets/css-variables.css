@@ -1,5 +1,6 @@
 :root {
-  --font-family: 'Unica 77 LL', sans-serif;
+  /* --font-family: 'Unica 77 LL', sans-serif; */
+  --font-family: 'Neue Haas Unica W1G', sans-serif;
   --base-font-size: 1rem;
 
   --base-color: #000;
@@ -9,14 +10,6 @@
 }
 
 
-@media (max-width: 575px) {
-  :root {
-    --spacing: 0.625rem;
-    --row-gap: 2.5rem;
-    --line-height: 1.1875rem;
-    --body-font-size: 1rem;
-  }
-}
 
 @media (min-width: 576px) {
   :root {
@@ -24,5 +17,23 @@
     --row-gap: 3.75rem;
     --line-height: 1.75rem;
     --body-font-size: 1.3125rem;
+
+    /* element specific vars */
+    --filter-group-title-margin-bottom: 1.25rem;
+    --block-editorial-p-max-width: 50%;
+  }
+}
+
+
+@media (max-width: 575px) {
+  :root {
+    --spacing: 0.625rem;
+    --row-gap: 2.5rem;
+    --line-height: 1.1875rem;
+    --body-font-size: 1rem;
+
+    /* element specific vars */
+    --filter-group-title-margin-bottom: 1.5625rem;
+    --block-editorial-p-max-width: 100%;
   }
 }

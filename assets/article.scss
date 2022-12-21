@@ -2,10 +2,11 @@
 
 .block-editorial {
   padding: var(--spacing) 0 7.5rem;
+  max-width: var(--block-editorial-p-max-width);
 
-  @include sm(min) {
-    p {
-      max-width: 50%;
-    }
-  }
+  // @include sm(min) {
+  //   p {
+  //     max-width: 50%;
+  //   }
+  // }
 }

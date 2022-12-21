@@ -103,14 +103,15 @@
 
 .filter-group {
   .title {
+    margin-bottom: var(--filter-group-title-margin-bottom);
 
-    @include sm(min) {
-      margin-bottom: 1.25rem;
-    }
+    // @include sm(min) {
+    //   margin-bottom: 1.25rem;
+    // }
 
-    @include sm(max) {
-      margin-bottom: 1.5625rem;
-    }
+    // @include sm(max) {
+    //   margin-bottom: 1.5625rem;
+    // }
   }
 
   button {

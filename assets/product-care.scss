@@ -3,14 +3,15 @@
 
 .product-care {
   padding: var(--spacing);
+  margin-bottom: var(--product-care-margin-bottom);
 
-  @include sm(min) {
-    margin-bottom: 10rem;
-  }
+  // @include sm(min) {
+  //   margin-bottom: 10rem;
+  // }
 
-  @include sm(max) {
-    margin-bottom: 6.25rem;
-  }
+  // @include sm(max) {
+  //   margin-bottom: 6.25rem;
+  // }
 
   .row {
     >div {
@@ -22,9 +23,13 @@
     }
   }
 
-  @include lg(min) {
-    p {
-      max-width: 50%;
-    }
+  p {
+    max-width: var(--product-care-p-max-width);
   }
+
+  // @include lg(min) {
+  //   p {
+  //     max-width: 50%;
+  //   }
+  // }
 }

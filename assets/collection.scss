@@ -9,36 +9,43 @@
   gap: var(--spacing);
   row-gap: var(--row-gap);
 
-  @include sm(min) {
-    >div {
-      position: relative;
-      padding-bottom: 2rem;
-    }
+  // @include sm(min) {
+  //   >div {
+  //     position: relative;
+  //     padding-bottom: 2rem;
+  //   }
+  // }
+  >div {
+    position: var(--css-grid-div-position);
+    padding-bottom: var(--css-grid-div-padding-bottom);
   }
 }
 
 .collection--empty {
-  @include sm(min) {
-    height: 70vh;
-  }
+  height: var(--collection-empty-height);
 
-  @include sm(max) {
-    height: 85vh;
-  }
+  // @include sm(min) {
+  //   height: 70vh;
+  // }
+
+  // @include sm(max) {
+  //   height: 85vh;
+  // }
 }
 
 .grid-element-anchor {
   display: block;
   width: 100%;
   height: 100%;
+  margin-bottom: var(--grid-element-anchor-margin-bottom);
 
-  @include sm(min) {
-    margin-bottom: $md-spacing;
-  }
+  // @include sm(min) {
+  //   margin-bottom: $md-spacing;
+  // }
 
-  @include sm(max) {
-    margin-bottom: 1rem;
-  }
+  // @include sm(max) {
+  //   margin-bottom: 1rem;
+  // }
 }
 
 .grid-product-image {
@@ -52,9 +59,11 @@
 .t-collection {
   section {
     p.grid-element-title {
-      @include sm(max) {
-        margin-bottom: 0;
-      }
+      margin-bottom: var(--collection-template-section-p-margin-bottom);
+
+      // @include sm(max) {
+      //   margin-bottom: 0;
+      // }
     }
   }
 }

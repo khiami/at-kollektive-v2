@@ -113,11 +113,12 @@ nav {
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    gap: var(--nav-ul-gap);
     row-gap: .5rem;
 
-    @include sm(min) {
-      gap: 1rem;
-    }
+    // @include sm(min) {
+    //   gap: 1rem;
+    // }
   }
 
   &.n-level {

@@ -249,15 +249,19 @@ dt {
   width: 100%;
 }
 
-@include sm(max) {
-  .el-block-reverse {
-    flex-direction: column-reverse;
-    gap: 1rem;
-  }
+// @include sm(max) {
+//   .el-block-reverse {
+//     flex-direction: column-reverse;
+//     gap: 1rem;
+//   }
+// }
+.el-block-reverse {
+  flex-direction: var(--el-block-reverse-flex-direction);
+  gap: var(--el-block-reverse-gap);
 }
 
 details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 
 

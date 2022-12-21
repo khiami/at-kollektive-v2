@@ -88,17 +88,21 @@
   justify-content: space-between;
   align-items: center;
 
-  @include sm(min) {
-    .open & {
-      margin-bottom: 3.125rem;
-    }
+  .open & {
+    margin-bottom: var(--tools-header-margin-bottom);
   }
 
-  @include sm(max) {
-    .open & {
-      margin-bottom: var(--spacing);
-    }
-  }
+  // @include sm(min) {
+  //   .open & {
+  //     margin-bottom: 3.125rem;
+  //   }
+  // }
+
+  // @include sm(max) {
+  //   .open & {
+  //     margin-bottom: var(--spacing);
+  //   }
+  // }
 }
 
 .filter-group {
@@ -123,11 +127,12 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  gap: var(--filter-selector-gap);
   max-height: 9rem;
 
-  @include sm(max) {
-    gap: 0.5rem;
-  }
+  // @include sm(max) {
+  //   gap: 0.5rem;
+  // }
 
   >li {
     &.active {

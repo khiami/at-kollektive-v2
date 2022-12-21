@@ -3,16 +3,18 @@
 product-recommendations {
   display: flex;
   flex-direction: column;
+  margin: var(--product-recommendations-margin);
   padding: var(--spacing);
   width: 100%;
 
-  @include sm(min) {
-    margin: 10rem auto 10.625rem;
-  }
 
-  @include sm(max) {
-    margin: 3.125rem auto 4.625rem;
-  }
+  // @include sm(min) {
+  //   margin: 10rem auto 10.625rem;
+  // }
+
+  // @include sm(max) {
+  //   margin: 3.125rem auto 4.625rem;
+  // }
   
   .media {
     margin-bottom: 1.25rem;

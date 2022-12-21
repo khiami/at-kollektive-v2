@@ -22,9 +22,11 @@
 
 body {
 
-  &.collection-tools-open,
-  &.header-open {
-    overflow: hidden;
+  @include sm(max) {
+    &.collection-tools-open,
+    &.header-open {
+      overflow: hidden;
+    }
   }
 
   @include sm(max) {

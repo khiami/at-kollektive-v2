@@ -391,7 +391,9 @@
       
       // bootstrap
       if (lastPageYOffset===null) lastPageYOffset = pageYOffset;
-
+      
+      if (document.body?.classList) document.body.dataset.scrollDirection = down ? 'down':'up';
+      
       // direction logic
       if (!down) {
 
@@ -403,7 +405,7 @@
         topDown = 0;
         
       } else {
-
+        
         topDown = topDown - (pageYOffset - lastPageYOffset);
         topDown = cap(topDown, -limit, 0);
         

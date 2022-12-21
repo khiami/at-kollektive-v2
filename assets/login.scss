@@ -9,6 +9,30 @@
   h1 {
     margin-bottom: 3.125rem;
   }
+
+  .field {
+    &+.field {
+      margin-top: 0.5625rem;
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+    }
+
+    input {
+      border: none;
+
+      &::placeholder {
+        color: rgb(0 0 0 / 30%);
+      }
+
+    }
+  }
 }
 
 #recover {
@@ -35,34 +59,29 @@
   }
 }
 
-.field {
-  &+.field {
-    margin-top: 0.5625rem;
-  }
-
-  label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-  }
-
-  input {
-    border: none;
-
-    &::placeholder {
-      color: rgb(0 0 0 / 30%);
-    }
-  
-  }
-}
-
 .action-buttons {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5625rem;
   margin-top: 3.125rem;
+}
+
+.form__message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: .5rem;
+
+  svg {
+    max-width: 1.5rem;
+  }
+}
+
+.errors {
+  margin-bottom: var(--spacing);
+}
+
+[autofocus] {
+  outline: none;
 }

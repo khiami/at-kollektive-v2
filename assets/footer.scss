@@ -24,6 +24,10 @@ footer {
       }
     }
   }
+
+  .list-menu__item--link {
+    display: flex;
+  }
 }
 
 .footer {
@@ -75,6 +79,7 @@ footer {
       visibility: hidden;
       opacity: 0;
       pointer-events: none;
+      overflow: hidden;
     }
 
     input {

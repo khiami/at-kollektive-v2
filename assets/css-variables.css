@@ -37,7 +37,7 @@
     --tools-header-margin-bottom: 3.125rem;
     --filter-selector-gap: 0;
     --product-care-margin-bottom: 10rem;
-    --product-care-p-max-width: 100%;
+    --product-care-p-max-width: 50%;
     --cart-template-main-flex-direction: row;
     --cart-template-main-gap: 15vmax;
     --nav-ul-gap: 1rem;
@@ -80,7 +80,7 @@
     --tools-header-margin-bottom: var(--spacing);
     --filter-selector-gap: .5rem;
     --product-care-margin-bottom: 6.25rem;
-    --product-care-p-max-width: 50%;
+    --product-care-p-max-width: 100%;
     --cart-template-main-flex-direction: column-reverse;
     --cart-template-main-gap: 4.375rem;
     --el-block-reverse-flex-direction: column-reverse;

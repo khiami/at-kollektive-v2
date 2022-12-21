@@ -5,8 +5,18 @@
   background-color: white;
   transition: top .4s;
 
-  @include bodyScrolling(up) {
-    top: 8.4375rem; //135px; //$block-size * 2;
+  @include sm(min) {
+    @include bodyScrolling(up) {
+      top: 8.4375rem;
+    }
+  }
+
+  @include sm(max) {
+    @include bodyScrolling(up) {
+      &:not(.open) & {
+        top: 6.2rem;
+      }
+    }
   }
 
   ul {

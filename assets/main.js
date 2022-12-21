@@ -374,13 +374,17 @@
 
     let lastPageYOffset = null;
     let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
-    let limit = 71.5;
+    let limit = window.innerWidth < 576 ? 40:71.5;
     let topUp = -limit;
     let topDown = -limit;
     let header = query('.section-header');
+    let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:71.5;
 
-    // deactivate for mobile
-    if (window.mobile) return;
+    // when resized
+    window.addEventListener('resize', updateLimit.bind(null));
+
+    // mobile check
+    // if (window.mobile) return;
 
     topUp = parseInt(getComputedStyle(header).top);
 

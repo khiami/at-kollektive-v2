@@ -370,42 +370,48 @@
     });
   }
 
-  let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
-
   function stickyHeader() {
 
-    let header = query('header');
-    let collectionTools = query('.collection-tools');
-    let paddingTop = 0;
+    let lastPageYOffset = null;
+    let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
     let limit = 71.5;
+    let topUp = -limit;
+    let topDown = 0;
+    let header = query('.section-header');
+
+    // deactivate for mobile
+    if (window.mobile) return;
+
+    topUp = parseInt(getComputedStyle(header).top);
 
     window.addEventListener('scroll', ()=> {
 
-      let top = window.pageYOffset??document.documentElement.scrollTop;
-      let down = (top) > scrollTop;
+      let { pageYOffset } = window;
+      let down = (pageYOffset??document.documentElement.scrollTop) > scrollTop;
       
-      // logg('top', top);
+      // bootstrap
+      if (lastPageYOffset===null) lastPageYOffset = pageYOffset;
 
+      // direction logic
       if (!down) {
-        
-        paddingTop = cap(paddingTop+1, 0, limit);
 
-        // up
-        if (top >= limit) {
-          header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
-          collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
-        } else {
-          header.style.transform = `translate3d(0, ${top}px, 0)`;
-          collectionTools.style.transform = `translate3d(0, ${top}px, 0)`;
-        }
+        topUp = pageYOffset-lastPageYOffset;
+        topUp = cap(topUp, -limit, limit);
+        topUp = limit + topUp;
+        
+        header.style.top = `${-topUp}px`;
+        topDown = 0;
         
       } else {
+
+        topDown = topDown - (pageYOffset - lastPageYOffset);
+        topDown = cap(topDown, -limit, 0);
         
-        paddingTop = cap(paddingTop-1, 0);
+        // critical to reset 'lastPageYOffset' for when scrolling 'up'
+        lastPageYOffset = pageYOffset;
 
         // down
-        header.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
-        collectionTools.style.transform = `translate3d(0, ${paddingTop}px, 0)`;
+        header.style.top = `${topDown}px`;
         
       }
 
@@ -480,7 +486,7 @@
 
       sizeGuideToggle();
 
-      //stickyHeader();
+      stickyHeader();
 
       tabContentToggle();
 

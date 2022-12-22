@@ -125,12 +125,19 @@
   }
 }
 
-.account-overview {
+.section-overview {
   h2 {
     margin-bottom: 1.5625rem;
   }
 }
 
 .update-address {
+  display: flex;
   margin-top: 3.125rem;
+}
+
+.orders-overview {
+  p {
+    margin-bottom: 0.625rem;
+  }
 }

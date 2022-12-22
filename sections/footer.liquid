@@ -28,9 +28,16 @@
                     <ul class="footer-block__details-content list-unstyled">
                       {%- for link in block.settings.menu.links -%}
                         <li>
-                          <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}" {% if link.url contains "http" %} target="_blank" rel="noopener noreferrer"{% endif %}>
-                            {{ link.title }}
-                          </a>
+
+                          {% if link.url == routes.account_login_url and customer.id != blank %}
+                            <a href="{{ routes.account_url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}" {% if link.url contains "http" %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                              Account
+                            </a>
+                          {% else %}
+                            <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}" {% if link.url contains "http" %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                              {{ link.title }}
+                            </a>
+                          {% endif %}
                         </li>
                       {%- endfor -%}
                     </ul>

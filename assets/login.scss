@@ -6,8 +6,8 @@
   padding: var(--spacing);
   min-height: 80vh;
 
-  h1 {
-    margin-bottom: 3.125rem;
+  form {
+    margin-top: 3.125rem;
   }
 
   .field {
@@ -26,6 +26,14 @@
 
     input {
       border: none;
+      white-space: nowrap;
+
+      &,
+      &:focus,
+      &:hover,
+      &:active {
+        outline: none;
+      }
 
       &::placeholder {
         color: rgb(0 0 0 / 30%);
@@ -73,8 +81,13 @@
   gap: 0.5rem;
   margin-bottom: .5rem;
 
+  &+.field {
+    margin-top: var(--spacing);
+  }
+
   svg {
     width: 1.5rem;
+    aspect-ratio: 1;
   }
 }
 

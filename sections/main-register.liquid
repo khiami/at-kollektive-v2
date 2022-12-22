@@ -1,19 +1,3 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 <div class="customer register section-{{ section.id }}-padding">
   <svg style="display: none">
     <symbol id="icon-error" viewBox="0 0 13 13">
@@ -23,18 +7,23 @@
       <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
     </symbol>
   </svg>
-  <h1>
-    {{ 'customer.register.title' | t }}
-  </h1>
+
+  <div class="page-breadcrumb">
+    <ul class="breadcrumb">
+      <li><a href="{{ routes.account_login_url }}">{{ 'customer.login_page.title' | t }}</a></li>
+      <li><a href="{{ routes.account_register_url }}">{{ 'customer.register.title' | t }}</a></li>
+    </ul>
+  </div>
+  <h1 class="hidden">{{ 'customer.register.title' | t }}</h1>
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
-        <svg aria-hidden="true" focusable="false">
+        <svg aria-hidden="true" focusable="false" role="presentation">
           <use href="#icon-error" />
         </svg>
         {{ 'templates.contact.form.error_heading' | t }}
       </h2>
-      <ul>
+      <ul> 
         {%- for field in form.errors -%}
           <li>
             {%- if field == 'form' -%}
@@ -49,14 +38,12 @@
         {%- endfor -%}
       </ul>
     {%- endif -%}
-    <div class="field">
+    <div class="field">      
       <input
         type="text"
         name="customer[first_name]"
         id="RegisterForm-FirstName"
-        {% if form.first_name %}
-          value="{{ form.first_name }}"
-        {% endif %}
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
         autocomplete="given-name"
         placeholder="{{ 'customer.register.first_name' | t }}"
       >
@@ -69,9 +56,7 @@
         type="text"
         name="customer[last_name]"
         id="RegisterForm-LastName"
-        {% if form.last_name %}
-          value="{{ form.last_name }}"
-        {% endif %}
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
         autocomplete="family-name"
         placeholder="{{ 'customer.register.last_name' | t }}"
       >
@@ -79,14 +64,12 @@
         {{ 'customer.register.last_name' | t }}
       </label>
     </div>
-    <div class="field">
+    <div class="field">      
       <input
         type="email"
         name="customer[email]"
         id="RegisterForm-email"
-        {% if form.email %}
-          value="{{ form.email }}"
-        {% endif %}
+        {% if form.email %} value="{{ form.email }}"{% endif %}
         spellcheck="false"
         autocapitalize="off"
         autocomplete="email"
@@ -103,14 +86,13 @@
     </div>
     {%- if form.errors contains 'email' -%}
       <span id="RegisterForm-email-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
+        <svg aria-hidden="true" focusable="false" role="presentation">
           <use href="#icon-error" />
         </svg>
-        {{ form.errors.translated_fields.email | capitalize }}
-        {{ form.errors.messages.email }}.
+        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
       </span>
     {%- endif -%}
-    <div class="field">
+    <div class="field">     
       <input
         type="password"
         name="customer[password]"
@@ -128,22 +110,24 @@
     </div>
     {%- if form.errors contains 'password' -%}
       <span id="RegisterForm-password-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
+        <svg aria-hidden="true" focusable="false" role="presentation">
           <use href="#icon-error" />
         </svg>
-        {{ form.errors.translated_fields.password | capitalize }}
-        {{ form.errors.messages.password }}.
+        {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
       </span>
     {%- endif -%}
-    <button>
-      {{ 'customer.register.submit' | t }}
-    </button>
+
+    <div class="action-buttons regular-size">
+      <button>{{ 'customer.register.submit' | t }}</button>
+    </div>
   {%- endform -%}
 </div>
+
 
 {% schema %}
 {
   "name": "t:sections.main-register.name",
+  "class": "main-register account-related",
   "settings": [
     {
       "type": "header",

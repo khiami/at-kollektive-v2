@@ -8,13 +8,13 @@
 
   <div class="overview">
     <div class="account-overview">
+      <h2>Account details</h2>
+      
       {{ customer.default_address | format_address }}
-      <a href="{{ routes.account_addresses_url }}" class="addresses-anchor">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
+      <a href="{{ routes.account_addresses_url }}" class="addresses-anchor">Update address</a>
     </div>
   
-    <div class="order-overview">
+    <div class="orders-overview">
       <h2>{{ 'customer.orders.title' | t }}</h2>
   
       {% paginate customer.orders by 20 %}

@@ -107,6 +107,26 @@
   }
 }
 
-.account-details {
+.overview {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 3.125rem;
+
+  .orders-overview {
+    flex: 1 1 70%;
+    width: 70%;
+  }
+
+  .account-overview {
+    flex: 1 1 30%;
+    width: 30%;
+  }
+}
+
+.account-overview {
+  h2 {
+    margin-bottom: 1.5625rem;
+  }
 }

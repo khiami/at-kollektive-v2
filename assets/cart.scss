@@ -49,7 +49,7 @@ cart-items {
     position: sticky;
     top: $block-size;
     transition: top .4s;
-  
+
     @include bodyScrolling(up) {
       top: $block-size * 2;
     }
@@ -111,6 +111,7 @@ quantity-input {
   display: flex;
   margin-top: .5rem;
 
+  .label,
   label {
     width: var(--product-quantity-label-width);
   }
@@ -153,4 +154,38 @@ input[type=number] {
 .cart__footer_wrapper {
   isolation: isolate;
   z-index: 0;
+}
+
+.main-order {
+  .cart-product-image {
+    width: max(30vw, 25rem);
+    height: auto;
+    max-width: 100%;
+    min-width: 10rem;
+    object-fit: contain;
+  }
+}
+
+.account-order-details {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: var(--spacing);
+
+  .order-breakdown {
+    flex: 1 0 70%;
+    width: 70%;
+  }
+}
+
+.order-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+  flex: 1 0 30%;
+  width: 30%;
+
+  h2 {
+    margin-bottom: 1.5625rem;
+  }
 }

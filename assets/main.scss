@@ -281,6 +281,17 @@ details summary::-webkit-details-marker {
   text-decoration: underline;
 }
 
+.visually-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
 @import "./header.scss";
 @import "./header-responsive.scss";
 @import "./footer.scss";

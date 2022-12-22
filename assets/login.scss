@@ -192,3 +192,13 @@
 .action-related {
   padding: var(--spacing) 0;
 }
+
+
+.account-table {
+  width: 100%;
+  text-align: left;
+
+  th {
+    padding-bottom: 1.5625rem;
+  }
+}

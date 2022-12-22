@@ -28,7 +28,7 @@
                 <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
                 <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
                 <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th id="ColumnFulfillment" scope="col" role="columnheader">Status</th>
                 <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
               </tr>
             </thead>
@@ -36,12 +36,12 @@
               {%- for order in customer.orders -%}
                 <tr role="row">
                   <td id="RowOrder" role="cell" headers="ColumnOrder" data-label="{{ 'customer.orders.order_number' | t }}">
-                    <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                    <a href="{{ order.customer_url }}" class="text-underline hover-underline" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
                   </td>
                   <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: "%m.%d.%Y" }}</td>
                   <td headers="RowOrder ColumnPayment" role="cell" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
                   <td headers="RowOrder ColumnFulfillment" role="cell" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-                  <td headers="RowOrder ColumnTotal" class="text-align-right" role="cell" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money_with_currency }}</td>
+                  <td headers="RowOrder ColumnTotal" class="text-align-right" role="cell" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
                 </tr>
               {%- endfor -%}
             </tbody>

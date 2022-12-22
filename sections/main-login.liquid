@@ -1,7 +1,16 @@
 <div class="customer login section-{{ section.id }}-padding">
-  <h1 id="recover" tabindex="-1">{{ 'customer.recover_password.title' | t }}</h1>
+  {% comment %} <h1 id="recover" tabindex="-1">{{ 'customer.recover_password.title' | t }}</h1> {% endcomment %}
+
+  <div id="recover">
+    <div class="page-breadcrumb">
+      <ul class="breadcrumb">
+        <li><a href="{{ routes.account_login_url }}">{{ 'customer.login_page.title' | t }}</a></li>
+        <li><a href="{{ routes.account_recover_url }}">{{ 'customer.reset_password.title' | t }}</a></li>
+      </ul>
+    </div>
+  </div>
+  
   <div>
-    <p>{{ 'customer.recover_password.subtext' | t }}</p>
 
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
@@ -38,8 +47,8 @@
       {%- endif -%}
 
       <div class="action-buttons regular-size">
-        <button>{{ 'customer.login_page.submit' | t }}</button>
-        <a href="#login">{{ 'customer.login_page.cancel' | t }}</a>
+        <button class="text-underline">{{ 'customer.login_page.submit' | t }}</button>
+        <p>{{ 'customer.recover_password.subtext' | t }}</p>
       </div>
 
     {%- endform -%}
@@ -112,7 +121,7 @@
       {%- endif -%}
 
       <div class="action-buttons regular-size">
-        <button class="text-decoration-underline">{{ 'customer.login_page.sign_in' | t }}</button>
+        <button class="text-underline">{{ 'customer.login_page.sign_in' | t }}</button>
       </div>
       
       <div class="action-buttons small-size">

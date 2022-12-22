@@ -277,6 +277,9 @@ details summary::-webkit-details-marker {
   display: none;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
 
 @import "./header.scss";
 @import "./header-responsive.scss";

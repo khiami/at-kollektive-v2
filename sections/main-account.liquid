@@ -1,12 +1,14 @@
 <div class="customer account">
 
   <div class="tools-header">
-    <h1 class="customer__title">Account</h1>
+    <ul class="breadcrumb">
+      <li><a href="{{ routes.account_url }}">Account</a></li>
+    </ul>
     <a href="{{ routes.account_logout_url }}" class="text-underline hover-underline">Logout</a>
   </div>
 
 
-  <div class="overview">
+  <div class="overview account-related-content">
     <div class="section-overview account-overview">
       <h2>Account details</h2>
       

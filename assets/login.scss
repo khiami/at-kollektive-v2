@@ -67,14 +67,6 @@
   }
 }
 
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5625rem;
-  margin-top: 3.125rem;
-}
-
 .form__message {
   display: flex;
   align-items: center;
@@ -107,12 +99,15 @@
   }
 }
 
+.account-related-content {
+  margin-top: 3.125rem;
+}
+
 .overview {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 3.125rem;
 
   .orders-overview {
     flex: 1 1 70%;
@@ -140,4 +135,60 @@
   p {
     margin-bottom: 0.625rem;
   }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 3.125rem;
+
+  form & {
+    margin-top: 2rem;
+  }
+
+  &:not(.custom-gap) {
+    gap: 0.5625rem;
+  }
+
+  &:not(.custom-flex-direction) {
+    flex-direction: column;
+  }
+
+  &:has(>button[aria-expanded=true]) {
+    &+.action-related {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+
+  &:has(>button[aria-expanded=false]) {
+    &+.action-related {
+      display: none;
+    }
+  }
+}
+
+.address-count {
+  margin-bottom: 1.5625rem;
+}
+
+.main-addresses {
+  .action-buttons {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+}
+
+.main-addresses-list {
+  li {
+    >p {
+      min-height: 10.5rem;
+    }
+  }
+}
+
+.action-related {
+  padding: var(--spacing) 0;
 }

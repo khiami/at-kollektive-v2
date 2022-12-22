@@ -52,7 +52,6 @@
     --grid-element-anchor-margin-bottom: var(--spacing);
     --cart-product-size-margin-top: 3.125rem;
     --cart-product-variant-width: 8rem;
-    --product-quantity-margin-top: 0.3125rem;
     --quantity-button-width: 2rem;
     --product-quantity-label-width: 8rem;
     --cart-remove-button-margin-top: 3.125rem;
@@ -100,7 +99,6 @@
     --cart-product-variant-width: 5rem;
     --product-details-flex: 1 0 50%;
     --quantity-button-width: .5rem;
-    --product-quantity-margin-top: .5rem;
     --product-quantity-label-width: 5rem;
     --cart-remove-button-margin-top: 1.875rem;
     --cart-ctas-margin-top: 2.5rem;

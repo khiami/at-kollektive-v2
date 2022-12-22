@@ -28,8 +28,9 @@ cart-items {
     img {
       width: max(30vw, 25rem);
       height: auto;
-      object-fit: contain;
       max-width: 100%;
+      min-width: 10rem;
+      object-fit: contain;
     }
   }
 }
@@ -108,7 +109,7 @@ quantity-input {
 
 .product-quantity {
   display: flex;
-  margin-top: var(--product-quantity-margin-top);
+  margin-top: .5rem;
 
   label {
     width: var(--product-quantity-label-width);

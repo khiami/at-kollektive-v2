@@ -60,10 +60,6 @@
   section {
     p.grid-element-title {
       margin-bottom: var(--collection-template-section-p-margin-bottom);
-
-      // @include sm(max) {
-      //   margin-bottom: 0;
-      // }
     }
   }
 }

@@ -210,7 +210,7 @@
 
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {% comment %} {{ 'css-variables.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {% if template.name == 'article' %}{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}{% endif %}
+    {% if template.name == 'article' or template.name == 'product' or template.name == 'article' %}{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}{% endif %}
     {{ 'main.css' | asset_url | stylesheet_tag }}
 
 

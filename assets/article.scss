@@ -6,10 +6,33 @@
   p {
     max-width: var(--block-editorial-p-max-width);
   }
+}
 
-  // @include sm(min) {
-  //   p {
-  //     max-width: 50%;
-  //   }
-  // }
+[class*=container] {
+  >.row {
+    >.row {
+      &:has(.sticky-title) {
+        position: var(--article-container-row-with-sticky-title-display);
+        background-color: white;
+        z-index: 10;
+        transition: top .4s;
+
+        @include bodyScrolling(up) {
+          top: 8.4rem;
+        }
+
+        @include bodyScrolling(down) {
+          top: 4rem;
+        }
+      }
+    }
+  }
+}
+
+.sticky-title {
+  padding: var(--spacing) 0;
+
+  p {
+    margin: 0;
+  }
 }

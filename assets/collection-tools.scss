@@ -19,6 +19,10 @@
     }
   }
 
+  .collection-selector {
+    flex-direction: column;
+  }
+
   ul {
     display: flex;
     list-style: none;
@@ -175,7 +179,6 @@
 @include sm(max) {
   .collection-selector {
     display: flex;
-    flex-direction: column;
     gap: .5rem;
   }
 }

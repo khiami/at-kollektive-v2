@@ -44,6 +44,7 @@
     --close-submenu-display: none;
     --footer-grid-height: 95vh;
     --footer-grid-min-height: 35rem;
+    --collection-template-section-p-margin-bottom: var(--spacing);
     --grid-footer-grid-even-div-justify-content: flex-end;
     --grid-footer-grid-even-div-gap: 1rem;
     --css-grid-div-position: relative;
@@ -56,6 +57,7 @@
     --product-quantity-label-width: 8rem;
     --cart-remove-button-margin-top: 3.125rem;
     --cart-ctas-margin-top: 5.625rem;
+    --article-container-row-with-sticky-title-display: sticky;
   }
 }
 

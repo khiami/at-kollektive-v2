@@ -96,6 +96,11 @@
     position: absolute;
     bottom: 3rem;
     left: 0;
+    transition: bottom .4s;
+
+    .footer.open & {
+      bottom: 6rem;
+    }
   }
 }
 

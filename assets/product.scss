@@ -134,10 +134,6 @@
 }
 
 .product-metadata {
-  margin-top: var(--product-metadata-margin-top);
-  // @include sm(min) {
-  //   margin-top: 10rem;
-  // }
 
   @include sm(max) {
     display: flex;
@@ -184,7 +180,7 @@
 
 .content-tab-btn {
   white-space: nowrap;
-  
+
   &.active {
     text-decoration: underline;
   }
@@ -193,10 +189,27 @@
 .product-info {
   position: sticky;
   top: $block-size;
-  transition: top .4s;
+  height: auto;
+  transition: top .4s, height .4s;
+
+  @include sm(min) {
+    body:not([data-scroll-direction]) & {
+      height: calc(100vh - 68px - var(--spacing));
+    }
+  }
 
   @include bodyScrolling(up) {
     top: $block-size * 2;
+
+    @include sm(min) {
+      height: calc(100vh - 136px - var(--spacing));
+    }
+  }
+
+  @include bodyScrolling(down) {
+    @include sm(min) {
+      height: calc(100vh - 68px - var(--spacing));
+    }
   }
 
   @include sm(max) {
@@ -258,7 +271,7 @@
   background-color: white;
   z-index: 10;
   transition: top .4s;
-  
+
   @include bodyScrolling(up) {
     top: remToPixels(4) + $block-size;
   }
@@ -305,8 +318,13 @@ product-form {
 .tab-mobile-btn {
   display: var(--tab-mobile-btn-display);
 }
-// @include sm(min) {
-//   .tab-mobile-btn {
-//     display: none;
-//   }
-// }
+
+@include sm(min) {
+  .product-info-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: var(--product-metadata-margin-top);
+  }
+}

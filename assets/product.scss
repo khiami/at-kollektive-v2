@@ -134,6 +134,7 @@
 }
 
 .product-metadata {
+  margin-top: var(--product-metadata-margin-top);
 
   @include sm(max) {
     display: flex;
@@ -187,7 +188,7 @@
 }
 
 .product-info {
-  position: sticky;
+  position: var(--product-info-display);
   top: $block-size;
   height: auto;
   transition: top .4s, height .4s;
@@ -263,7 +264,7 @@
 }
 
 .image-index {
-  position: sticky;
+  position: var(--product-image-index-display);
   display: var(--image-index-display);
   top: 4rem;
   width: 100%;
@@ -326,5 +327,31 @@ product-form {
     justify-content: space-between;
     height: 100%;
     gap: var(--product-metadata-margin-top);
+  }
+}
+
+variant-radios {
+  fieldset {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.shopify-variant {
+  position: relative;
+
+  input {
+    position: absolute;
+    inset: 0;
+    border: none;
+    outline: none;
+    -webkit-apperance: none;
+    appearance: none;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked+label {
+      text-decoration: underline;
+    }
   }
 }

@@ -58,6 +58,11 @@
     --cart-remove-button-margin-top: 3.125rem;
     --cart-ctas-margin-top: 5.625rem;
     --article-container-row-with-sticky-title-display: sticky;
+    --footer-block-menu-display: sticky;
+    --cart-footer-wrapper-display: sticky;
+    --product-care-row-div-display: sticky;
+    --product-info-display: sticky;
+    --product-image-index-display: sticky;
   }
 }
 
@@ -78,7 +83,7 @@
     --product-image-img-max-width: none;
     --image-index-display: none;
     --tab-mobile-btn-display: block;
-    --product-metadata-margin-top: 4.375rem;
+    --product-metadata-margin-top: 5rem;
     --tools-header-margin-bottom: var(--spacing);
     --filter-selector-gap: .5rem;
     --product-care-margin-bottom: 6.25rem;

@@ -5,18 +5,10 @@
   padding: var(--spacing);
   margin-bottom: var(--product-care-margin-bottom);
 
-  // @include sm(min) {
-  //   margin-bottom: 10rem;
-  // }
-
-  // @include sm(max) {
-  //   margin-bottom: 6.25rem;
-  // }
-
   .row {
     >div {
       >div {
-        position: sticky;
+        position: var(--product-care-row-div-display);
         top: $block-size;
         z-index: 10;
         transition: top .4s;
@@ -31,10 +23,4 @@
   p {
     max-width: var(--product-care-p-max-width);
   }
-
-  // @include lg(min) {
-  //   p {
-  //     max-width: 50%;
-  //   }
-  // }
 }

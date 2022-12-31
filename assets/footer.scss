@@ -176,7 +176,7 @@ footer {
 }
 
 .footer-block--menu {
-  position: sticky;
+  position: var(--footer-block-menu-display);
   top: $block-size;
   z-index: 10;
 

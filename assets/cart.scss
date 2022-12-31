@@ -46,7 +46,7 @@ cart-items {
   padding: var(--spacing);
 
   >div {
-    position: sticky;
+    position: var(--cart-footer-wrapper-display);
     top: $block-size;
     transition: top .4s;
 

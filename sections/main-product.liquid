@@ -12,17 +12,26 @@
           {% endif %}
         </li>
         
+        {% if product.options_with_values != blank %}
         <li class="product-size-variants">
-          {% for option in product.options_with_values %}
-            {% if option.values != blank %}
-              {% for size in option.values %}
-                <button class="product-size">{{ size | capitalize }}</button>
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
-          <button class="size-guide-open underline-on-hover">Size guide</button>
-          <button class="size-guide-close underline-on-hover">Close</button>
+
+          {% comment %} {% if product.options_with_values[0].values.size == 1 %}
+            <button class="product-size text-underline">Made to order only</button>
+          {% endif %} {% endcomment %}
+          {% if product.options_with_values[0].values.size > 1 %}
+            {% for option in product.options_with_values %}
+              {% if option.values != blank %}
+                {% for size in option.values %}
+                  <button class="product-size underline-on-hover">{{ size | capitalize }}</button>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            <button class="size-guide-open underline-on-hover">Size guide</button>
+            <button class="size-guide-close underline-on-hover">Close</button>
+          {% endif %}
+          
         </li>
+      {% endif %}
 
         <li class="product-size-guide">
           <div>
@@ -105,7 +114,18 @@
               <div class="product-form__buttons">
                 <button type="submit" name="add" class="action-link anchor-style"
                 {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
-                  <span class="product-form-btn-span text-decoration-underline" data-for="{{ product.selected_or_first_available_variant.id }}">{%- if product.selected_or_first_available_variant.available -%}Add to cart{%- else -%}Sold out{%- endif -%}</span>
+                  <span class="product-form-btn-span text-decoration-underline" data-for="{{ product.selected_or_first_available_variant.id }}">{%- if product.selected_or_first_available_variant.available -%}
+
+                    {% assign label = 'Add to cart' %}
+                    {% if product.options_with_values != blank %}
+                      {% if product.options_with_values[0].values.size == 1 %}
+                        {% assign label = 'Made to order only' %}
+                      {% endif %}
+                    {% endif %}
+
+                    {{ label }}
+                    
+                    {%- else -%}Sold out{%- endif -%}</span>
                   <div class="loading-overlay__spinner hidden">
                     <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                       <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>

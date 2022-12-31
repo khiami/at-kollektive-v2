@@ -15,23 +15,26 @@
         {% if product.options_with_values != blank %}
         <li class="product-size-variants">
 
-          {% comment %} {% if product.options_with_values[0].values.size == 1 %}
-            <button class="product-size text-underline">Made to order only</button>
-          {% endif %} {% endcomment %}
-          {% if product.options_with_values[0].values.size > 1 %}
+          {% if product.options_with_values[0].values.size > 1 and 1 != 1 %}
             {% for option in product.options_with_values %}
               {% if option.values != blank %}
                 {% for size in option.values %}
                   <button class="product-size underline-on-hover">{{ size | capitalize }}</button>
                 {% endfor %}
               {% endif %}
-            {% endfor %}
+            {% endfor %} 
+
+
+            <div class="product-variant-picker">
+              {% render 'product-variant-picker', block: block, product: product %}
+            </div>
+
             <button class="size-guide-open underline-on-hover">Size guide</button>
             <button class="size-guide-close underline-on-hover">Close</button>
           {% endif %}
           
         </li>
-      {% endif %}
+        {% endif %}
 
         <li class="product-size-guide">
           <div>
@@ -123,8 +126,12 @@
                       {% endif %}
                     {% endif %}
 
+                    {% if product.has_only_default_variant %}
+                      {% assign label = 'Made to order only' %}
+                    {% endif %}
+
                     {{ label }}
-                    
+
                     {%- else -%}Sold out{%- endif -%}</span>
                   <div class="loading-overlay__spinner hidden">
                     <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -188,7 +195,29 @@
   "tag": "section",
   "class": "section section-product",
   "blocks": [
-
+    {
+      "type": "variant_picker",
+      "name": "t:sections.main-product.blocks.variant_picker.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+            },
+            {
+              "value": "button",
+              "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+            }
+          ],
+          "default": "button",
+          "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+        }
+      ]
+    }
   ],
   "settings": [
 

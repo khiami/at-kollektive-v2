@@ -3,13 +3,16 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "variant_picker": {
+        "5e445824-e85d-494f-92db-159ba88355ce": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
           }
         }
       },
+      "block_order": [
+        "5e445824-e85d-494f-92db-159ba88355ce"
+      ],
       "settings": {
       }
     },
@@ -31,7 +34,9 @@
       }
     },
     "product-care": {
-      "type": "product-care"
+      "type": "product-care",
+      "settings": {
+      }
     }
   },
   "order": [

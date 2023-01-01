@@ -8,26 +8,25 @@
   }
 }
 
-[class*=container] {
-  >.row {
-    >.row {
-      &:has(.sticky-title) {
-        position: var(--article-container-row-with-sticky-title-display);
-        background-color: white;
-        z-index: 10;
-        transition: top .4s;
+// :has is not yet working firefox
+// ref https://caniuse.com/css-has
+[class*=container] >.row>.row:has(.sticky-title) {}
 
-        @include bodyScrolling(up) {
-          top: 8.4rem;
-        }
+.has-sticky {
+  position: var(--article-container-row-with-sticky-title-display);
+  background-color: white;
+  z-index: 10;
+  transition: top .4s;
 
-        @include bodyScrolling(down) {
-          top: 4rem;
-        }
-      }
-    }
+  @include bodyScrolling(up) {
+    top: 8.4rem;
+  }
+
+  @include bodyScrolling(down) {
+    top: 4rem;
   }
 }
+
 
 .sticky-title {
   padding: var(--spacing) 0;

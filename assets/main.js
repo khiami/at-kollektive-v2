@@ -470,6 +470,16 @@
     })
   }
 
+  function hasStickyPolifyfill() {
+
+    let rowsWithSticky = listify('[class*=container]>.row>.row').filter(a=> query('.sticky-title', a));
+
+    if (rowsWithSticky?.length) {
+      rowsWithSticky.forEach(a=> a.classList.add('has-sticky'));
+    }
+
+  }
+
   document.addEventListener('DOMContentLoaded', ()=> {
 
       mainnav();
@@ -497,6 +507,9 @@
       tabContentToggle();
 
       productSizeToggle();
+
+      // css :has selector not working on firefox
+      hasStickyPolifyfill();
 
       scrollTo = document.documentElement.scrollTop;
 

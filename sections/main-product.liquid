@@ -14,29 +14,31 @@
         
 
         <li class="product-size-variants">
-          {%- unless product.has_only_default_variant -%}
-            <variant-radios
-              id="variant-radios-{{ section.id }}"
-              class="no-js-hidden"
-              data-section="{{ section.id }}"
-              data-url="{{ product.url }}"
-              {% if update_url == false %}data-update-url="false"{% endif %}
-              {{ block.shopify_attributes }}
-            >
-              {%- for option in product.options_with_values -%}
-                <fieldset class="js product-form__input">
-                  {% comment %} <legend class="form__label">{{ option.name }}</legend> {% endcomment %}
-                  {% render 'product-variant-options', product: product, option: option, block: block %}
-                </fieldset>
-              {%- endfor -%}
-              <script type="application/json">
-                {{ product.variants | json }}
-              </script>
-            </variant-radios>
+          {% if product.options_with_values[0].values.size > 1 %}
+            {%- unless product.has_only_default_variant -%}
+              <variant-radios
+                id="variant-radios-{{ section.id }}"
+                class="no-js-hidden"
+                data-section="{{ section.id }}"
+                data-url="{{ product.url }}"
+                {% if update_url == false %}data-update-url="false"{% endif %}
+                {{ block.shopify_attributes }}
+              >
+                {%- for option in product.options_with_values -%}
+                  <fieldset class="js product-form__input">
+                    {% comment %} <legend class="form__label">{{ option.name }}</legend> {% endcomment %}
+                    {% render 'product-variant-options', product: product, option: option, block: block %}
+                  </fieldset>
+                {%- endfor -%}
+                <script type="application/json">
+                  {{ product.variants | json }}
+                </script>
+              </variant-radios>
 
-            <button class="size-guide-open underline-on-hover">Size guide</button>
-            <button class="size-guide-close underline-on-hover">Close</button>
-          {% endunless %}
+              <button class="size-guide-open underline-on-hover">Size guide</button>
+              <button class="size-guide-close underline-on-hover">Close</button>
+            {% endunless %}
+          {% endif %}
         </li>
         
 

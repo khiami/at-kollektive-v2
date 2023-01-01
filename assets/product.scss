@@ -141,7 +141,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    // margin-top: 4.375rem;
 
     .tabs {
       display: none
@@ -191,6 +190,7 @@
   position: var(--product-info-display);
   top: $block-size;
   height: auto;
+  // height: calc(100vh - 152px - var(--spacing));
   transition: top .4s, height .4s;
 
   @include sm(min) {
@@ -199,19 +199,17 @@
     }
   }
 
-  @include bodyScrolling(up) {
-    top: $block-size * 2;
-
-    @include sm(min) {
+  @include sm(min) {
+    @include bodyScrolling(up) {
+      top: $block-size * 2;
       height: calc(100vh - 136px - var(--spacing));
     }
-  }
 
-  @include bodyScrolling(down) {
-    @include sm(min) {
+    @include bodyScrolling(down) {
       height: calc(100vh - 68px - var(--spacing));
     }
   }
+
 
   @include sm(max) {
     padding: 0 var(--spacing) var(--spacing);

@@ -136,7 +136,14 @@
                 </div>
                 <div class="product-variants hover-state">
                   {% for variant in card_product.variants %}
-                    <button class="product-variant underline-on-hover" {% unless variant.available %}disabled{% endunless %} id="variant-{{ variant.id }}">{{ variant.title | capitalize }}</button>
+
+                    {% assign variantUrl = card_product.url %}
+
+                    {% if card_product.options_with_values[0].values.size > 1 and card_product.has_only_default_variant == false %}
+                      {% assign variantUrl = card_product.url | append: '&variant=' | append: variant.id %}
+                    {% endif %}
+
+                    <a class="product-variant underline-on-hover" href="{{ variantUrl }}" {% unless variant.available %}disabled{% endunless %} id="variant-{{ variant.id }}">{{ variant.title | capitalize }}</a>
                   {% endfor %}
                 </div>
               </div>

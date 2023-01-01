@@ -1,28 +1,3 @@
-<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-article-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
-
-<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-article-card.css' | asset_url | stylesheet_tag }}</noscript>
-
-{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
 {%- liquid
   assign posts_displayed = section.settings.blog.articles_count
   if section.settings.post_limit <= section.settings.blog.articles_count
@@ -30,6 +5,24 @@
     assign posts_displayed = section.settings.post_limit
   endif
 -%}
+{% if section.settings.selectedPost != blank %}
+  {%- for article in section.settings.blog.articles %}
+
+    {% if article.title == section.settings.selectedPost %}
+      <article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="article-content" itemprop="articleBody">
+          <div class="container-fluid p-0">
+            <div class="row">
+              {{ article.content }}
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if section.settings.selectedPost == blank %}
 <div class="blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
   <div class="page-width-desktop isolate{% if posts_displayed < 3 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.heading == blank -%}
@@ -132,6 +125,7 @@
     {%- endif -%}
   </div>
 </div>
+{% endif %}
 
 {% schema %}
 {

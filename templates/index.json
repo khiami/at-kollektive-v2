@@ -4,6 +4,7 @@
       "type": "featured-blog",
       "settings": {
         "heading": "",
+        "selectedPost": "Campaign by Glen Luchford",
         "heading_size": "h1",
         "blog": "main",
         "post_limit": 4,

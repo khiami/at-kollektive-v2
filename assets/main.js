@@ -387,6 +387,14 @@
     // if (window.mobile) return;
 
     topUp = parseInt(getComputedStyle(header).top);
+    let tl = gsap.timeline();
+
+    tl.add(
+      gsap.to(header, { 
+        top: 0,
+        duration: .4,
+      })
+    )
 
     window.addEventListener('scroll', ()=> {
 
@@ -401,14 +409,18 @@
       // direction logic
       if (!down) {
 
-        topUp = pageYOffset-lastPageYOffset;
-        topUp = cap(topUp, -limit, limit);
-        topUp = limit + topUp;
-        
-        header.style.top = `${-topUp}px`;
-        topDown = -limit;
+        // topUp = pageYOffset-lastPageYOffset;
+        // topUp = cap(topUp, -limit, limit);
+        // topUp = limit + topUp;
+        // header.style.top = 0;
+        // topDown = -limit;
+
+        tl.play();
         
       } else {
+        
+        tl.seek(0);
+        tl.pause();
         
         topDown = topDown - (pageYOffset - lastPageYOffset);
         topDown = cap(topDown, -limit, 0);

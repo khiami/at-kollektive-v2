@@ -52,7 +52,7 @@
                   <div class="product-image">
                     <a href="{{ item.url }}" class="cart-item__link">
                       <div class="cart-item__image-container gradient global-media-settings">
-                        <img src="{{ item.image | image_url: width: 300 }}" class="cart-product-image" alt="{{ item.image.alt | escape }}" loading="lazy" width="150" height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}">
+                        <img src="{{ item.image | image_url: width: 800 }}" class="cart-product-image" alt="{{ item.image.alt | escape }}" loading="lazy" width="150" height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}">
                       </div>
                     </a>
                   </div>

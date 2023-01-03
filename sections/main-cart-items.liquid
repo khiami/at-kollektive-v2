@@ -11,7 +11,7 @@
         <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
         {% for collection in collections %}
           {% if collection.handle == 'all' %}
-            <a href="{{ collection.url }}" class="button anchor-style continue-shipping">Continue shopping</a>
+            <a href="{{ collection.url }}" class="button anchor-style continue-shipping text-decoration-underline">Continue shopping</a>
           {% endif %}
         {% endfor %}
     
@@ -29,7 +29,7 @@
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
       {% for collection in collections %}
         {% if collection.handle == 'all' %}
-          <a href="{{ collection.url }}" class="button anchor-style continue-shipping">Continue shopping</a>
+          <a href="{{ collection.url }}" class="button anchor-style continue-shipping text-decoration-underline">Continue shopping</a>
         {% endif %}
       {% endfor %}
   

@@ -140,3 +140,15 @@
 @function remToPixels($rem) {
   @return $rem * 16;
 }
+
+@mixin stickyElementFix() {
+  &:before {
+    content: '';
+    position: absolute;
+    top: -4rem;
+    width: 100%;
+    height: 4rem;
+    background: white;
+    pointer-events: none;
+  }
+}

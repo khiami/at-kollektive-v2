@@ -10,7 +10,7 @@
 
 // :has is not yet working firefox
 // ref https://caniuse.com/css-has
-[class*=container] >.row>.row:has(.sticky-title) {}
+[class*=container]>.row>.row:has(.sticky-title) {}
 
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
@@ -25,6 +25,19 @@
   @include bodyScrolling(down) {
     top: 4rem;
   }
+
+  @include sm(min) {
+    &:before {
+      content: '';
+      position: absolute;
+      top: -4rem;
+      width: 100%;
+      height: 4rem;
+      background: white;
+      pointer-events: none;
+    }
+  }
+
 }
 
 

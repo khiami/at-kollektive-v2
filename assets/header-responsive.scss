@@ -13,7 +13,7 @@
       height: 100%;
     }
 
-    &.submenu-open {
+    body.submenu-open & {
       nav {
         &.desktop {
           display: none;

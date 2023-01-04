@@ -16,7 +16,7 @@
         a.setAttribute('aria-expanded', false);
       });
 
-      header.classList.remove('submenu-open');
+      document.body?.classList.remove('submenu-open');
       if (removeBodyHtmlClass !== false) {
         document.body?.classList.remove('header-open');
       }
@@ -50,7 +50,7 @@
 
         // set aria-expanded
         item.setAttribute('aria-expanded', parent.classList.contains('open'));
-        header.classList[
+        document.body?.classList[
           parent.classList.contains('open') ? 'add':'remove'
         ]('submenu-open');
       });
@@ -124,7 +124,8 @@
       { item: 'body', htmlClass: 'header-open' },
       { item: 'body', htmlClass: 'collection-tools-open' },
       { item: 'header', htmlClass: 'open' },
-      { item: 'header', htmlClass: 'submenu-open' },
+      // { item: 'header', htmlClass: 'submenu-open' },
+      { item: 'body', htmlClass: 'submenu-open' },
       { item: 'footer', htmlClass: 'open' },
       { item: '.collection-tools', htmlClass: 'open' },
       { item: '.product-size-variants', htmlClass: 'open' },
@@ -376,7 +377,7 @@
     let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
     let limit = window.innerWidth < 576 ? 40:71.5;
     let topUp = -limit;
-    let topDown = -limit;
+    let topDown = 0; //-limit;
     let header = query('.section-header');
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:71.5;
 

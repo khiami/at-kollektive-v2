@@ -129,6 +129,11 @@ nav {
     &:not(:empty) {
       padding-bottom: 1rem;
     }
+
+    @include sm(min) {
+      position: absolute;
+      width: 100%;
+    }
   }
 
   &.footer {

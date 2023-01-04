@@ -146,7 +146,8 @@
     content: '';
     position: absolute;
     top: -4rem;
-    width: 100%;
+    left: -2rem;
+    width: calc(100% + 4rem);
     height: 4rem;
     background: white;
     pointer-events: none;

@@ -1,7 +1,7 @@
 @import "./mixin";
 
 .block-editorial {
-  padding: var(--spacing) 0 7.5rem;
+  padding: var(--spacing) var(--spacing) 7.5rem;
 
   p {
     max-width: var(--block-editorial-p-max-width);
@@ -14,6 +14,8 @@
 
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
   background-color: white;
   z-index: 10;
   transition: top .4s;

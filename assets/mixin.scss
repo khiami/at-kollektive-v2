@@ -141,23 +141,25 @@
   @return $rem * 16;
 }
 
-@mixin stickyElementFix($extraWidth) {
-  &:before {
-    content: '';
-    position: absolute;
-    top: -4.25rem;
-    height: 4.5rem;
-    background: white;
-    pointer-events: none;
-
-    @if $extraWidth == true {
-      left: -2rem;
-      width: calc(100% + 4rem);
-    } @else {
-      left: 0;
-      width: 100%;
+@mixin stickyElementFix($extraWidth, $pseudo: true) {
+  @if $pseudo == true {
+    &:before {
+      content: '';
+      position: absolute;
+      top: -4.25rem;
+      height: 4.5rem;
+      background: white;
+      pointer-events: none;
+  
+      @if $extraWidth == true {
+        left: -2rem;
+        width: calc(100% + 4rem);
+      } @else {
+        left: 0;
+        width: 100%;
+      }
     }
-  }
+  } 
   
   [data-scroll-direction=down] & {
     top: 4rem;

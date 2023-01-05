@@ -192,6 +192,8 @@
   height: auto;
   transition: top .4s, height .4s;
 
+  @include stickyElementFix($extraWidth: false, $pseudo: false);
+
   @include sm(min) {
     body:not([data-scroll-direction]) & {
       height: calc(100vh - 68px - var(--spacing));

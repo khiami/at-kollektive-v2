@@ -106,6 +106,7 @@ quantity-input {
   justify-content: center;
   align-items: center;
   width: var(--quantity-button-width);
+  height: var(--quantity-button-height);
 
   svg {
     max-width: 1rem;
@@ -151,11 +152,6 @@ input[type=number] {
 .cart__dynamic-checkout-buttons {
   margin-bottom: 5.625rem;
 }
-
-#cart-errors {
-  margin-bottom: 1.25rem;
-}
-
 .cart__footer_wrapper {
   isolation: isolate;
   z-index: 0;
@@ -195,4 +191,12 @@ input[type=number] {
   h2 {
     margin-bottom: 1.5625rem;
   }
+}
+
+
+.cart-errors {
+  //   margin-bottom: 1.25rem;
+  height: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

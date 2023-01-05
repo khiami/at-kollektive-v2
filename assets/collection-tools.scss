@@ -112,7 +112,7 @@
 }
 
 .breadcrumb {
-  display: inline-flex;
+  display: flex;
   flex-wrap: nowrap;
 
   >li+li:before {
@@ -121,7 +121,7 @@
   }
 
   a {
-    display: flex;
+    display: inline-flex;
   }
 }
 

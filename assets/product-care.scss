@@ -13,8 +13,26 @@
         z-index: 10;
         transition: top .4s;
 
-        @include bodyScrolling(up) {
-          top: $block-size * 2;
+        // @include bodyScrolling(up) {
+        //   top: $block-size * 2;
+        // }
+
+
+  
+        [data-scroll-direction=down] & {
+          top: 6rem;
+        }
+
+        [data-scroll-direction=down].submenu-open & {
+          top: 8.7rem;
+        }
+
+        [data-scroll-direction=up] & {
+          top: 9.5rem;
+        }
+
+        [data-scroll-direction=up].submenu-open & {
+          top: 12.25rem;
         }
       }
     }

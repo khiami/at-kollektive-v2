@@ -22,23 +22,7 @@
 
   @include sm(min) {
   
-    @include stickyElementFix($extraWidth: true);
-
-    // [data-scroll-direction=down] & {
-    //   top: 4rem;
-    // }
-
-    // [data-scroll-direction=down].submenu-open & {
-    //   top: 6.7rem;
-    // }
-  
-    // [data-scroll-direction=up] & {
-    //   top: 8.4rem;
-    // }
-
-    // [data-scroll-direction=up].submenu-open & {
-    //   top: 11rem;
-    // }
+    @include stickyElementFix($extraWidth: false);
   }
 
 }

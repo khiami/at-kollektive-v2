@@ -101,8 +101,10 @@
 
 .t-article {
   article {
-    p {
-      padding-left: var(--spacing);
+    .el-block-reverse {
+      p {
+        padding-left: var(--spacing);
+      }
     }
   }
 }

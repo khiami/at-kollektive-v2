@@ -112,7 +112,7 @@
 }
 
 .breadcrumb {
-  display: flex;
+  display: inline-flex;
   flex-wrap: nowrap;
 
   >li+li:before {

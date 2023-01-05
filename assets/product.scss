@@ -188,29 +188,35 @@
 
 .product-info {
   position: var(--product-info-display);
-  top: $block-size;
+  top: $block-size * 2;
   height: auto;
   transition: top .4s, height .4s;
 
-  @include stickyElementFix($extraWidth: false, $pseudo: false);
-
   @include sm(min) {
     body:not([data-scroll-direction]) & {
-      height: calc(100vh - 68px - var(--spacing));
+      height: calc(100vh - 6.25rem - var(--spacing));
+    }
+  
+    [data-scroll-direction=down] & {
+      top: 6rem;
+      height: calc(100vh - 6.25rem - var(--spacing));
+    }
+    
+    [data-scroll-direction=down].submenu-open & {
+      top: 8.7rem;
+      height: calc(100vh - 8.25rem - var(--spacing));
+    }
+
+    [data-scroll-direction=up] & {
+      top: 10.4rem;
+      height: calc(100vh - 10.8rem - var(--spacing));
+    }
+    
+    [data-scroll-direction=up].submenu-open & {
+      top: 13rem;
+      height: calc(100vh - 12.8rem - var(--spacing));
     }
   }
-
-  @include sm(min) {
-    @include bodyScrolling(up) {
-      top: $block-size * 2;
-      height: calc(100vh - 136px - var(--spacing));
-    }
-
-    @include bodyScrolling(down) {
-      height: calc(100vh - 68px - var(--spacing));
-    }
-  }
-
 
   @include sm(max) {
     padding: 0 var(--spacing) var(--spacing);
@@ -253,19 +259,40 @@
 .image-index {
   position: var(--product-image-index-display);
   display: var(--image-index-display);
-  top: 4rem;
+  top: 6rem;
   padding-bottom: var(--spacing);
   width: 100%;
   text-align: right;
   background-color: white;
   z-index: 10;
   transition: top .4s;
-
-  @include bodyScrolling(up) {
-    top: remToPixels(4) + $block-size;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: -4.25rem;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    background: white;
+    pointer-events: none;
+  }
+  
+  [data-scroll-direction=down] & {
+    top: 6rem;
   }
 
-  @include stickyElementFix($extraWidth: false);
+  [data-scroll-direction=down].submenu-open & {
+    top: 8.7rem;
+  }
+
+  [data-scroll-direction=up] & {
+    top: 10.4rem;
+  }
+
+  [data-scroll-direction=up].submenu-open & {
+    top: 13rem;
+  }
 }
 
 .product-add-to-cart {

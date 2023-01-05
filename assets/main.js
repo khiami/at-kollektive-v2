@@ -1,5 +1,9 @@
 (()=> {
 
+  let tl = gsap.timeline();
+
+  window.tl = tl;
+  
   function mainnav() {
 
     const navToggle = query('.nav-toggle');
@@ -294,14 +298,28 @@
     let tools = query('.collection-tools');
     let open = query('.filter-open');
     let close = query('.filter-close');
-
-    if (open) open.addEventListener('click', ()=> {
-      tools.classList.add('open');
-      document.body?.classList.add('collection-tools-open');
-    });
-    if (close) close.addEventListener('click', ()=> {
+    let whenClose = ()=> {
       tools.classList.remove('open');
       document.body.classList.remove('collection-tools-open');
+    }
+    let whenOpen = ()=> {
+      tools.classList.add('open');
+      document.body?.classList.add('collection-tools-open');
+    }
+    
+    if (open) open.addEventListener('click', e=> {
+      e.stopPropagation();
+      whenOpen();
+    });
+
+    if (close) close.addEventListener('click', e=> {
+      e.stopPropagation();
+      whenClose();
+    });
+
+    // auto-close
+    document.addEventListener('click', e=> {
+      if (!elementBelongsTo(tools, e.target)) whenClose();
     });
   }
 
@@ -375,7 +393,7 @@
 
     let lastPageYOffset = null;
     let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
-    let limit = window.innerWidth < 576 ? 40:71.5;
+    let limit = window.innerWidth < 576 ? 40:68; //71.5;
     let topUp = -limit;
     let topDown = 0; //-limit;
     let header = query('.section-header');
@@ -388,7 +406,6 @@
     // if (window.mobile) return;
 
     topUp = parseInt(getComputedStyle(header).top);
-    let tl = gsap.timeline();
 
     tl.add(
       gsap.to(header, { 

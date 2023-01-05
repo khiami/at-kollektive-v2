@@ -89,3 +89,12 @@
     }
   }
 }
+
+.t-collection,
+.t-index,
+.t-product,
+.t-checkout {
+  main {
+    overflow-anchor: none;
+  }
+}

@@ -83,7 +83,7 @@ nav {
 
         // smaller menu height for (n) of templates
         // product, page, article, cart, etc..
-        html:not(.t-product):not(.t-page):not(.t-article):not(.t-cart):not(.t-index) body:not(.header-open) & {
+        html:not(.t-product):not(.t-page):not(.t-article):not(.t-cart):not(.t-index):not(.t-collection) body:not(.header-open) & {
           padding-bottom: 2rem;
         }
 

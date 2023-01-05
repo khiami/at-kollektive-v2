@@ -141,15 +141,37 @@
   @return $rem * 16;
 }
 
-@mixin stickyElementFix() {
+@mixin stickyElementFix($extraWidth) {
   &:before {
     content: '';
     position: absolute;
-    top: -4rem;
-    left: -2rem;
-    width: calc(100% + 4rem);
-    height: 4rem;
+    top: -4.25rem;
+    height: 4.5rem;
     background: white;
     pointer-events: none;
+
+    @if $extraWidth == true {
+      left: -2rem;
+      width: calc(100% + 4rem);
+    } @else {
+      left: 0;
+      width: 100%;
+    }
+  }
+  
+  [data-scroll-direction=down] & {
+    top: 4rem;
+  }
+
+  [data-scroll-direction=down].submenu-open & {
+    top: 6.7rem;
+  }
+
+  [data-scroll-direction=up] & {
+    top: 8.4rem;
+  }
+
+  [data-scroll-direction=up].submenu-open & {
+    top: 11rem;
   }
 }

@@ -6,16 +6,33 @@
   transition: top .4s;
 
   @include sm(min) {
-    @include bodyScrolling(up) {
-      top: 8.4375rem;
-    }
+
+    @include stickyElementFix($extraWidth: false);
+    // [data-scroll-direction=down] & {
+    //   top: 4rem;
+    // }
+
+    // [data-scroll-direction=down].submenu-open & {
+    //   top: 6.7rem;
+    // }
+  
+    // [data-scroll-direction=up] & {
+    //   top: 8.4rem;
+    // }
+
+    // [data-scroll-direction=up].submenu-open & {
+    //   top: 11rem;
+    // }
   }
 
   @include sm(max) {
-    @include bodyScrolling(up) {
-      &:not(.open) & {
-        top: 6.2rem;
-      }
+
+    [data-scroll-direction=down] & {
+      top: 2rem;
+    }
+  
+    [data-scroll-direction=up] & {
+      top: 4.2rem;
     }
   }
 
@@ -33,13 +50,11 @@
   }
 
   @include sm(min) {
-    top: 3.625rem;
     padding: .5rem var(--spacing) 1rem;
     z-index: 10;
   }
 
   @include sm(max) {
-    top: 2.2rem;
     padding: .5rem var(--spacing);
 
     body:not(.header-open) & {
@@ -103,6 +118,10 @@
   >li+li:before {
     content: "/\00a0";
     margin: 0 0.3rem;
+  }
+
+  a {
+    display: flex;
   }
 }
 

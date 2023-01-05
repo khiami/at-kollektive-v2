@@ -190,7 +190,6 @@
   position: var(--product-info-display);
   top: $block-size;
   height: auto;
-  // height: calc(100vh - 152px - var(--spacing));
   transition: top .4s, height .4s;
 
   @include sm(min) {
@@ -238,18 +237,6 @@
     height: var(--product-image-img-height);
     max-width: var(--product-image-img-max-width);
     object-fit: contain;
-
-    // @include sm(min) {
-    //   width: 100%;
-    //   height: auto;
-    //   max-width: 100%;
-    // }
-
-    // @include sm(max) {
-    //   width: auto;
-    //   height: 143vw;
-    //   max-width: none;
-    // }
   }
 }
 
@@ -275,13 +262,7 @@
     top: remToPixels(4) + $block-size;
   }
 
-  // @include sm(min) {
-  //   display: block;
-  // }
-
-  // @include sm(max) {
-  //   display: none;
-  // }
+  @include stickyElementFix($extraWidth: false);
 }
 
 .product-add-to-cart {

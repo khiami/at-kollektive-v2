@@ -92,7 +92,9 @@
 .reflect-oh-hover {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
+  height: 3rem;
 
   @include sm(min) {
     position: absolute;
@@ -149,6 +151,10 @@
   .deco,
   .page {
     display: none;
+  }
+
+  a {
+    display: flex;
   }
 }
 

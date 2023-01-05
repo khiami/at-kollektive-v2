@@ -13,12 +13,6 @@
         z-index: 10;
         transition: top .4s;
 
-        // @include bodyScrolling(up) {
-        //   top: $block-size * 2;
-        // }
-
-
-  
         [data-scroll-direction=down] & {
           top: 6rem;
         }
@@ -40,5 +34,9 @@
 
   p {
     max-width: var(--product-care-p-max-width);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }

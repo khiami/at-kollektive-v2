@@ -98,3 +98,11 @@
     overflow-anchor: none;
   }
 }
+
+.t-article {
+  article {
+    p {
+      padding-left: var(--spacing);
+    }
+  }
+}

@@ -33,6 +33,14 @@
   // }
 }
 
+.grid-element {
+  &:hover {
+    .product-anchor {
+      text-decoration: underline;
+    }
+  }
+}
+
 .grid-element-anchor {
   display: block;
   width: 100%;

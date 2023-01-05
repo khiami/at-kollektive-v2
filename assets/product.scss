@@ -246,7 +246,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1.25rem;
+  // gap: 1.25rem;
   width: 100%;
 }
 
@@ -254,6 +254,7 @@
   position: var(--product-image-index-display);
   display: var(--image-index-display);
   top: 4rem;
+  padding-bottom: var(--spacing);
   width: 100%;
   text-align: right;
   background-color: white;

@@ -187,7 +187,7 @@
     {% for image in product.images %}
       <div class="product-image-preview">
         <div class="image-index">{{ forloop.index }} / {{ product.images.size }}</div>
-        <img src="{{ image | image_url: width: 1600 }}" loading="lazy" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
+        <img src="{{ image | image_url: width: 1600 }}" loading="eager" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
       </div>
     {% endfor %}
   </div>

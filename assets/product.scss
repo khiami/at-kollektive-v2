@@ -204,12 +204,12 @@
     
     [data-scroll-direction=down].submenu-open & {
       top: 8.7rem;
-      height: calc(100vh - 8.25rem - var(--spacing));
+      height: calc(100vh - 8.625rem - var(--spacing));
     }
 
     [data-scroll-direction=up] & {
       top: 10.4rem;
-      height: calc(100vh - 10.8rem - var(--spacing));
+      height: calc(100vh - 10.625rem - var(--spacing));
     }
     
     [data-scroll-direction=up].submenu-open & {

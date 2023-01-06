@@ -50,7 +50,7 @@
   }
 
   @include sm(min) {
-    padding: .5rem var(--spacing) 1rem;
+    padding: var(--spacing) var(--spacing) 1rem;
     z-index: 10;
   }
 

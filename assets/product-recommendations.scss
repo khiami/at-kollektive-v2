@@ -3,9 +3,12 @@
 product-recommendations {
   display: flex;
   flex-direction: column;
-  margin: var(--product-recommendations-margin);
   padding: var(--spacing);
   width: 100%;
+
+  &:not([data-count="0"]) {
+    margin: var(--product-recommendations-margin);
+  }
 
 
   // @include sm(min) {

@@ -1,4 +1,4 @@
-<product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
+<product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}" data-count="{{ recommendations.products_count }}">
   {% if recommendations.performed and recommendations.products_count > 0 %}
     <div class="recommendations-header">
       <h2>More of the same</h2>

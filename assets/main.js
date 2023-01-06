@@ -1,5 +1,6 @@
 (()=> {
 
+  let vars = {};
   let tl = gsap.timeline();
 
   window.tl = tl;
@@ -24,8 +25,8 @@
       if (removeBodyHtmlClass !== false) {
         document.body?.classList.remove('header-open');
       }
+      
       injectableNav.innerHTML = '';
-
     }
 
     itemsWithSubmenu.forEach(item=> {
@@ -78,8 +79,7 @@
         e.stopPropagation();
         closeNavigation({ removeBodyHtmlClass: false });
       }
-    })
-    
+    });
 
     // mobile nav
     if (navToggle) navToggle.addEventListener('click', ()=> {
@@ -90,7 +90,6 @@
         closeNavigation();
       }
     });
-
   }
 
   function newsletterToggle() {
@@ -118,7 +117,6 @@
         if (!elementBelongsTo(newsletterWrap, e.target)) footer.classList.remove('open');
       });
     });
-
 
   }
 
@@ -178,9 +176,7 @@
               autoplayedWistiaId = hashedId;
               logg('autoplayed hashedId ', autoplayedWistiaId);
             }
-
           }
-          
 
           video.bind('play', ()=> {
 
@@ -276,7 +272,6 @@
         }
       })
       .catch(e=> logg('promise all caught ', e));
-
   }
 
   function responsiveWistia() {
@@ -333,6 +328,21 @@
     });
   }
 
+  function updateVars() {
+    
+    let stylesheet = query('style.root');
+    if (stylesheet) window.addEventListener('vars-update', e=> {
+      let update = e.detail;
+      let newVars = {...vars, ...update};
+
+      Object.keys(newVars).forEach(key=> {
+        newVars['--' + hyphenate(key)] = newVars[key];
+        Reflect.deleteProperty(newVars, key);
+      });
+
+      stylesheet.innerText = `:root{${ Object.entries(newVars).map(([key, value])=> `${key}: ${value}`).join(';')}}`;
+    });
+  }
 
   function setCurrentFilters() {
   
@@ -496,8 +506,8 @@
         
         size.classList.toggle('active');
         sizes.forEach(a=> (a !== size) && a.classList.remove('active'));
-      })
-    })
+      });
+    });
   }
 
   function hasStickyPolifyfill() {
@@ -506,6 +516,22 @@
 
     if (rowsWithSticky?.length) {
       rowsWithSticky.forEach(a=> a.classList.add('has-sticky'));
+    }
+  }
+  
+  function productCareWidth() {
+    
+    try {
+      let getWidth = ()=> {
+        let width = query('.grid-element')?.clientWidth??0;
+        dispatchCustomEvent('vars-update', { 
+          productCarePMaxWidth: Math.floor(width + width/3) + 'px' ,
+        });
+      }
+
+      return window.addEventListener('resize', getWidth);
+    } catch(e) {
+      logg('product care width caught ', e);
     }
 
   }
@@ -540,6 +566,9 @@
 
       // css :has selector not working on firefox
       hasStickyPolifyfill();
+
+      updateVars();
+      productCareWidth();
 
       scrollTo = document.documentElement.scrollTop;
 

@@ -94,6 +94,8 @@
 .t-index,
 .t-product,
 .t-checkout {
+
+  .shopify-section-footer,
   main {
     overflow-anchor: none;
   }
@@ -106,5 +108,22 @@
         padding-left: var(--spacing);
       }
     }
+
+    .el-block {
+      p {
+        padding: 0 var(--spacing);
+      }
+    }
+  }
+}
+
+.t-product {
+  .css-grid {
+    position: relative;
+    margin: 0 auto;
+    width: calc(100% - calc(var(--spacing) * 2));
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
 }

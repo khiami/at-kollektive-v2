@@ -10,21 +10,18 @@
 
 // :has is not yet working firefox
 // ref https://caniuse.com/css-has
-[class*=container]>.row>.row:has(.sticky-title) {}
+// [class*=container]>.row>.row:has(.sticky-title) {}
 
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
-  padding-left: var(--spacing);
-  padding-right: var(--spacing);
+  padding: 0 var(--spacing);
   background-color: white;
   z-index: 10;
   transition: top .4s;
 
   @include sm(min) {
-  
     @include stickyElementFix($extraWidth: false);
   }
-
 }
 
 

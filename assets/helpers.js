@@ -524,10 +524,15 @@ function isSoundOn() {
     return false;
   }
 }
- function cap(x, min, max) {
+
+function cap(x, min, max) {
   let value = x;
   if (!isNil(min) && value<min) value = min;
   if (!isNil(max) && value>max) value = max;
 
   return value;
+}
+
+function hyphenate(camel) {
+  return camel.replace(/[A-Z]/g, m => "-" + m.toLowerCase());
 }

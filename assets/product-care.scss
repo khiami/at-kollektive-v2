@@ -32,6 +32,12 @@
     }
   }
 
+  @include sm(max) {
+    .el-block-reverse {
+      gap: 2.5rem;
+    }
+  }
+
   p {
     max-width: var(--product-care-p-max-width);
 

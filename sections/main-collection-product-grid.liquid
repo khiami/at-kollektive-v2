@@ -15,12 +15,13 @@
         </div>
       {%- else -%}
         {%- for product in collection.products -%}
+          {% assign productIdx = forloop.index %}
           <div class="grid-element">
             <div class="grid-element-inner">
               <div class="grid-overlay-color"></div>
               {% for image in product.images limit: 1 %}
-                <a href="/products/{{ product.handle }}" class="grid-element-anchor" title="{{ product.title }}">
-                  <img class="grid-image grid-product-image" loading="lazy" src="{{ image | image_url: width: 800 }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
+                <a href="/products/{{ product.handle }}" class="grid-element-anchor" title="{{ product.title }}" data-product-index="{{ productIdx }}">
+                  <img class="grid-image grid-product-image" loading="{% if productIdx <= 8 %}eager{% else %}lazy{% endif %}" src="{{ image | image_url: width: 800 }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}">
                 </a>
               {% endfor %}
               <p class="grid-element-title with-color-effect">

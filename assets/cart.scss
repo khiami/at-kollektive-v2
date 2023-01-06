@@ -10,7 +10,7 @@ cart-items {
     display: flex;
     flex-direction: column;
     padding: var(--spacing);
-    height: 60vh;
+    min-height: var(--cart-items-min-height);
 
     .title {
       display: none;
@@ -44,6 +44,10 @@ cart-items {
 .cart__footer-wrapper {
   margin-top: var(--cart-footer-wrapper-margin-top);
   padding: var(--spacing);
+
+  &:has(.is-empty) {
+    display: none;
+  }
 
   >div {
     position: var(--cart-footer-wrapper-display);
@@ -152,6 +156,7 @@ input[type=number] {
 .cart__dynamic-checkout-buttons {
   margin-bottom: 5.625rem;
 }
+
 .cart__footer_wrapper {
   isolation: isolate;
   z-index: 0;

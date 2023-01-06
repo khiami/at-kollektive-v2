@@ -319,3 +319,7 @@ details summary::-webkit-details-marker {
 // * {
 //   box-shadow: 0 0 0 1px red;
 // }
+
+main {
+  min-height: var(--main-min-height);
+}

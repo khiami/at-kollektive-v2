@@ -108,6 +108,9 @@ footer {
   }
 
   ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5625rem;
     margin: 0;
   }
 

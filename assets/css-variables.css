@@ -65,6 +65,7 @@
     --product-info-display: sticky;
     --product-image-index-display: sticky;
     --product-image-preview-align-items: flex-end;
+    --main-min-height: calc(100vh - 8.5rem);
   }
 }
 
@@ -97,6 +98,7 @@
     --footer-grid-height: 25rem;
     --grid-footer-grid-even-div-flex-direction: column;
     --grid-footer-grid-even-div-align-items: flex-start;
+    --grid-footer-grid-even-div-gap: 0.5625rem;
     --collection-empty-height: 85vh;
     --grid-element-anchor-margin-bottom: 1rem;
     --collection-template-section-p-margin-bottom: 0;
@@ -113,6 +115,7 @@
     --cart-ctas-margin-top: 2.5rem;
     --cart-remove-button-opacity: .3;
     --product-image-preview-align-items: flex-start;
+    --cart-items-min-height: calc(100vh - 4.875rem);
     
   }
 }

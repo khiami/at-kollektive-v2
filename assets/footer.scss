@@ -6,7 +6,7 @@ footer {
     height: var(--footer-grid-height);
     min-height: var(--footer-grid-min-height);
     transition: height .4s;
-    
+
     // @include sm(min) {
     //   height: 95vh;
     //   min-height: 35rem;
@@ -73,16 +73,22 @@ footer {
   }
 
   &:not(.open) {
+
     .newsletter-form__input,
     .newsletter-form__button {
-      height: 0;
-      // visibility: hidden;
       overflow: hidden;
       opacity: 0;
       pointer-events: none;
     }
 
-    input {
+    .field-inner {
+      label {
+        transform: translate3d(0, 1.75rem, 0);
+      }
+    }
+
+    .newsletter-form__input,
+    .newsletter-form__button {
       transform: translate3d(0, 100%, 0);
     }
   }
@@ -98,12 +104,19 @@ footer {
 
     .field-inner {
       label {
-        transform: translate3d(0, -1.25rem, 0);
+        transform: translate3d(0, -1.45rem, 0);
       }
     }
 
-    input {
+    .newsletter-form__input,
+    .newsletter-form__button {
       transform: translate3d(0, 0, 0);
+    }
+
+    .field-inner {
+      &:has(input:invalid)~button[type=submit] {
+        opacity: .3;
+      }
     }
   }
 
@@ -133,10 +146,6 @@ footer {
     display: flex;
     flex-direction: column;
     flex: 1 0;
-
-    &:has(input:invalid)~button[type=submit] {
-      opacity: .3;
-    }
   }
 }
 
@@ -152,6 +161,7 @@ footer {
 
     @include sm(max) {
       position: static;
+
       footer & {
         margin-top: 2rem;
         padding: 0 var(--spacing) var(--spacing);
@@ -164,12 +174,12 @@ footer {
     bottom: var(--spacing);
     right: var(--spacing);
     z-index: 15;
-    transition: opacity .4s;
+    // transition: opacity .4s;
   }
 }
 
 .footer-block--menu {
-  position: var(--footer-block-menu-display);
+  // position: var(--footer-block-menu-display);
   top: $block-size;
   z-index: 10;
 
@@ -178,6 +188,7 @@ footer {
   }
 }
 
-.newsletter-form__input {
+.newsletter-form__input,
+.newsletter-form__button {
   transition: all .4s;
 }

@@ -82,7 +82,7 @@
     --block-editorial-p-max-width: 100%;
     --product-recommendations-margin: 3.125rem auto 4.625rem;
     --product-image-img-width: auto;
-    --product-image-img-height: 143vw;
+    --product-image-img-height: 120vw;
     --product-image-img-max-width: none;
     --image-index-display: none;
     --tab-mobile-btn-display: block;
@@ -114,8 +114,8 @@
     --cart-remove-button-margin-top: 1.875rem;
     --cart-ctas-margin-top: 2.5rem;
     --cart-remove-button-opacity: .3;
-    --product-image-preview-align-items: flex-start;
     --cart-items-min-height: calc(100vh - 4.875rem);
+    --product-images-margin-top: .25rem;
     
   }
 }

@@ -227,6 +227,7 @@
 
 .product-images {
   display: flex;
+  margin-top: var(--product-images-margin-top);
 
   @include sm(min) {
     flex-direction: column;

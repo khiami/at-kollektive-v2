@@ -253,8 +253,7 @@
 .product-image-preview {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  // gap: 1.25rem;
+  align-items: var(--product-image-preview-align-items);
   width: 100%;
 }
 

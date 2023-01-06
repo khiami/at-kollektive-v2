@@ -64,6 +64,7 @@
     --product-care-row-div-display: sticky;
     --product-info-display: sticky;
     --product-image-index-display: sticky;
+    --product-image-preview-align-items: flex-end;
   }
 }
 
@@ -111,6 +112,7 @@
     --cart-remove-button-margin-top: 1.875rem;
     --cart-ctas-margin-top: 2.5rem;
     --cart-remove-button-opacity: .3;
+    --product-image-preview-align-items: flex-start;
     
   }
 }

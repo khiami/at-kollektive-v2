@@ -45,6 +45,8 @@
   }
 
   @include sm(max) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
     gap: 0.875rem;
     margin-top: 2.5rem;
 
@@ -342,7 +344,9 @@ product-form {
 variant-radios {
   fieldset {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
+    row-gap: .5rem;
   }
 }
 

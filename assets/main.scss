@@ -316,9 +316,9 @@ details summary::-webkit-details-marker {
 @import "./login.scss";
 
 
-// * {
-//   box-shadow: 0 0 0 1px red;
-// }
+* {
+  box-shadow: inset 0 0 0 1px red;
+}
 
 main {
   min-height: var(--main-min-height);

@@ -1,5 +1,5 @@
 <div class="shopify-product">
-  <div class="product-info custom-max-width">
+  <div class="product-info custom-max-width" dynamic>
     <div class="product-info-inner">
 
       <ul class="product-info-list">
@@ -153,10 +153,9 @@
       <ul class="product-info-list">
         <li class="product-metadata">
           <div class="tabs content-tabs">
-            <button class="content-tab-btn underline-on-hover active" data-rel="description">Description</button>
-            <button class="content-tab-btn underline-on-hover" data-rel="size">Size</button>
-            <button class="content-tab-btn underline-on-hover" data-rel="details">Details</button>
-            <button class="content-tab-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
+            <button class="content-tab-btn underline-on-hover active" data-rel="description"><span>Description</span></button>
+            <button class="content-tab-btn underline-on-hover" data-rel="size"><span>Size & Fit</span></button>
+            <button class="content-tab-btn underline-on-hover" data-rel="details"><span>Details</span></button>
           </div>
           
           <button class="content-tab-btn tab-mobile-btn underline-on-hover active" data-rel="description">Description</button>
@@ -164,7 +163,7 @@
             {% if product.description != blank %}{{ product.description }}{% endif %}
           </div>
           
-          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="size">Size</button>
+          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="size">Size & Fit</button>
           <div class="tab-content" data-content-rel="size">
             {% if product.metafields.custom.ak__size != blank %}{{ product.metafields.custom.ak__size }}{% endif %}
           </div>
@@ -172,11 +171,6 @@
           <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="details">Details</button>
           <div class="tab-content" data-content-rel="details">
             {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% endif %}
-          </div>
-
-          <button class="content-tab-btn tab-mobile-btn underline-on-hover" data-rel="sustainability">Sustainability</button>
-          <div class="tab-content" data-content-rel="sustainability">
-            {% if product.metafields.custom.ak__sustainability != blank %}{{ product.metafields.custom.ak__sustainability }}{% endif %}
           </div>
         </li>
         
@@ -186,7 +180,7 @@
   <div class="product-images">
     {% for image in product.images %}
       <div class="product-image-preview">
-        <div class="image-index">{{ forloop.index }} / {{ product.images.size }}</div>
+        <div class="image-index" dynamic>{{ forloop.index }} / {{ product.images.size }}</div>
         <img src="{{ image | image_url: width: 1600 }}" loading="eager" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
       </div>
     {% endfor %}

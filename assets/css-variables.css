@@ -20,6 +20,7 @@
 @media (min-width: 576px) {
   :root {
     --spacing: 1.25rem;
+    --spacing-v: 1.5625rem;
     --row-gap: 3.75rem;
     --line-height: 1.75rem;
     --body-font-size: 1.3125rem;
@@ -42,6 +43,7 @@
     --cart-template-main-flex-direction: row;
     --cart-template-main-gap: 15vmax;
     --nav-ul-gap: 1rem;
+    /* --nested-navigation-height: 44px; */
     --close-submenu-display: none;
     --footer-grid-height: 95vh;
     --footer-grid-min-height: 35rem;
@@ -67,6 +69,7 @@
     --product-image-index-display: sticky;
     --product-image-preview-align-items: flex-end;
     --main-min-height: calc(100vh - 8.5rem);
+    --header-collapsed-top: calc(var(--root-navigation-height) + var(--spacing-v));
   }
 }
 
@@ -74,6 +77,7 @@
 @media (max-width: 575px) {
   :root {
     --spacing: 0.625rem;
+    --spacing-v: 1.25rem;
     --row-gap: 2.5rem;
     --line-height: 1.1875rem;
     --body-font-size: 1rem;

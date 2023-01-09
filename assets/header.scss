@@ -6,7 +6,9 @@
   z-index: 12;
 
   @include sm(min) {
-    top: -$block-size;
+    &:not([style]) {
+      top: calc(var(--root-navigation-height) * -1);
+    }
   }
 
   @include sm(max) {
@@ -107,7 +109,7 @@ nav {
   }
 
   &:not(:empty) {
-    padding: var(--spacing);
+    padding: var(--spacing-v) var(--spacing);
   }
 
   ul {
@@ -117,21 +119,16 @@ nav {
     padding: 0;
     gap: var(--nav-ul-gap);
     row-gap: .5rem;
-
-    // @include sm(min) {
-    //   gap: 1rem;
-    // }
   }
 
   &.n-level {
     padding-top: 0;
 
     &:not(:empty) {
-      padding-bottom: 1rem;
+      padding-bottom: var(--spacing-v);
     }
 
     @include sm(min) {
-      position: absolute;
       width: 100%;
     }
   }

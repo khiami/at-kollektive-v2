@@ -1,7 +1,10 @@
 (()=> {
 
+  let nestedNavigation;
+  let nestNavigationHeight = 0;
   let vars = {};
-  let tl = gsap.timeline();
+  let onWindowScroll;
+  let tl = gsap.timeline({ paused: true });
 
   window.tl = tl;
   
@@ -9,7 +12,7 @@
 
     const navToggle = query('.nav-toggle');
     const header = query('header');
-    const injectableNav = query('nav.n-level');
+    nestedNavigation = query('nav.n-level');
     const itemsWithSubmenu = listify('header .list-menu__item');
 
     function closeNavigation(opts) {
@@ -26,7 +29,8 @@
         document.body?.classList.remove('header-open');
       }
       
-      injectableNav.innerHTML = '';
+      nestedNavigation.innerHTML = '';
+      onNestedNavToggle(false);
     }
 
     itemsWithSubmenu.forEach(item=> {
@@ -47,10 +51,12 @@
 
         if (parent.classList.contains('open')) {
           parent.classList.remove('open');
-          injectableNav.innerHTML = null;
+          nestedNavigation.innerHTML = null;
         } else {
           parent.classList.add('open');
-          if (menu) injectableNav.innerHTML = menu.outerHTML;
+          if (menu) {
+            nestedNavigation.innerHTML = menu.outerHTML;
+          }
         }
 
         // set aria-expanded
@@ -58,6 +64,8 @@
         document.body?.classList[
           parent.classList.contains('open') ? 'add':'remove'
         ]('submenu-open');
+        
+        onNestedNavToggle(parent.classList.contains('open'));
       });
     });
 
@@ -90,6 +98,14 @@
         closeNavigation();
       }
     });
+  }
+
+  function onNestedNavToggle(isOpen) {
+    
+    tl.invalidate();
+    nestNavigationHeight = nestedNavigation.clientHeight;
+    setTimeout(()=> ___onWindowScroll(), 20);
+
   }
 
   function newsletterToggle() {
@@ -126,7 +142,6 @@
       { item: 'body', htmlClass: 'header-open' },
       { item: 'body', htmlClass: 'collection-tools-open' },
       { item: 'header', htmlClass: 'open' },
-      // { item: 'header', htmlClass: 'submenu-open' },
       { item: 'body', htmlClass: 'submenu-open' },
       { item: 'footer', htmlClass: 'open' },
       { item: '.collection-tools', htmlClass: 'open' },
@@ -137,6 +152,8 @@
     if (elements?.length) elements.forEach(a=> {
       if (a?.dom) a.dom.classList?.remove(a.htmlClass);
     });
+
+    onNestedNavToggle();
   }
 
   function bootstrapWistiaEmbedAPI() {
@@ -401,69 +418,74 @@
 
   function stickyHeader() {
 
+    let rootNav = query('.root_navigation');
+    let rootNavHeight = rootNav.clientHeight;
     let lastPageYOffset = null;
-    let scrollTop = window.pageYOffset??document.documentElement.scrollTop;
-    let limit = window.innerWidth < 576 ? 40:68; //71.5;
+    let lastScrollTop = window.pageYOffset??document.documentElement.scrollTop;
+    let limit = window.innerWidth < 576 ? 40:rootNavHeight;
+    let lastDirection;
     let topUp = -limit;
-    let topDown = 0; //-limit;
+    let topDown = 0; //parseInt(getComputedStyle(rootNav).top);
     let header = query('.section-header');
-    let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:71.5;
+    let dynamic = listify('[dynamic]');
+    let dynamictops = dynamic.map(d=> parseInt(getComputedStyle(d).top));
+    let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
+    
 
-    // when resized
-    window.addEventListener('resize', updateLimit.bind(null));
-
-    // mobile check
-    // if (window.mobile) return;
-
-    topUp = parseInt(getComputedStyle(header).top);
-
-    tl.add(
-      gsap.to(header, { 
-        top: 0,
-        duration: .4,
-      })
-    )
-
-    window.addEventListener('scroll', ()=> {
-
+    onWindowScroll = window.___onWindowScroll = ()=> {
+  
       let { pageYOffset } = window;
-      let down = (pageYOffset??document.documentElement.scrollTop) > scrollTop;
+      let windowY = pageYOffset??document.documentElement.scrollTop;
+      let down = windowY > lastScrollTop;
+
+      // logic if no scroll, apply the last recorded scrolling direction
+      if (windowY === lastScrollTop) down = lastDirection === 'down';
+      lastDirection = down ? 'down':'up';
       
       // bootstrap
       if (lastPageYOffset===null) lastPageYOffset = pageYOffset;
-      
-      if (document.body?.classList) document.body.dataset.scrollDirection = down ? 'down':'up';
-      
+      if (document?.body?.classList) document.body.dataset.scrollDirection = down ? 'down':'up';
+    
       // direction logic
       if (!down) {
-
-        // topUp = pageYOffset-lastPageYOffset;
-        // topUp = cap(topUp, -limit, limit);
-        // topUp = limit + topUp;
-        // header.style.top = 0;
-        // topDown = -limit;
-
         tl.play();
-        
       } else {
         
-        tl.seek(0);
-        tl.pause();
+        tl.pause(0);
+        tl.invalidate();
         
         topDown = topDown - (pageYOffset - lastPageYOffset);
         topDown = cap(topDown, -limit, 0);
-        
-        // critical to reset 'lastPageYOffset' for when scrolling 'up'
+  
         lastPageYOffset = pageYOffset;
-
+  
         // down
         header.style.top = `${topDown}px`;
-        
+        dynamic.forEach((dynamic, idx)=> {
+          dynamic.style.top = dynamictops[idx] + rootNavHeight + nestNavigationHeight + topDown + 'px';
+        });
       }
+  
+      lastScrollTop = window.pageYOffset??document.documentElement.scrollTop;
+    }
+    
+    window.addEventListener('resize', updateLimit.bind(null));
+    window.addEventListener('scroll', ___onWindowScroll, false);
 
-      scrollTop = window.pageYOffset??document.documentElement.scrollTop;
+    // mobile check
+    // if (window.mobile) return;
+    topUp = parseInt(getComputedStyle(header).top);
 
-    }, false);
+    tl
+      .add(
+        gsap.to([header, ...dynamic], { 
+          top: (_, t)=> {
+            return t.hasAttribute('dynamic') ? parseInt(getComputedStyle(t).top) + rootNavHeight:0;
+          },
+          duration: .4,
+        }, 0)
+      )
+
   }
 
   function sizeGuideToggle() {
@@ -515,7 +537,10 @@
     let rowsWithSticky = listify('[class*=container]>.row>.row').filter(a=> query('.sticky-title', a));
 
     if (rowsWithSticky?.length) {
-      rowsWithSticky.forEach(a=> a.classList.add('has-sticky'));
+      rowsWithSticky.forEach(a=> {
+        a.classList.add('has-sticky');
+        a.setAttribute('dynamic', '');
+      });
     }
   }
   
@@ -533,7 +558,16 @@
     } catch(e) {
       logg('product care width caught ', e);
     }
+  }
 
+  function defineHeaderHeight() {
+
+    let header = query('.root_navigation');
+    let update = ()=> dispatchCustomEvent('vars-update', { 
+      rootNavigationHeight: header.clientHeight + 'px' ,
+    });
+    window.addEventListener('resize', update);
+    update();
   }
 
   document.addEventListener('DOMContentLoaded', ()=> {
@@ -558,8 +592,6 @@
 
       sizeGuideToggle();
 
-      stickyHeader();
-
       tabContentToggle();
 
       productSizeToggle();
@@ -570,6 +602,8 @@
       updateVars();
       productCareWidth();
 
+      defineHeaderHeight();
+
       scrollTo = document.documentElement.scrollTop;
 
 
@@ -578,6 +612,12 @@
       });
       
   });
+
+  window.addEventListener('load', ()=> {
+    logg('window loaded');
+
+    stickyHeader();
+  })
 
   window.addEventListener('resize', debounce(responsiveWistia.bind(undefined), 100, true));
 

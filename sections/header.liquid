@@ -105,7 +105,7 @@
           <div class="newsletter-form__field-wrapper">
             <div class="field">
               <div class="field-inner">
-                <label class="field__label" for="NewsletterForm-header--{{ section.id }}" role="button">Join our newsletter</label>
+                <label class="field__label" for="NewsletterForm-header--{{ section.id }}" role="button">Subscribe</label>
                 <input
                   id="NewsletterForm-header--{{ section.id }}"
                   type="email"
@@ -148,6 +148,12 @@
   </nav>
 </header>
 
+{% comment %} <script>
+  (()=> {
+    const element = query('.section-header');
+    if (element) element.setAttribute('dynamic', '');
+  })();
+</script> {% endcomment %}
 
 <script type="application/ld+json">
   {

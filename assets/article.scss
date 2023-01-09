@@ -14,13 +14,14 @@
 
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
+  top: var(--root-navigation-height);
   padding: 0 var(--spacing);
   background-color: white;
   z-index: 10;
-  transition: top .4s;
+  // transition: top .4s;
 
   @include sm(min) {
-    @include stickyElementFix($extraWidth: false);
+    // @include stickyElementFix($extraWidth: false);
   }
 }
 

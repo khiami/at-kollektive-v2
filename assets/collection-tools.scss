@@ -3,26 +3,29 @@
 .collection-tools {
   position: sticky;
   background-color: white;
-  transition: top .4s;
+  // transition: top .4s;
 
   @include sm(min) {
+    top: var(--root-navigation-height);
+    padding: var(--spacing-v) var(--spacing);
+    z-index: 10;
 
-    @include stickyElementFix($extraWidth: false);
-    // [data-scroll-direction=down] & {
-    //   top: 4rem;
+    // @include bodyScrolling(up) {
+    //   top: 8.4375rem;
     // }
+  }
 
-    // [data-scroll-direction=down].submenu-open & {
-    //   top: 6.7rem;
-    // }
-  
-    // [data-scroll-direction=up] & {
-    //   top: 8.4rem;
-    // }
+  @include sm(max) {
+    top: 2.2rem;
+    padding: .5rem var(--spacing);
 
-    // [data-scroll-direction=up].submenu-open & {
-    //   top: 11rem;
-    // }
+    body:not(.header-open) & {
+      z-index: 12;
+    }
+  }
+
+  @include sm(min) {
+    // @include stickyElementFix($extraWidth: false);
   }
 
   @include sm(max) {
@@ -47,19 +50,6 @@
 
   body.header-open & {
     z-index: 10;
-  }
-
-  @include sm(min) {
-    padding: var(--spacing) var(--spacing) 1rem;
-    z-index: 10;
-  }
-
-  @include sm(max) {
-    padding: .5rem var(--spacing);
-
-    body:not(.header-open) & {
-      z-index: 12;
-    }
   }
 
   &:not(.open) {

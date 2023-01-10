@@ -313,6 +313,7 @@
     if (open) open.addEventListener('click', e=> {
       e.stopPropagation();
       whenOpen();
+      ___onWindowScroll();
     });
 
     if (close) close.addEventListener('click', e=> {

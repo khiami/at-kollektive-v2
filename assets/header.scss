@@ -63,7 +63,7 @@ header {
 
     &.open {
       ul {
-        transform: translate3d(0, -2.5rem, 0);
+        transform: translate3d(0, 0, 0);
       }
     }
   }
@@ -94,7 +94,6 @@ nav {
         }
       }
     }
-
   }
 
   @include sm(min) {
@@ -109,8 +108,9 @@ nav {
   }
 
   &:not(:empty) {
-    padding: var(--spacing-v) var(--spacing);
+    padding: var(--unempty-nav-padding);
   }
+
 
   ul {
     display: flex;

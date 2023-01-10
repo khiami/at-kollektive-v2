@@ -3,7 +3,7 @@
 footer {
   isolation: isolate;
   z-index: 1;
-  
+
   .grid {
     padding: var(--spacing);
     height: var(--footer-grid-height);
@@ -168,7 +168,7 @@ footer {
     bottom: var(--spacing);
     right: var(--spacing);
     z-index: 15;
-    
+
     footer & {
       margin-top: var(--line-height);
     }
@@ -191,7 +191,7 @@ footer {
 
 .footer-logo {
   order: 2;
-  
+
   @include sm(min) {
     display: none;
   }
@@ -202,13 +202,35 @@ footer {
   }
 }
 
+@include sm(min) {
+
+  .footer__blocks-wrapper {
+    >div {
+      &:nth-child(2) {
+        footer:not(.open) & >ul {
+          transform: translate3d(0, var(--line-height), 0);
+        }
+
+        footer.open & > ul {
+          transform: translate3d(0, calc(var(--spacing) * -1), 0);
+        }
+      }
+    }
+
+    ul {
+      transition: transform .4s;
+    }
+  }
+
+}
+
 
 @include sm(max) {
   .footer__blocks-wrapper {
     display: flex;
     flex-direction: column;
-  
-    > div:nth-child(2) {
+
+    >div:nth-child(2) {
       order: 3;
     }
   }

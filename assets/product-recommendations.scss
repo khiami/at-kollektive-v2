@@ -9,6 +9,10 @@ product-recommendations {
   &:not([data-count="0"]) {
     margin: var(--product-recommendations-margin);
   }
+
+  &[data-count="0"] {
+    display: none;
+  }
   
   .media {
     margin-bottom: 1.25rem;

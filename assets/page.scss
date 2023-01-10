@@ -99,6 +99,8 @@
 
 .t-article {
   article {
+    padding-top: var(--spacing-v);
+
     .el-block-reverse {
       p {
         padding-left: var(--spacing);

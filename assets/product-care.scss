@@ -9,24 +9,10 @@
     >div {
       >div {
         position: var(--product-care-row-div-display);
-        top: $block-size;
         z-index: 10;
-        transition: top .4s;
 
-        [data-scroll-direction=down] & {
-          top: 6rem;
-        }
-
-        [data-scroll-direction=down].submenu-open & {
-          top: 8.7rem;
-        }
-
-        [data-scroll-direction=up] & {
-          top: 10rem;
-        }
-
-        [data-scroll-direction=up].submenu-open & {
-          top: 12.75rem;
+        &:not([style]) {
+          top: var(--header-collapsed-top);
         }
       }
     }

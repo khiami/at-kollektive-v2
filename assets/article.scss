@@ -15,7 +15,7 @@
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
   top: var(--root-navigation-height);
-  padding: 0 var(--spacing);
+  // padding: 0 var(--spacing);
   background-color: white;
   z-index: 10;
 }

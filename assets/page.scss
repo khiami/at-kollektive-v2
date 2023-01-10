@@ -42,7 +42,6 @@
 .t-index,
 .t-article {
   section {
-
     p {
       max-width: var(--article-template-section-p-max-width);
     }
@@ -50,6 +49,10 @@
     .sticky {
       top: $block-size;
     }
+  }
+
+  [class*=col-]>p {
+    padding-left: var(--spacing);
   }
 
   .article-content {

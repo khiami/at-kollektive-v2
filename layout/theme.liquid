@@ -278,6 +278,11 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
 
+    <div class="f-calc">
+      {% for item in (1..12) %}
+        <div> </div>
+      {% endfor %}
+    </div>
     <script>
       window.shopUrl = '{{ request.origin }}';
       window.routes = {

@@ -340,15 +340,15 @@
     
     let stylesheet = query('style.root');
     if (stylesheet) window.addEventListener('vars-update', e=> {
-      let update = e.detail;
-      let newVars = {...vars, ...update};
+      let local = vars = { ...vars, ...e.detail };
+      let cssVars = Object.assign({}, local);
 
-      Object.keys(newVars).forEach(key=> {
-        newVars['--' + hyphenate(key)] = newVars[key];
-        Reflect.deleteProperty(newVars, key);
+      Object.keys(cssVars).forEach(key=> {
+        cssVars['--' + hyphenate(key)] = cssVars[key];
+        Reflect.deleteProperty(cssVars, key);
       });
 
-      stylesheet.innerText = `:root{${ Object.entries(newVars).map(([key, value])=> `${key}: ${value}`).join(';')}}`;
+      stylesheet.innerText = `:root{${ Object.entries(cssVars).map(([key, value])=> `${key}: ${value}`).join(';')}}`;
     });
   }
 
@@ -537,19 +537,35 @@
     }
   }
   
-  function productCareWidth() {
+  // function productCareWidth() {
+    
+  //   try {
+  //     let getWidth = ()=> {
+  //       let width = query('.grid-element')?.clientWidth??0;
+  //       dispatchCustomEvent('vars-update', { 
+  //         productCarePMaxWidth: Math.floor(width + width/3) + 'px' ,
+  //       });
+  //     }
+
+  //     return window.addEventListener('resize', getWidth);
+  //   } catch(e) {
+  //     logg('product care width caught ', e);
+  //   }
+  // }
+
+  function gridCol() {
     
     try {
       let getWidth = ()=> {
-        let width = query('.grid-element')?.clientWidth??0;
+        let width = query('.f-calc > div')?.clientWidth??0;
         dispatchCustomEvent('vars-update', { 
-          productCarePMaxWidth: Math.floor(width + width/3) + 'px' ,
+          gridUnitWidth: width + 'px' ,
         });
       }
-
-      return window.addEventListener('resize', getWidth);
+      window.addEventListener('resize', getWidth);
+      return getWidth();
     } catch(e) {
-      logg('product care width caught ', e);
+      logg('grid unit width caught ', e);
     }
   }
 
@@ -593,7 +609,11 @@
       hasStickyPolifyfill();
 
       updateVars();
-      productCareWidth();
+
+      // deprecated
+      // productCareWidth();
+
+      gridCol();
 
       defineHeaderHeight();
 

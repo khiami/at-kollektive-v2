@@ -39,7 +39,8 @@
   }
 
   p {
-    max-width: var(--product-care-p-max-width);
+    // max-width: var(--product-care-p-max-width);
+    max-width: calc(var(--grid-unit-width) * 4);
 
     &:last-of-type {
       margin-bottom: 0;

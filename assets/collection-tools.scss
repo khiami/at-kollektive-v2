@@ -9,10 +9,6 @@
     top: var(--root-navigation-height);
     padding: var(--spacing-v) var(--spacing);
     z-index: 10;
-
-    // @include bodyScrolling(up) {
-    //   top: 8.4375rem;
-    // }
   }
 
   @include sm(max) {
@@ -22,10 +18,6 @@
     body:not(.header-open) & {
       z-index: 12;
     }
-  }
-
-  @include sm(min) {
-    // @include stickyElementFix($extraWidth: false);
   }
 
   @include sm(max) {
@@ -123,31 +115,11 @@
   .open & {
     margin-bottom: var(--tools-header-margin-bottom);
   }
-
-  // @include sm(min) {
-  //   .open & {
-  //     margin-bottom: 3.125rem;
-  //   }
-  // }
-
-  // @include sm(max) {
-  //   .open & {
-  //     margin-bottom: var(--spacing);
-  //   }
-  // }
 }
 
 .filter-group {
   .title {
     margin-bottom: var(--filter-group-title-margin-bottom);
-
-    // @include sm(min) {
-    //   margin-bottom: 1.25rem;
-    // }
-
-    // @include sm(max) {
-    //   margin-bottom: 1.5625rem;
-    // }
   }
 
   button {
@@ -161,10 +133,6 @@
   flex-wrap: wrap;
   gap: var(--filter-selector-gap);
   max-height: 9rem;
-
-  // @include sm(max) {
-  //   gap: 0.5rem;
-  // }
 
   >li {
     &.active {

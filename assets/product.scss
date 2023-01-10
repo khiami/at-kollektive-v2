@@ -8,7 +8,7 @@
     align-items: flex-start;
     flex-wrap: nowrap;
     gap: 0;
-    padding: 1.25rem;
+    padding: var(--spacing-v) var(--spacing);
   }
 
   @include sm(max) {
@@ -269,6 +269,17 @@
   text-align: right;
   background-color: white;
   z-index: 10;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(var(--spacing-v) * -1);
+    left: 0;
+    width: 100%;
+    height: var(--spacing-v);
+    background: white;
+    pointer-events: none;
+  }
   
   &:not([style])  {
     top: var(--header-collapsed-top);

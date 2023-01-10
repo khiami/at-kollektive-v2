@@ -26,7 +26,8 @@ cart-items {
     flex: var(--cart-items-product-image-flex);
 
     img {
-      width: max(30vw, 25rem);
+      // width: max(28vw, 25rem);
+      width: calc(var(--grid-unit-width) * 3); //max(28vw, 25rem);
       height: auto;
       max-width: 100%;
       min-width: 10rem;
@@ -51,12 +52,7 @@ cart-items {
 
   >div {
     position: var(--cart-footer-wrapper-display);
-    top: $block-size;
-    transition: top .4s;
-
-    @include bodyScrolling(up) {
-      top: $block-size * 2;
-    }
+    top: var(--root-navigation-height);
   }
 }
 
@@ -200,8 +196,13 @@ input[type=number] {
 
 
 .cart-errors {
-  //   margin-bottom: 1.25rem;
   height: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.cart-product-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cart-product-details-gap);
 }

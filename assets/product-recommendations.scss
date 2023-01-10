@@ -9,15 +9,6 @@ product-recommendations {
   &:not([data-count="0"]) {
     margin: var(--product-recommendations-margin);
   }
-
-
-  // @include sm(min) {
-  //   margin: 10rem auto 10.625rem;
-  // }
-
-  // @include sm(max) {
-  //   margin: 3.125rem auto 4.625rem;
-  // }
   
   .media {
     margin-bottom: 1.25rem;

@@ -74,8 +74,8 @@
     @include sm(min) {
 
       >.main-cart-items {
-        flex: 1 0 50%;
-        max-width: 50%;
+        flex: 1 0 66%;
+        max-width: 66%;
       }
     }
 
@@ -125,5 +125,19 @@
     height: 0;
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+.f-calc {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--spacing);
+  margin: 0 auto;
+  width: calc(100% - calc(var(--spacing) * 2));
+  height: 0;
+
+  >div {
+    display: flex;
+    flex: 1;
   }
 }

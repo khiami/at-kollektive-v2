@@ -41,9 +41,8 @@
     --product-care-margin-bottom: 10rem;
     --product-care-p-max-width: 50%;
     --cart-template-main-flex-direction: row;
-    --cart-template-main-gap: 15vmax;
+    --cart-template-main-gap: 0;
     --nav-ul-gap: 1rem;
-    /* --nested-navigation-height: 44px; */
     --close-submenu-display: none;
     --footer-grid-height: 95vh;
     --footer-grid-min-height: 35rem;
@@ -70,6 +69,7 @@
     --product-image-preview-align-items: flex-end;
     --main-min-height: calc(100vh - 8.5rem);
     --header-collapsed-top: calc(var(--root-navigation-height) + var(--spacing-v));
+    --cart-product-details-gap: 5px;
   }
 }
 
@@ -122,6 +122,7 @@
     --cart-remove-button-opacity: .3;
     --cart-items-min-height: calc(100vh - 4.875rem);
     --product-images-margin-top: .25rem;
+    --cart-product-details-gap: 8px;
     
   }
 }

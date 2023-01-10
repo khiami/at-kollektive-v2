@@ -89,8 +89,7 @@
     --filter-group-title-margin-bottom: 1.5625rem;
     --block-editorial-p-max-width: 100%;
     --product-recommendations-margin: 3.125rem auto 4.625rem;
-    /* --product-image-img-width: auto; */
-    --product-image-img-width: 100%;
+    --product-image-img-width: auto;
     --product-image-img-height: 120vw;
     --product-image-img-max-width: none;
     --image-index-display: none;

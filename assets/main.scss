@@ -320,6 +320,6 @@ details summary::-webkit-details-marker {
 @import "./login.scss";
 
 
-// html.debug * {
-//   box-shadow: inset 0 0 0 1px red;
-// }
+html.debug * {
+  box-shadow: inset 0 0 0 1px red;
+}

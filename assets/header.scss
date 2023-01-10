@@ -142,6 +142,9 @@ nav {
     &.desktop,
     &.footer {
       padding-top: 0;
+    }
+
+    &.desktop {
       padding-bottom: 0;
     }
   }

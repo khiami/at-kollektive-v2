@@ -72,6 +72,10 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: .5rem;
+  
+  @include sm(max) {
+    padding: 0 var(--spacing);
+  }
 
   &+.field {
     margin-top: var(--spacing);

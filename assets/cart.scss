@@ -25,7 +25,7 @@ cart-items {
     flex: var(--cart-items-product-image-flex);
 
     img {
-      width: var(--product-image-img-width);
+      width: var(--cart-product-image-img-width);
       height: auto;
       max-width: 100%;
       min-width: 10rem;

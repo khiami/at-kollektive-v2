@@ -26,8 +26,7 @@ cart-items {
     flex: var(--cart-items-product-image-flex);
 
     img {
-      // width: max(28vw, 25rem);
-      width: calc(var(--grid-unit-width) * 3); //max(28vw, 25rem);
+      width: var(--product-image-img-width);
       height: auto;
       max-width: 100%;
       min-width: 10rem;
@@ -65,6 +64,13 @@ cart-items {
 .cart-item {
   display: flex;
   gap: var(--spacing);
+
+  @include sm(max) {
+    >div {
+      flex: 0 0 50%;
+      width: 50%;
+    }
+  }
 }
 
 .cart-product-size {

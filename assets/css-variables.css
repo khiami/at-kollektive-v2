@@ -70,6 +70,7 @@
     --main-min-height: calc(100vh - 8.5rem);
     --header-collapsed-top: calc(var(--root-navigation-height) + var(--spacing-v));
     --cart-product-details-gap: 5px;
+    --product-image-img-width: calc(var(--grid-unit-width) * 3);
   }
 }
 
@@ -123,6 +124,7 @@
     --cart-items-min-height: calc(100vh - 4.875rem);
     --product-images-margin-top: .25rem;
     --cart-product-details-gap: 8px;
+    --product-image-img-width: 100%;
     
   }
 }

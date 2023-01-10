@@ -70,16 +70,10 @@
     });
 
     // auto-collapse header if clicked outside
-    document.addEventListener('click', e=> {
-      if (!elementBelongsTo(header, e.target)) {
-        closeNavigation();
-      }
-    });
+    document.addEventListener('click', e=> !elementBelongsTo(header, e.target) && closeNavigation());
 
     // auto-collapse on [escape] clicked
-    document.addEventListener('keyup', e=> {
-      if (e.key === 'Escape') closeNavigation();
-    });
+    document.addEventListener('keyup', e=> e.key === 'Escape' && closeNavigation());
 
     // close submenu
     header.addEventListener('click', e=> {
@@ -101,11 +95,8 @@
   }
 
   function onNestedNavToggle(isOpen) {
-    
-    tl.invalidate();
     nestNavigationHeight = nestedNavigation.clientHeight;
-    setTimeout(()=> ___onWindowScroll(), 20);
-
+    ___onWindowScroll();
   }
 
   function newsletterToggle() {
@@ -430,8 +421,11 @@
     let dynamic = listify('[dynamic]');
     let dynamictops = dynamic.map(d=> parseInt(getComputedStyle(d).top));
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
-    
 
+    dynamic.forEach(el=> {
+      el.dataset.top = parseInt(getComputedStyle(el).top)??0;
+    });
+    
     onWindowScroll = window.___onWindowScroll = ()=> {
   
       let { pageYOffset } = window;
@@ -445,6 +439,9 @@
       // bootstrap
       if (lastPageYOffset===null) lastPageYOffset = pageYOffset;
       if (document?.body?.classList) document.body.dataset.scrollDirection = down ? 'down':'up';
+
+      tl.invalidate();
+      tl.restart();
     
       // direction logic
       if (!down) {
@@ -452,7 +449,6 @@
       } else {
         
         tl.pause(0);
-        tl.invalidate();
         
         topDown = topDown - (pageYOffset - lastPageYOffset);
         topDown = cap(topDown, -limit, 0);
@@ -479,13 +475,10 @@
     tl
       .add(
         gsap.to([header, ...dynamic], { 
-          top: (_, t)=> {
-            return t.hasAttribute('dynamic') ? parseInt(getComputedStyle(t).top) + rootNavHeight:0;
-          },
           duration: .4,
+          top: (_, t)=> t.hasAttribute('dynamic') ? parseInt(t.dataset.top) + nestNavigationHeight + rootNavHeight:0,
         }, 0)
       )
-
   }
 
   function sizeGuideToggle() {
@@ -604,7 +597,7 @@
 
       defineHeaderHeight();
 
-      scrollTo = document.documentElement.scrollTop;
+      // scrollTo = document.documentElement.scrollTop;
 
 
       document.addEventListener('keyup', e=> {
@@ -614,8 +607,6 @@
   });
 
   window.addEventListener('load', ()=> {
-    logg('window loaded');
-
     stickyHeader();
   })
 

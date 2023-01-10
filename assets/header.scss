@@ -25,6 +25,7 @@
 body {
 
   @include sm(max) {
+
     &.collection-tools-open,
     &.header-open {
       overflow: hidden;
@@ -124,12 +125,24 @@ nav {
   &.n-level {
     padding-top: 0;
 
-    &:not(:empty) {
-      padding-bottom: var(--spacing-v);
-    }
-
     @include sm(min) {
       width: 100%;
+
+      &:not(:empty) {
+        padding-bottom: var(--spacing-v);
+      }
+    }
+
+    @include sm(max) {
+      padding-bottom: 0;
+    }
+  }
+
+  @include sm(max) {
+    &.desktop,
+    &.footer {
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
 
@@ -154,7 +167,7 @@ nav {
 
 summary {
   cursor: pointer;
-  
+
   &::marker {
     content: '';
   }

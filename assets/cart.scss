@@ -10,7 +10,6 @@ cart-items {
     display: flex;
     flex-direction: column;
     padding: var(--spacing);
-    min-height: var(--cart-items-min-height);
 
     .title {
       display: none;

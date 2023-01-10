@@ -39,16 +39,9 @@
   }
 }
 
-.t-404 {
-  section {
-    padding-bottom: 90vmin;
-  }
-}
-
 .t-index,
 .t-article {
   section {
-    // padding: var(--spacing);
 
     p {
       max-width: var(--article-template-section-p-max-width);

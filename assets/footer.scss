@@ -6,9 +6,9 @@ footer {
 
   .grid {
     padding: var(--spacing);
-    height: var(--footer-grid-height);
-    min-height: var(--footer-grid-min-height);
-    transition: height .4s;
+    // height: var(--footer-grid-height);
+    // min-height: var(--footer-grid-min-height);
+    // transition: height .4s;
     gap: var(--footer-grid-gap);
   }
 
@@ -192,9 +192,9 @@ footer {
 .footer-logo {
   order: 2;
 
-  @include sm(min) {
-    display: none;
-  }
+  // @include sm(min) {
+  //   display: none;
+  // }
 
   img {
     width: 100%;
@@ -225,7 +225,7 @@ footer {
 }
 
 
-@include sm(max) {
+// @include sm(max) {
   .footer__blocks-wrapper {
     display: flex;
     flex-direction: column;
@@ -234,4 +234,4 @@ footer {
       order: 3;
     }
   }
-}
+// }

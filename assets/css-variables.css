@@ -44,6 +44,7 @@
     --cart-template-main-gap: 0;
     --nav-ul-gap: 1rem;
     --close-submenu-display: none;
+    --footer-grid-gap: 14.0625rem;
     --footer-grid-height: 95vh;
     --footer-grid-min-height: 48rem;
     --collection-template-section-p-margin-bottom: var(--spacing);

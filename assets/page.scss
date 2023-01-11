@@ -43,11 +43,11 @@
 .t-article {
 
   article {
-    &:not([data-type=designer]) section p {
+    &:not([data-type=designer]) p {
       max-width: var(--article-template-section-p-max-width);
     }
 
-    &[data-type=designer] section p {
+    &[data-type=designer] p {
       // max-width: var(--article-template-section-p-max-width);
     }
   }

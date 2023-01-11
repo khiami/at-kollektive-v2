@@ -98,7 +98,7 @@
 @include sm(min) {
   .newsletter-form__message--success {
     position: absolute;
-    bottom: 3rem;
+    top: 5rem;
     left: 0;
     transition: bottom .4s;
 

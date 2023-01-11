@@ -2,10 +2,13 @@
 
 .collection-tools {
   position: sticky;
+  display: flex;
+  flex-direction: column;
   background-color: white;
-  // transition: top .4s;
+
 
   @include sm(min) {
+    gap: var(--collection-tools-gap);
     top: var(--root-navigation-height);
     padding: var(--spacing-v) var(--spacing) 1.75rem;
     z-index: 10;
@@ -13,6 +16,15 @@
 
   @include sm(max) {
     padding: 1.875rem var(--spacing) var(--spacing);
+    transition: padding-top .4s;
+
+    body[data-scroll-direction=down] & {
+      padding-top: var(--spacing-v);
+    }
+
+    body[data-scroll-direction=up] & {
+      padding-top: calc(var(--spacing-v) * 2);
+    }
 
     &:not([style]) {
       top: var(--root-navigation-height);

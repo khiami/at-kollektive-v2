@@ -76,6 +76,7 @@
     --unempty-nav-padding: var(--spacing-v) var(--spacing);
     --collection-filter-ul-gap: 0.4375rem;
     --collection-filter-display: grid;
+    --collection-tools-gap: 3.125rem;
   }
 }
 
@@ -131,6 +132,7 @@
     --main-min-height: calc(100vh - calc(var(--root-navigation-height) * 2));
     --collection-filter-display: flex;
     --collection-filter-ul-gap: .5rem;
+    --collection-tools-gap: 2.5rem;
     
   }
 }

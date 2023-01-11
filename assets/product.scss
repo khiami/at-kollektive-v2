@@ -293,14 +293,16 @@ product-form {
   flex-direction: column;
 }
 
-@include sm(max) {
-  .product-info-list {
+.product-info-list {
+  list-style: none;
+
+  @include sm(max) {
     display: flex;
     flex-direction: column;
     gap: var(--spacing);
-    list-style: none;
   }
 }
+
 
 .tab-mobile-btn {
   display: var(--tab-mobile-btn-display);

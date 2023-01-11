@@ -533,6 +533,32 @@ function cap(x, min, max) {
   return value;
 }
 
-function hyphenate(camel) {
-  return camel.replace(/[A-Z]/g, m => "-" + m.toLowerCase());
+function hyphenate(camelized) {
+  return camelized.replace(/[A-Z]/g, m => "-" + m.toLowerCase());
+}
+
+function camelize(hyphenated) {
+  return hyphenated.replace(/-([a-z])/g, m=> m[1].toUpperCase());
+}
+
+function getCss(hyphenatedAttr, element) {
+  try {
+    if (!element) element = document.documentElement;
+    if (hyphenatedAttr?.length) return getComputedStyle(element)[camelize(hyphenatedAttr)];
+    return getComputedStyle(element);
+  } catch(e) {
+    return getComputedStyle(element);
+  }
+}
+
+function getCssInt(...args) {
+  try {
+    return parseInt(getCss.apply(this, args));
+  } catch(e) {
+    return getCss(args);
+  }
+}
+
+function getCssVariable(cssVariable) {
+  return getCss().getPropertyValue(cssVariable);
 }

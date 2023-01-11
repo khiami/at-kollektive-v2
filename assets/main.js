@@ -217,7 +217,9 @@
         
           //setTimeout(()=> video.play(), 500); // force play
           video.bind('end', ()=> video.play()); // force loop
-        } catch(e) { logg('bootstrapWistiaEmbedAPI caught ', e) }
+        } catch(e) { 
+          logg('bootstrapWistiaEmbedAPI caught ', e);
+        }
       }
     });
     return window._wq = _wq;
@@ -243,7 +245,9 @@
           return a;
 
         });
-    } catch(e) { logg('compatible wistia embed api - caught ', e ) }
+    } catch(e) { 
+      logg('compatible wistia embed api - caught ', e );
+    }
   }
 
   function wistiaShowThumbnail() {
@@ -275,7 +279,9 @@
               if (item.wistia?.parentElement) {
                 item.wistia.style.background = `transparent url(${item.thumbnail}) no-repeat center center/cover`;
               }
-            } catch(e) {logg('wistia show thumbnail caught ', e)}
+            } catch(e) {
+              logg('wistia show thumbnail caught ', e)
+            }
           });
         }
       })
@@ -362,7 +368,9 @@
     if (filters?.length) filters.forEach(code=> {
         try {
           query(`[data-filter-code="${code}"]`)?.classList.add('active');
-        } catch(e) { logg('setCurrentFilters caught ', e) }
+        } catch(e) { 
+          logg('setCurrentFilters caught ', e);
+        }
       });
 
     if (!filterOpen) return;
@@ -408,8 +416,22 @@
     });
   }
 
+  function productInfoHeight() {
+    let nav = query('.root_navigation');
+    let remInPixels = parseFloat(getCss('font-size'));
+    let spacing = parseFloat(getCssVariable('--spacing-v')) * remInPixels;
+
+    return innerHeight - nav.clientHeight * 2 - spacing*2;
+  }
+
+  function updateProductInfoHeight(height) {
+    dispatchCustomEvent('vars-update', { productInfoHeight: height + 'px' });
+  }
+
   function stickyHeader() {
 
+    let header = query('.section-header');
+    let dynamic = listify('[dynamic]');
     let rootNav = query('.root_navigation');
     let rootNavHeight = rootNav.clientHeight;
     let lastPageYOffset = null;
@@ -417,24 +439,19 @@
     let limit = window.innerWidth < 576 ? 40:rootNavHeight;
     let lastDirection;
     let topUp = -limit;
-    let topDown = 0; //parseInt(getComputedStyle(rootNav).top);
-    let header = query('.section-header');
-    let dynamic = listify('[dynamic]');
-    let dynamictops = dynamic.map(d=> parseInt(getComputedStyle(d).top));
+    let topDown = 0;
+    let topValues = [...dynamic, header].map(el=> parseFloat(getComputedStyle(el).top)??0);
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
-
-    dynamic.forEach(el=> {
-      el.dataset.top = parseInt(getComputedStyle(el).top)??0;
-    });
     
     onWindowScroll = window.___onWindowScroll = ()=> {
   
       let { pageYOffset } = window;
       let windowY = pageYOffset??document.documentElement.scrollTop;
       let down = windowY > lastScrollTop;
+      let noscroll = windowY === lastScrollTop;
 
       // logic if no scroll, apply the last recorded scrolling direction
-      if (windowY === lastScrollTop) down = lastDirection === 'down';
+      if (noscroll) down = lastDirection === 'down';
       lastDirection = down ? 'down':'up';
       
       // bootstrap
@@ -458,9 +475,9 @@
   
         // down
         header.style.top = `${topDown}px`;
-        dynamic.forEach((dynamic, idx)=> {
-          dynamic.style.top = dynamictops[idx] + rootNavHeight + nestNavigationHeight + topDown + 'px';
-        });
+        dynamic.forEach((dynamic, idx)=> dynamic.style.top = topValues[idx] + rootNavHeight + nestNavigationHeight + topDown + 'px');
+
+        updateProductInfoHeight(productInfoHeight() - topDown - nestNavigationHeight);
       }
   
       lastScrollTop = window.pageYOffset??document.documentElement.scrollTop;
@@ -468,16 +485,17 @@
     
     window.addEventListener('resize', updateLimit.bind(null));
     window.addEventListener('scroll', ___onWindowScroll, false);
-
-    // mobile check
-    // if (window.mobile) return;
+    
     topUp = parseInt(getComputedStyle(header).top);
 
     tl
       .add(
-        gsap.to([header, ...dynamic], { 
+        gsap.to([...dynamic, header], { 
           duration: .4,
-          top: (_, t)=> t.hasAttribute('dynamic') ? parseInt(t.dataset.top) + nestNavigationHeight + rootNavHeight:0,
+          top: (idx, t)=> t.hasAttribute('dynamic') ? topValues[idx] + nestNavigationHeight + rootNavHeight:0,
+          onUpdate: ()=> {
+            updateProductInfoHeight(productInfoHeight() - parseFloat(header.style.top) - nestNavigationHeight);
+          }
         }, 0)
       )
   }
@@ -537,22 +555,6 @@
       });
     }
   }
-  
-  // function productCareWidth() {
-    
-  //   try {
-  //     let getWidth = ()=> {
-  //       let width = query('.grid-element')?.clientWidth??0;
-  //       dispatchCustomEvent('vars-update', { 
-  //         productCarePMaxWidth: Math.floor(width + width/3) + 'px' ,
-  //       });
-  //     }
-
-  //     return window.addEventListener('resize', getWidth);
-  //   } catch(e) {
-  //     logg('product care width caught ', e);
-  //   }
-  // }
 
   function gridCol() {
     
@@ -571,66 +573,57 @@
   }
 
   function defineHeaderHeight() {
-
-    let header = query('.root_navigation');
-    let update = ()=> dispatchCustomEvent('vars-update', { 
-      rootNavigationHeight: header.clientHeight + 'px' ,
-    });
+    let nav = query('.root_navigation');
+    let update = ()=> dispatchCustomEvent('vars-update', { rootNavigationHeight: nav.clientHeight + 'px' });
     window.addEventListener('resize', update);
-    update();
+    return update();
+  }
+
+  function defineHeaderTop() {
+    let header = query('.section-header');
+    return dispatchCustomEvent('vars-update', { sectionHeaderTop: getCssInt('top', header) + 'px' });
   }
 
   document.addEventListener('DOMContentLoaded', ()=> {
 
-      mainnav();
+    mainnav();
 
-      newsletterToggle();
+    newsletterToggle();
+  
+    switchIframeToWistiaEmbed();
+  
+    bootstrapWistiaEmbedAPI();
+
+    wistiaShowThumbnail();
+
+    toggleCollectionTools();
+
+    processFilterTitleCase();
     
-      switchIframeToWistiaEmbed();
-    
-      bootstrapWistiaEmbedAPI();
+    setCurrentFilters();
 
-      wistiaShowThumbnail();
+    filterOnClick();
 
-      toggleCollectionTools();
+    sizeGuideToggle();
 
-      processFilterTitleCase();
-      
-      setCurrentFilters();
+    tabContentToggle();
 
-      filterOnClick();
+    productSizeToggle();
 
-      sizeGuideToggle();
+    // css :has selector not yet supported on firefox
+    hasStickyPolifyfill();
 
-      tabContentToggle();
+    updateVars();
 
-      productSizeToggle();
+    gridCol();
 
-      // css :has selector not working on firefox
-      hasStickyPolifyfill();
+    defineHeaderHeight();
+    defineHeaderTop();
 
-      updateVars();
-
-      // deprecated
-      // productCareWidth();
-
-      gridCol();
-
-      defineHeaderHeight();
-
-      // scrollTo = document.documentElement.scrollTop;
-
-
-      document.addEventListener('keyup', e=> {
-        if (e.key === 'Escape') onEscape();
-      });
-      
   });
-
-  window.addEventListener('load', ()=> {
-    stickyHeader();
-  })
-
+    
+  document.addEventListener('keyup', e=> e.key === 'Escape' &&  onEscape());
+  window.addEventListener('load', ()=> stickyHeader());
   window.addEventListener('resize', debounce(responsiveWistia.bind(undefined), 100, true));
 
 })();

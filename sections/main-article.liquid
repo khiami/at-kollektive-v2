@@ -1,4 +1,4 @@
-<article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting" data-type="{{ article.metafields.custom.type }}">
+<article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting" {% if article.metafields.custom.type != blank %}data-type="{{ article.metafields.custom.type }}"{% endif %}>
   {%- for block in section.blocks -%}
     {%- case block.type -%}
 

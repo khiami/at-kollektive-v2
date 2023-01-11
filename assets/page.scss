@@ -43,18 +43,13 @@
 .t-article {
 
   article {
-    &:not([data-type=designer]) {
-      section p {
-        max-width: var(--article-template-section-p-max-width);
-      }
+    &:not([data-type=designer]) section p {
+      max-width: var(--article-template-section-p-max-width);
     }
 
-    // padding var(--spacing) is applied already
-    // &[data-type=designer] {
-    //   section p {
-    //     max-width: calc(var(--article-template-section-p-max-width) - var(--spacing));
-    //   }
-    // }
+    &[data-type=designer] section p {
+      // max-width: var(--article-template-section-p-max-width);
+    }
   }
 
   section {

@@ -317,17 +317,9 @@ product-form {
     gap: var(--product-metadata-margin-top);
   }
 
-  // safari only
-  _::-webkit-:-webkit-full-screen:host:not(:root:root) {
-    .debug body {
-      background-color: red;
-    }
-
-    .content-tabs {
-      padding-bottom: var(--text-underline-offset);
-    }
+  .content-tabs {
+    padding-bottom: var(--text-underline-offset);
   }
-
 }
 
 variant-radios {

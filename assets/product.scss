@@ -319,6 +319,7 @@ product-form {
 
   .content-tabs {
     padding-bottom: var(--text-underline-offset);
+    height: calc(var(--line-height) + 0.625rem);
   }
 }
 

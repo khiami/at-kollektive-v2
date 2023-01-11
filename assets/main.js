@@ -381,10 +381,39 @@
       filterOpen.removeAttribute('data-count'); 
     }
   }
+
+  function withFilterCustomLogic(tags) {
+  
+    try {
+    
+      let groupsWithSingleOption = ['color'];
+      let serialized = serializedFilters();
+      let groups = listify('[data-group]').reduce((a, c)=> ({ 
+        ...a,
+        [c.dataset.group]: {
+          group: c.dataset.group,
+          limit: groupsWithSingleOption.includes(c.dataset.group) ? 1:null,
+          applied: [],
+        }
+      }), {});
+
+      for(let item of tags) {
+        let {group: g} = serialized.find(a=> a.value === item)||{};
+        groups[g].applied = (isNumber(groups[g]?.limit) && groups[g]?.limit <= 1) ? 
+            [item]:
+            [...groups[g].applied, item];
+      }
+
+      return flattenArray(Object.entries(groups).map(([_, value])=> value.applied));
+    } catch(e) {
+      logg('withFilterCustomLogic caught ', e);
+      return tags;
+    }
+  }
   
   function filterOnClick() {
   
-    let generateUrlWithTags = tags=> currentCollection.url + '/' + tags.join('+');
+    let generateUrlWithTags = tags=> currentCollection.url + '/' + withFilterCustomLogic(tags).join('+');
     let codes = listify('[data-filter-code]');
 
     if (codes?.length) codes.forEach(code=> {

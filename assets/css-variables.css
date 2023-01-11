@@ -74,6 +74,8 @@
     --main-min-height: calc(100vh - calc(var(--root-navigation-height) * 2));
     --header-collapsed-top: calc(var(--root-navigation-height) + var(--spacing-v));
     --unempty-nav-padding: var(--spacing-v) var(--spacing);
+    --collection-filter-ul-gap: 0.4375rem;
+    --collection-filter-display: grid;
   }
 }
 
@@ -97,7 +99,6 @@
     --tab-mobile-btn-display: block;
     --product-metadata-margin-top: 5rem;
     --tools-header-margin-bottom: var(--spacing);
-    --filter-selector-gap: .5rem;
     --product-care-margin-bottom: 6.25rem;
     --product-care-p-max-width: 100%;
     --cart-template-main-flex-direction: column-reverse;
@@ -128,6 +129,8 @@
     --cart-product-details-gap: 8px;
     --unempty-nav-padding: var(--spacing);
     --main-min-height: calc(100vh - calc(var(--root-navigation-height) * 2));
+    --collection-filter-display: flex;
+    --collection-filter-ul-gap: .5rem;
     
   }
 }

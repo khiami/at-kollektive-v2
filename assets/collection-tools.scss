@@ -7,7 +7,7 @@
 
   @include sm(min) {
     top: var(--root-navigation-height);
-    padding: var(--spacing-v) var(--spacing);
+    padding: var(--spacing-v) var(--spacing) 1.75rem;
     z-index: 10;
   }
 
@@ -61,7 +61,6 @@
       align-items: stretch;
       gap: var(--tools-header-margin-bottom);
       inset: 0;
-      // padding-top: calc(calc(var(--root-navigation-height) * 2) + 1.875rem);
       padding-top: 1.875rem;
       width: 100%;
       height: 100%;
@@ -76,21 +75,23 @@
     }
 
     .collection-filter {
-      @include sm(min) {
-        display: grid;
-      }
+      display: var(--collection-filter-display);
 
       @include sm(max) {
-        display: flex;
         flex-direction: column;
         padding: var(--spacing) 0 10rem;
         height: calc(100vh - 9.5rem);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
+
+      ul {
+        gap: var(--collection-filter-ul-gap);
+      }
     }
   }
 }
+
 
 .breadcrumb {
   display: flex;
@@ -130,7 +131,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: var(--filter-selector-gap);
+  // gap: var(--filter-selector-gap);
   max-height: 9rem;
 
   >li {

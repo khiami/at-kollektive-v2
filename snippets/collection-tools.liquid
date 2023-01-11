@@ -1,4 +1,4 @@
-{%- assign designers = 'bianca-saunders, isaac-reina, eresearch-joke, kostas-murkudis, natacha-ramsay' | split: ', ' -%}
+{%- assign designers = 'at-kollektive, bianca-saunders, isaac-reina, kostas-murkudis, natacha-ramsay-levi' | split: ', ' -%}
 {%- assign colors = 'blue, black, beige, green, red, white, grey' | split: ', ' -%}
 
 <div class="collection-tools custom-padding" dynamic>
@@ -40,8 +40,8 @@
       <div class="title">Designer</div>
       <ul class="filter-selector designer">
         {% for item in designers %}
-          <li data-filter-code="{{ item }}" data-filter-group="designer">
-            <button>{{ item | capitalize }}</button>
+          <li data-filter-code="{{ item }}" data-group="designer">
+            <button class="filter-button" data-value="{{ item }}">{{ item | capitalize }}</button>
           </li>
           {% endfor %}
       </ul>
@@ -51,8 +51,8 @@
       <div class="title">Color</div>
       <ul class="filter-selector color">
         {% for item in colors %}
-          <li data-filter-code="{{ item }}" data-filter-group="color">
-            <button>{{ item | capitalize }}</button>
+          <li data-filter-code="{{ item }}" data-group="color">
+            <button class="filter-button" data-value="{{ item }}">{{ item | capitalize }}</button>
           </li>
           {% endfor %}
       </ul>

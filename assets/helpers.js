@@ -562,3 +562,23 @@ function getCssInt(...args) {
 function getCssVariable(cssVariable) {
   return getCss().getPropertyValue(cssVariable);
 }
+
+function flattenArray(d) {
+  return [].concat.apply([], d);
+}
+
+function isNumber(d) {
+  return typeof d === 'number';
+}
+
+function serializedFilters(withGroups = true) {
+  return listify('.filter-button')
+    .filter(a=> a.dataset.value?.length)
+    .map(a=> 
+      Object.assign(
+        {}, 
+        { value: a.dataset.value }, 
+        withGroups ? { group: a.closest('[data-group]').dataset.group }:{}
+      )
+    )
+}

@@ -316,6 +316,20 @@ product-form {
     height: 100%;
     gap: var(--product-metadata-margin-top);
   }
+
+  // safari only
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      .debug body {
+        background-color: red;
+      }
+
+      .content-tabs {
+        padding-bottom: var(--text-underline-offset);
+      }
+    }
+  }
+
 }
 
 variant-radios {

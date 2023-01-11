@@ -1,4 +1,4 @@
-<article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article article-template" itemscope itemtype="http://schema.org/BlogPosting" data-type="{{ article.metafields.custom.type }}">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
 

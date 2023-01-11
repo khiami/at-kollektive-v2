@@ -96,7 +96,7 @@
 
   function onNestedNavToggle(isOpen) {
     nestNavigationHeight = nestedNavigation.clientHeight;
-    ___onWindowScroll();
+    if (window.___onWindowScroll) window.___onWindowScroll();
   }
 
   function newsletterToggle() {

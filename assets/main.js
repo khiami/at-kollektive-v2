@@ -649,15 +649,6 @@
     defineHeaderHeight();
     defineHeaderTop();
 
-    Shopify.analytics.publish('my_custom_event', {
-      foo: {
-        bar: '123',
-      },
-      abc: {
-        def: 'geh',
-      },
-    });
-
   });
     
   document.addEventListener('keyup', e=> e.key === 'Escape' &&  onEscape());

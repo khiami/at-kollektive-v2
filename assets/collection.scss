@@ -45,7 +45,8 @@
 .t-collection {
   section {
     p.grid-element-title {
-      margin-bottom: var(--collection-template-section-p-margin-bottom);
+      // margin-bottom: var(--collection-template-section-p-margin-bottom);
+      margin-bottom: var(--grid-element-title-margin-bottom);
     }
   }
 }
@@ -80,7 +81,7 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  height: 3rem;
+  height: var(--reflect-on-hover-height);
 
   @include sm(min) {
     position: absolute;

@@ -31,7 +31,10 @@
                 </a>
               </p>
               <div class="reflect-oh-hover">
-                <div class="product-price normal-state">{{ product.price | money }}</div>
+                <div class="product-price normal-state">
+                  {% if product.metafields.custom.ak__wholesaleEur != blank %}<div class="price-wsp"><span class="price-point-label">WSP</span> <span class="price-point-value">{{ product.metafields.custom.ak__wholesaleEur | money }}</span></div>{% endif %}
+                  <div class="price-attr"><span class="price-point-label">RRP</span><span class="price-point-value">{{ product.price | money }}</span></div>
+                </div>
                 <div class="product-variants hover-state">
                   {% for variant in product.variants %}
 

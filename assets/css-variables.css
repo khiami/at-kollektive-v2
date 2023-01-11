@@ -77,6 +77,10 @@
     --collection-filter-ul-gap: 0.4375rem;
     --collection-filter-display: grid;
     --collection-tools-gap: 3.125rem;
+    --product-anchor-gap: 0.4375rem;
+    --reflect-on-hover-height: 3rem;
+    --product-price-gap: var(--spacing);
+    --product-price-flex-direction: row;
   }
 }
 
@@ -133,6 +137,10 @@
     --collection-filter-display: flex;
     --collection-filter-ul-gap: .5rem;
     --collection-tools-gap: 2.5rem;
+    --product-anchor-gap: 0.3125rem;
+    --grid-element-title-margin-bottom: 0.3125rem;
+    --product-price-gap: 0.3125rem;
+    --product-price-flex-direction: column;
     
   }
 }

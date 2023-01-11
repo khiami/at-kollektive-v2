@@ -291,6 +291,7 @@ product-form {
 .product-anchor {
   display: flex;
   flex-direction: column;
+  gap: var(--product-anchor-gap);
 }
 
 .product-info-list {
@@ -350,3 +351,27 @@ variant-radios {
     }
   }
 }
+
+html {
+  &.wholesale {
+  }
+
+  &:not(.wholesale) {
+    .price-point-label {
+      display: none;
+    }
+  }
+}
+
+.product-price {
+  display: flex;
+  flex-direction: var(--product-price-flex-direction);
+  gap: var(--product-price-gap);
+  white-space: nowrap;
+
+  > div {
+    display: flex;
+    gap: 0.1875rem;
+  }
+}
+

@@ -318,15 +318,13 @@ product-form {
   }
 
   // safari only
-  @media not all and (min-resolution:.001dpcm) {
-    @supports (-webkit-appearance:none) {
-      .debug body {
-        background-color: red;
-      }
+  _::-webkit-:-webkit-full-screen:host:not(:root:root) {
+    .debug body {
+      background-color: red;
+    }
 
-      .content-tabs {
-        padding-bottom: var(--text-underline-offset);
-      }
+    .content-tabs {
+      padding-bottom: var(--text-underline-offset);
     }
   }
 

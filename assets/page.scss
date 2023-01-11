@@ -52,7 +52,7 @@
   }
 
   [class*=col-]>p {
-    padding-left: var(--spacing);
+    padding: 0 var(--spacing);
   }
 
   .article-content {

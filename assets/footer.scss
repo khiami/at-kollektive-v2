@@ -165,11 +165,15 @@ footer {
 
   .newsletter-form__button {
     position: absolute;
-    bottom: var(--spacing);
     right: var(--spacing);
     z-index: 15;
 
+    header & {
+      bottom: var(--spacing);
+    }
+    
     footer & {
+      top: var(--spacing);
       margin-top: var(--line-height);
     }
   }

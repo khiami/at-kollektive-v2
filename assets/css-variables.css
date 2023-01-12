@@ -81,7 +81,9 @@
     --reflect-on-hover-height: 3rem;
     --product-price-gap: var(--spacing);
     --product-price-flex-direction: row;
-    --grid-element-title-margin-bottom: var(--spacing);
+    --grid-element-title-margin-bottom: var(--spacing);    
+    --filter-selector-max-height: calc(calc(var(--line-height) * 6) + calc(var(--collection-filter-ul-gap) * 5));
+
   }
 }
 

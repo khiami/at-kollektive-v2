@@ -467,8 +467,6 @@
     let topDown = 0;
     let topValues = [...dynamic, header].map(el=> getCssInt('top', el)??0);
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
-
-    logg('topValues', topValues);
     
     onWindowScroll = window.___onWindowScroll = ()=> {
   

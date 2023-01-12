@@ -73,7 +73,6 @@ main {
 }
 
 a {
-
   &:not(.hover-underline) {
     text-decoration: none
   }
@@ -82,9 +81,6 @@ a {
   &:focus {
     text-decoration: underline;
   }
-}
-
-a {
 
   &,
   &:hover,
@@ -104,6 +100,12 @@ ul {
   &:not(.custom-padding) {
     margin: 0;
     padding: 0;
+  }
+}
+
+summary {
+  &:hover {
+    text-decoration: underline;
   }
 }
 

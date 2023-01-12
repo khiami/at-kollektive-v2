@@ -106,7 +106,6 @@
   }
 }
 
-
 .breadcrumb {
   display: flex;
   flex-wrap: nowrap;
@@ -125,10 +124,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  // .open & {
-  //   margin-bottom: var(--tools-header-margin-bottom);
-  // }
 }
 
 .filter-group {

@@ -312,7 +312,6 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       }
     </script>
-    
 
     <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
     <script>
@@ -323,15 +322,10 @@
     
         if (videoElements?.length) {
           videoElements.forEach(element=> {
-            
             let { videoUrl } = element.dataset||{};
             let [ _, hashedId ] = videoUrl.match(hashedIdRegex)||[];
-            
-            // logg('hashedId', hashedId);
     
-            if (hashedId?.length) {
-              element.className = element.className.replace('xx', hashedId);
-            }
+            if (hashedId?.length)element.className = element.className.replace('xx', hashedId);
           });
         }
       })();

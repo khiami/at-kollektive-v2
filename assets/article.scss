@@ -14,12 +14,13 @@
 
 .has-sticky {
   position: var(--article-container-row-with-sticky-title-display);
-  top: var(--root-navigation-height);
-  // padding: 0 var(--spacing);
   background-color: white;
   z-index: 10;
-}
 
+  &:not([style]) {
+    top: var(--section-header-height);
+  }
+}
 
 .sticky-title {
   padding: var(--spacing) 0;

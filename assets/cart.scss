@@ -50,7 +50,10 @@ cart-items {
 
   >div {
     position: var(--cart-footer-wrapper-display);
-    top: var(--root-navigation-height);
+
+    &:not([style]) {
+      top: var(--section-header-height);
+    }
   }
 }
 

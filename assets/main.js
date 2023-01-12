@@ -606,7 +606,6 @@
 
   function defineHeaderTop() {
     let header = query('.section-header');
-    logg('header height ',  elementHeightInViewport(header, header.parentElement));
     return dispatchCustomEvent('vars-update', { sectionHeaderHeight: elementHeightInViewport(header, header.parentElement) + 'px' });
   }
 

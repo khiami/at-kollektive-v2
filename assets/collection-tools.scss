@@ -143,8 +143,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  // gap: var(--filter-selector-gap);
-  max-height: 9rem;
+  max-height: var(--filter-selector-max-height);
 
   >li {
     &.active {

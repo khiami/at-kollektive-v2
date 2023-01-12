@@ -3,8 +3,8 @@
     <div class="product-info-inner">
 
       <ul class="product-info-list">
-        <li class="product-title">{{ product.title }}</li>
         {% if product.metafields.custom.ak__designerName != blank %}<li class="product-designer">{{ product.metafields.custom.ak__designerName }}</li>{% endif %}
+        <li class="product-title">{{ product.title }}</li>
         <li class="product-price">
           <span>{{ product.price | money }}</span>
           {% if product.compare_at_price != blank and product.compare_at_price != product.price %}

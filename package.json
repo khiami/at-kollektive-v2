@@ -8,7 +8,7 @@
     "sass:watch": "gulp watch-sass",
     "vendor": "gulp vendor",
     "start:local": "cross-env SHOPIFY_CLI_STACKTRACE=1 shopify theme serve",
-    "login": "shopify login --store kollektive-showroom-dev.myshopify.com"
+    "login": "shopify login --store kollektive-dev.myshopify.com"
   },
   "keywords": [],
   "author": "",

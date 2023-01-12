@@ -138,6 +138,7 @@
 
   button {
     @include underlineOnHover();
+    text-align: left;
   }
 }
 

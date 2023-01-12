@@ -560,10 +560,6 @@
     });
   }
 
-  function checkWholesale() {
-    return getCookie('is-wholesale') === '1' && document.documentElement.classList.add('wholesale');
-  }
-
   function productSizeToggle() {
 
     let sizes = listify('.product-size');
@@ -658,7 +654,6 @@
   document.addEventListener('keyup', e=> e.key === 'Escape' &&  onEscape());
   window.addEventListener('load', ()=> {
     stickyHeader();
-    checkWholesale();
   });
   window.addEventListener('resize', debounce(responsiveWistia.bind(undefined), 100, true));
 

@@ -352,16 +352,6 @@ variant-radios {
   }
 }
 
-html {
-  &.wholesale {
-  }
-
-  &:not(.wholesale) {
-    .price-point-label {
-      display: none;
-    }
-  }
-}
 
 .product-price {
   display: flex;

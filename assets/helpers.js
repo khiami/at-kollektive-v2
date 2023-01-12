@@ -2,7 +2,7 @@ const localhostRegex = /http(s?)\:[\/]{2}(localhost|127\.0\.0\.1|0\.0\.0\.0)/i
 const debugging = localhostRegex.test(location.href)
 
 function log(...args) {
-  return console.log( args.join(' ') );
+  return console.log.apply(this, args);
 }
 
 function logConditionally(dev) {
@@ -593,3 +593,13 @@ function getCookie(name) {
   }
   return null;
 }
+
+function elementHeightInViewport(item, parent) {
+  let elH = item.clientHeight;
+  let H = parent.clientHeight ?? innerHeight;
+  let r = item.getBoundingClientRect();
+  let t=r.top;
+  let b=r.bottom;
+
+  return Math.max(0, t>0? Math.min(elH, H-t) : Math.min(b, H));
+};

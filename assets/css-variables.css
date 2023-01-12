@@ -66,13 +66,13 @@
     --article-container-row-with-sticky-title-display: sticky;
     --footer-block-menu-display: sticky;
     --cart-footer-wrapper-display: sticky;
-    --product-info-height: calc(100vh - calc(var(--root-navigation-height) * 2) - calc(var(--spacing-v) * 2) - var(--section-header-top));
+    --product-info-height: calc(100vh - var(--section-header-height) - calc(var(--spacing-v) *2));
     --product-info-display: sticky;
     --product-care-row-div-display: sticky;
     --product-image-index-display: sticky;
     --product-image-preview-align-items: flex-end;
     --main-min-height: calc(100vh - calc(var(--root-navigation-height) * 2));
-    --header-collapsed-top: calc(var(--root-navigation-height) + var(--spacing-v));
+    --header-collapsed-top: calc(var(--section-header-height) + var(--spacing-v));
     --unempty-nav-padding: var(--spacing-v) var(--spacing);
     --collection-filter-ul-gap: 0.4375rem;
     --collection-filter-display: grid;

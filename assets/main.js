@@ -469,8 +469,10 @@
     let lastDirection;
     let topUp = -limit;
     let topDown = 0;
-    let topValues = [...dynamic, header].map(el=> parseFloat(getComputedStyle(el).top)??0);
+    let topValues = [...dynamic, header].map(el=> getCssInt('top', el)??0);
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
+
+    logg('topValues', topValues);
     
     onWindowScroll = window.___onWindowScroll = ()=> {
   
@@ -504,9 +506,9 @@
   
         // down
         header.style.top = `${topDown}px`;
-        dynamic.forEach((dynamic, idx)=> dynamic.style.top = topValues[idx] + rootNavHeight + nestNavigationHeight + topDown + 'px');
+        dynamic.forEach((dynamic, idx)=> dynamic.style.top = topValues[idx] + topDown + 'px');
 
-        updateProductInfoHeight(productInfoHeight() - topDown - nestNavigationHeight);
+        dispatchCustomEvent('vars-update', { productInfoHeight: productInfoHeight() - topDown - nestNavigationHeight + 'px' });
       }
   
       lastScrollTop = window.pageYOffset??document.documentElement.scrollTop;
@@ -521,9 +523,9 @@
       .add(
         gsap.to([...dynamic, header], { 
           duration: .4,
-          top: (idx, t)=> t.hasAttribute('dynamic') ? topValues[idx] + nestNavigationHeight + rootNavHeight:0,
+          top: (idx, t)=> t.hasAttribute('dynamic') ? topValues[idx]:0,
           onUpdate: ()=> {
-            updateProductInfoHeight(productInfoHeight() - parseFloat(header.style.top) - nestNavigationHeight);
+            dispatchCustomEvent('vars-update', { productInfoHeight: productInfoHeight() - parseFloat(header.style.top) - nestNavigationHeight + 'px' });
           }
         }, 0)
       )
@@ -610,7 +612,8 @@
 
   function defineHeaderTop() {
     let header = query('.section-header');
-    return dispatchCustomEvent('vars-update', { sectionHeaderTop: getCssInt('top', header) + 'px' });
+    logg('header height ',  elementHeightInViewport(header, header.parentElement));
+    return dispatchCustomEvent('vars-update', { sectionHeaderHeight: elementHeightInViewport(header, header.parentElement) + 'px' });
   }
 
   document.addEventListener('DOMContentLoaded', ()=> {

@@ -469,8 +469,6 @@
     let diff = elementHeightInViewport(header, header.parentElement) > rootNavHeight? rootNavHeight:0;
     let topValues = elements.map(el=> getCssInt('top', el) - diff ??0);
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
-
-    elements.forEach((e, idx)=> e.dataset.top = topValues[idx]);
     
     onWindowScroll = window.___onWindowScroll = ()=> {
   

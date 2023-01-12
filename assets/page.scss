@@ -120,6 +120,12 @@
       }
     }
   }
+
+  section {
+    >article {
+      padding-top: 0;
+    }
+  }
 }
 
 .t-product {

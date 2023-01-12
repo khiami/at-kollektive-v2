@@ -465,8 +465,12 @@
     let lastDirection;
     let topUp = -limit;
     let topDown = 0;
-    let topValues = [...dynamic, header].map(el=> getCssInt('top', el)??0);
+    let elements = [...dynamic, header];
+    let diff = elementHeightInViewport(header, header.parentElement) > rootNavHeight? rootNavHeight:0;
+    let topValues = elements.map(el=> getCssInt('top', el) - diff ??0);
     let updateLimit = ()=> limit = window.innerWidth < 576 ? 40:rootNav.clientHeight;
+
+    elements.forEach((e, idx)=> e.dataset.top = topValues[idx]);
     
     onWindowScroll = window.___onWindowScroll = ()=> {
   
@@ -500,7 +504,7 @@
   
         // down
         header.style.top = `${topDown}px`;
-        dynamic.forEach((dynamic, idx)=> dynamic.style.top = topValues[idx] + topDown + 'px');
+        dynamic.forEach((dynamic, idx)=> dynamic.style.top = topValues[idx] + topDown + rootNavHeight + nestNavigationHeight + 'px');
 
         dispatchCustomEvent('vars-update', { productInfoHeight: productInfoHeight() - topDown - nestNavigationHeight + 'px' });
       }
@@ -515,9 +519,9 @@
 
     tl
       .add(
-        gsap.to([...dynamic, header], { 
+        gsap.to(elements, { 
           duration: .4,
-          top: (idx, t)=> t.hasAttribute('dynamic') ? topValues[idx]:0,
+          top: (idx, t)=> t.hasAttribute('dynamic') ? topValues[idx] + rootNavHeight + nestNavigationHeight:0,
           onUpdate: ()=> {
             dispatchCustomEvent('vars-update', { productInfoHeight: productInfoHeight() - getCssInt('top', header) - nestNavigationHeight + 'px' });
           }

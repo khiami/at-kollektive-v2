@@ -151,7 +151,7 @@
 
       </ul>
       <ul class="product-info-list">
-        {% comment %} <li class="product-metadata">
+        <li class="product-metadata">
           <div class="tabs content-tabs">
             <button class="content-tab-btn underline-on-hover active" data-rel="description"><span>Description</span></button>
             <button class="content-tab-btn underline-on-hover" data-rel="size"><span>Size & Fit</span></button>
@@ -172,7 +172,8 @@
           <div class="tab-content" data-content-rel="details">
             {% if product.metafields.custom.ak__details != blank %}{{ product.metafields.custom.ak__details }}{% endif %}
           </div>
-        </li> {% endcomment %}
+        </li>
+        
       </ul>
     </div>
   </div>

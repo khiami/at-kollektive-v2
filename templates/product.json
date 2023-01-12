@@ -36,7 +36,7 @@
     },
     "product-care": {
       "type": "product-care",
-      "disabled": true,
+      "disabled": false,
       "settings": {
       }
     }

@@ -199,8 +199,15 @@
 
 .product-info {
   position: var(--product-info-display);
-  height: var(--product-info-height);
   max-width: calc(50% - var(--spacing));
+  
+  [data-scroll-direction=down] & {
+    height: var(--product-info-height);
+  }
+
+  [data-scroll-direction=up] & {
+    height: calc(100vh - calc(var(--root-navigation-height) * 2) - calc(var(--spacing-v) * 2));
+  }
 
   @include sm(min) {
     &:not([style]) {

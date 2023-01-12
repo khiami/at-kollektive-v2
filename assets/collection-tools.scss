@@ -6,12 +6,14 @@
   flex-direction: column;
   background-color: white;
 
-
   @include sm(min) {
     gap: var(--collection-tools-gap);
-    top: var(--root-navigation-height);
     padding: var(--spacing-v) var(--spacing) 1.75rem;
     z-index: 10;
+
+    &:not([style]) {
+      top: var(--section-header-height);
+    }
   }
 
   @include sm(max) {

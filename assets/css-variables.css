@@ -81,6 +81,7 @@
     --reflect-on-hover-height: 3rem;
     --product-price-gap: var(--spacing);
     --product-price-flex-direction: row;
+    --grid-element-title-margin-bottom: var(--spacing);
   }
 }
 
